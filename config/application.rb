@@ -41,5 +41,8 @@ module Esra
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Configure system-wide application name
+    config.hobo.app_name = "ESRA"
   end
 end
