@@ -26,15 +26,15 @@ class Program < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-     acting_user.signed_up?
+    acting_user.signed_up?
   end
 
   def update_permitted?
-    acting_user.administrator?
+    acting_user.signed_up?
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.signed_up?
   end
 
   def view_permitted?(field)
