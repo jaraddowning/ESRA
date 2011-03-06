@@ -46,4 +46,14 @@ Esra::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+   :address => "mail.csg.org",
+   :port => 25,
+   :domain => "csg.org",
+   :authentication => :login,
+   :user_name => "emap@csg.org",
+   :password => "Emap8222",
+  }
 end
