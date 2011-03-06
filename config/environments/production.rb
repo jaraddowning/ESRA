@@ -48,7 +48,7 @@ Esra::Application.configure do
   config.active_support.deprecation = :notify
   
   ActionMailer::Base.smtp_settings = {
-   :address => "mail.csg.org",
+   :address => "10.0.1.26",
    :port => 25,
    :domain => "csg.org",
    :authentication => :plain,
