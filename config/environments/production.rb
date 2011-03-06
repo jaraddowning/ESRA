@@ -52,8 +52,8 @@ Esra::Application.configure do
     :port => 587,
     :domain => 'emaponline.com',
     :authentication => :plain,
-    :user_name => 'jaraddowning@gmail.com',
-    :password => 'B33rG00d*'
+    :user_name => 'emapesra@gmail.com',
+    :password => 'EMAP8train'
   }
 
 end
