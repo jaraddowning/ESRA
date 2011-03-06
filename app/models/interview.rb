@@ -28,6 +28,6 @@ class Interview < ActiveRecord::Base
 
   def view_permitted?(field)
     true
-  endd
+  end
 
 end
