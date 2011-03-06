@@ -131,7 +131,7 @@
 
 <extend tag="form" for="Program">
   <old-form multipart merge>
-    <field-list: fields="name, summary, continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved"/>
+    <field-list: fields="name, continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved"/>
   </old-form>
 </extend>
 
