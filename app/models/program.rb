@@ -3,7 +3,7 @@ class Program < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name                :string
+    name                :string, :required, :unique
     summary             :html
     continuous_ca_plan  :boolean
     proc_for_devel      :boolean

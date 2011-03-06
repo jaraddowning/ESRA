@@ -7,7 +7,7 @@
 <include src="taglibs/auto/rapid/forms"/>
 <include src="paperclip" plugin="paperclip_with_hobo"/>
 
-<set-theme name="clean"/>
+<set-theme name="clean-sidemenu"/>
 
 <extend tag="page">
   <old-page merge without-live-search>

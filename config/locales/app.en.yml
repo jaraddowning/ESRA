@@ -87,7 +87,7 @@ en:
         other: Disaster Declarations
     attributes:
       program:
-        name: Program State
+        name: State Program Name
         summary: ESR Summary
         continuous_ca_plan: Continuous Corrective Action Process
         proc_for_devel: CA Development Process
