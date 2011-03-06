@@ -48,12 +48,12 @@ Esra::Application.configure do
   config.active_support.deprecation = :notify
   
   ActionMailer::Base.smtp_settings = {
-   :address => "10.0.1.26",
-   :port => 25,
-   :domain => "csg.org",
-   :authentication => :plain,
-   :user_name => "emap@csg.org",
-   :password => "Emap8222",
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :domain => 'emaponline.com',
+    :authentication => :plain,
+    :user_name => 'jaraddowning@gmail.com',
+    :password => 'B33rG00d*'
   }
 
 end
