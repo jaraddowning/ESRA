@@ -38,7 +38,7 @@ class Program < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    true
+    acting_user.administrator? || owner == acting_user
   end
 
 end

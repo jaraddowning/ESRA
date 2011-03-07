@@ -24,7 +24,7 @@ class Hira < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)
