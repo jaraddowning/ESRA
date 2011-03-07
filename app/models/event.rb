@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    event_name                 :string, :required, :name => true
+    event_name                 :string, :required, :unique, :name => true
     event_date                 :date
     event_end_date             :date
     event_duration             :string, :required
@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)

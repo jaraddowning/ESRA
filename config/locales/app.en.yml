@@ -90,10 +90,10 @@ en:
         name: State Program Name
         summary: ESR Summary
         continuous_ca_plan: Continuous Corrective Action Process
-        proc_for_devel: CA Development Process
-        ca_tracked: CA Tracking Process
-        ca_summary: Corrective Action Summary
-        ca_resolved: Resolved CAs
+        proc_for_devel: Corrective Action Development Process
+        ca_tracked: Corrective Action Tracking Process
+        ca_summary: Corrective Action Process Summary
+        ca_resolved: Resolved Corrective Actions
         training_plans: Training Plan(s)
         disdecs: Disaster Declaration(s)
         hiras: EMAP 4.3
@@ -112,7 +112,7 @@ en:
         event_scenario_summary: Event Scenario Summarization
         statewide_event: Statewide Event
         multistate_event: Multi-state Event
-        ema_role: Role of the EMA
+        ema_role: Role of the Emergency Management Program
         efundings: Event Funding Source(s)
         learned_lessons: Lessons Learned
         tcls: Target Capabilities
@@ -128,8 +128,8 @@ en:
         test_epef_frequency: Program Test Frequency
         match_hira: HIRA Based
         ex_eval_proc: Exercise Evaluation Process
-        eep_desc: EEP Description
-        eep_doc: EEP Documentation
+        eep_desc: Exercise Evaluation Process Description
+        eep_doc: Exercise Evaluation Process Documentation
         plans_procs_review: Plans and Procedures Reviewed
         pp_rev_frequency: Plans and Procedures Review Frequency
         caps_reviewed: Capabilities Reviewed
@@ -226,10 +226,10 @@ en:
       eeca:
         ex_prog: Does the Emergency Management Program have a documented Exercise Program?(check for yes)
         ex_prog_desc: Please describe the exercise program.
-        ex_prog_doc: Please list the foundational documentation was provided for review.
+        ex_prog_doc: Please list the foundational documentation that was provided for review.
         test_sae_frequency: How often does the Emergency Management Program test the skills, abilities, and experience of emergency personnel?
-        test_epef_frequency: How often does the Emergency Management Program test the exercise plans, procedures, equipment and facilities?
-        match_hira: Is the Exercise Program tailored to the range of hazards identified in the HIRA?(check for yes)
+        test_epef_frequency: How often does the Emergency Management Program test the exercise plans, policies, procedures, equipment and facilities?
+        match_hira: Is the Exercise Program tailored to the range of hazards identified in the Hazard Identification and Risk Assessment?(check for yes)
         ex_eval_proc: Does the Emergency Management Program have some form of an exercise evaluation process in place?(check for yes)
         eep_desc: If so, please describe.
         eep_doc: If so, what foundational documentation was provided for review? (seperate documents by commas)
