@@ -141,7 +141,7 @@ en:
         matching: HIRA Consistant with Events
         description: Description
         hazards: List Hazard(s)
-      funding:
+      efunding:
         name: Source
       training_plan:
         name: Plan Title
@@ -161,11 +161,11 @@ en:
       event_scenario:
         name: Scenario
         description: Scenario Summarization
-      event_location:
+      elocation:
         name: Location
-      event_participant:
+      eparticipant:
         name: Participant
-      egoals:
+      egoal:
         name: Goal
       hazard:
         name: Hazard
