@@ -135,6 +135,12 @@
   </old-form>
 </extend>
 
+<extend tag="form" for="Event">
+  <old-form merge>
+    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_goal, event_scenario, event_scenario_summary, event_state, event_type, statewide_event, multistate_event, ema_role, efundings, egoals, elocations, eparticipants" param/>
+  </old-form>
+</def>
+
 <extend tag="form" for="Upload">
   <old-form multipart merge>
     <field-list: fields="name, proof"/>

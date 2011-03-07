@@ -99,7 +99,7 @@ en:
         hiras: EMAP 4.3
         eecas: EMAP 4.14
       event:
-        title: Event Name
+        event_name: Event Name
         event_date: Event Start Date
         event_end_date: Event End Date
         event_duration: Event Duration
