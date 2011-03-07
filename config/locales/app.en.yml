@@ -206,7 +206,7 @@ en:
         corrective_actions: Click the plus sign (+) to add a Corrective Action.
         improvement_areas: Click the plus sign (+) to add an Area of Improvement
       event:
-        title: Name of the event.
+        event_name: Name of the event.
         event_date: Day the event initiated.
         event_end_date: Day the event ended.
         event_duration: Length of the event (in hours).
@@ -218,7 +218,7 @@ en:
         multistate_event: Did the event involve more than one State? (check for yes)
         ema_role: What role did the State Emergency Management Agency play in the event?
         event_type: Please select the type of event.
-        event_scenario: Please select the format of the event.
+        event_scenario: Please select the event scenario.
         eparticipants: Indicate who played a role in the event (add participants by pushing the "+" button).
         egoals: Indicate what the goals of the event were (add goals by pushing the "+" button).
         efundings: Indicate organizations who funded the event (add sources by pushing the "+" button).
