@@ -278,7 +278,6 @@
             </a:disdecs>
             <collection:disdecs  param="disdecs-collection"/>
           </section><br /><br />
-<<<<<<< HEAD
           <section param="hiras-collection-section">
             <h3 param="hiras-collection-heading">
               <ht key="hira.collection.heading" count="&this.hiras.count" >
@@ -321,7 +320,6 @@
         </aside>
       </section-group>
     </content:>
-
   </page>
 </def>
 

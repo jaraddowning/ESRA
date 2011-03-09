@@ -22,7 +22,7 @@ class Program < ActiveRecord::Base
   has_many :eecas, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
 
-  children :events, :training_plans, :eeca
+  children :events, :training_plans, :eecas
 
   # --- Permissions --- #
 
