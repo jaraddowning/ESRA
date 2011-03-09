@@ -318,8 +318,6 @@
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
-=======
->>>>>>> ecad6e05c34786c6cca190536a5801a52b9ca1e4
         </aside>
       </section-group>
     </content:>

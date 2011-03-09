@@ -20,12 +20,9 @@ class Program < ActiveRecord::Base
   has_many :disdecs, :dependent => :destroy
   has_many :hiras, :dependent => :destroy
   has_many :eecas, :dependent => :destroy
-<<<<<<< HEAD
   has_many :uploads, :dependent => :destroy
-=======
 
   children :events, :training_plans, :eeca
->>>>>>> ecad6e05c34786c6cca190536a5801a52b9ca1e4
 
   # --- Permissions --- #
 
