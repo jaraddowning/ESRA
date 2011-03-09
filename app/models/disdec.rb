@@ -10,6 +10,7 @@ class Disdec < ActiveRecord::Base
   belongs_to :program
   has_many :disaster_declarations, :dependent => :destroy, :accessible => true
 
+
   # --- Permissions --- #
 
   def create_permitted?

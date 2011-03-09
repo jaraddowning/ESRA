@@ -8,6 +8,7 @@ class Upload < ActiveRecord::Base
   end
 
   belongs_to :event
+  belongs_to :program
   belongs_to :owner, :class_name => "User", :creator => true
 
   has_attached_file :proof

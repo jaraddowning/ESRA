@@ -20,8 +20,9 @@ class Program < ActiveRecord::Base
   has_many :disdecs, :dependent => :destroy
   has_many :hiras, :dependent => :destroy
   has_many :eecas, :dependent => :destroy
+  has_many :uploads, :dependent => :destroy
 
-  children :events, :training_plans, :eeca
+  children :events, :training_plans, :eecas
 
   # --- Permissions --- #
 
@@ -38,7 +39,8 @@ class Program < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || owner == acting_user
+    acting_user.administrator? || owner_is?(acting_user)
+
   end
 
 end

@@ -68,7 +68,6 @@
       <h4 param="heading"><a><name/></a></h4>
     </header>
     <body param>
-      <a:owner param="creator-link"/>
       <ht key="event.collection.count" count="&this.events.size">
          <count:events param/>
       </ht>
@@ -137,7 +136,7 @@
 
 <extend tag="form" for="Event">
   <old-form merge>
-    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_goal, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, egoals, elocations, eparticipants, efundings" param/>
+    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_goal, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings" param/>
   </old-form>
 </extend>
 
@@ -196,9 +195,9 @@
 </def>
 
 <def tag="form" for="Disdec">
-  <form merge param="default">
+  <form merge without-heading param="default">
     <error-messages param/>
-    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Vist FEMA's website.</a></h2><br />
+    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Vist FEMA's website.</a></h2><hr /><br />
     <field-list fields="disaster_declarations" param/>
     <div param="actions">
       <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
@@ -279,10 +278,48 @@
             </a:disdecs>
             <collection:disdecs  param="disdecs-collection"/>
           </section><br /><br />
+          <section param="hiras-collection-section">
+            <h3 param="hiras-collection-heading">
+              <ht key="hira.collection.heading" count="&this.hiras.count" >
+                <human-collection-name collection="hiras" your/>
+              </ht>
+            </h3>
+            <a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
+              <ht key="hira.actions.new" count="1">
+                Enter EMAP 4.3 Information (HIRA)
+              </ht>
+            </a:hiras>
+            <collection:hiras  param="hiras-collection"/>
+          </section><br /><br />
+          <section param="eecas-collection-section">
+            <h3 param="eecas-collection-heading">
+              <ht key="eeca.collection.heading" count="&this.eecas.count" >
+                <human-collection-name collection="eecas" your/>
+              </ht>
+            </h3>
+            <a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
+              <ht key="eeca.actions.new" count="1">
+                Enter EMAP 4.14 Information (Exercises, Evaluations and Corrective Actions)
+              </ht>
+            </a:eecas>
+            <collection:eecas  param="eecas-collection"/>
+          </section><br /><br />
+          <section param="uploads-collection-section">
+            <h3 param="uploads-collection-heading">
+              <ht key="upload.collection.heading" count="&this.uploads.count" >
+                <human-collection-name collection="uploads" your/>
+              </ht>
+            </h3>
+            <a:uploads action="new" if="&can_create?(@program.uploads)" param="new-link">
+              <ht key="upload.actions.new" count="1">
+                New Reference/Proof Document
+              </ht>
+            </a:uploads>
+            <collection:uploads  param="uploads-collection"/>
+          </section>
         </aside>
       </section-group>
     </content:>
-
   </page>
 </def>
 
@@ -371,8 +408,8 @@
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
-<!---THIS SECTION IS UNDER DEVELOPMENT. There is an issue with saving the document to the server
-          <section param="uploads-collection-section">
+<!--THIS SECTION IS UNDER DEVELOPMENT. There is an issue with saving the document to the server
+            <section param="uploads-collection-section">
               <h3 param="uploads-collection-heading">
                 <ht key="upload.collection.heading" count="&this.uploads.count" >
                   <human-collection-name collection="uploads" your/>
@@ -389,7 +426,8 @@
                   <field-list: skip="event"/>
                   <submit: label="#{ht 'upload.actions.add', :default=>['Add'] }"/>
                 </form>
-              </section>-->
+              </section>
+            </section> -->
         </aside>
       </section-group>
     </content:>
