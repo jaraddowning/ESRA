@@ -208,7 +208,7 @@
 
 <!--   SHOW-PAGE DEFINITIONS       -->
 
-<def tag="show-page" for="Program">
+<!--<def tag="show-page" for="Program">
   <page merge title="#{ht 'program.show.title', :default=>['Program'] }">
 
     <body: class="show-page program" param/>
@@ -279,38 +279,12 @@
             </a:disdecs>
             <collection:disdecs  param="disdecs-collection"/>
           </section><br /><br />
-          <section param="hiras-collection-section">
-            <h3 param="hiras-collection-heading">
-              <ht key="hira.collection.heading" count="&this.hiras.count" >
-                <human-collection-name collection="hiras" your/>
-              </ht>
-            </h3>
-            <a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
-              <ht key="hira.actions.new" count="1">
-                Enter EMAP 4.3 Information (HIRA)
-              </ht>
-            </a:hiras>
-            <collection:hiras  param="hiras-collection"/>
-          </section><br /><br />
-          <section param="eecas-collection-section">
-            <h3 param="eecas-collection-heading">
-              <ht key="eeca.collection.heading" count="&this.eecas.count" >
-                <human-collection-name collection="eecas" your/>
-              </ht>
-            </h3>
-            <a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
-              <ht key="eeca.actions.new" count="1">
-                Enter EMAP 4.14 Information (Exercises, Evaluations and Corrective Actions)
-              </ht>
-            </a:eecas>
-            <collection:eecas  param="eecas-collection"/>
-          </section>
         </aside>
       </section-group>
     </content:>
 
   </page>
-</def>
+</def>-->
 
 <def tag="show-page" for="Event">
   <page merge event-name="#{ht 'event.show.event-name', :default=>['Event'] }">

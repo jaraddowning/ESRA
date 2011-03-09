@@ -18,10 +18,10 @@ class Program < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy
   has_many :disdecs, :dependent => :destroy
-  has_many :hiras, :dependent => :destroy
-  has_many :eecas, :dependent => :destroy
+  has_one :hira, :dependent => :destroy
+  has_one :eeca, :dependent => :destroy
 
-  children :events, :training_plans, :disdecs, :hiras
+  children :events, :training_plans, :eeca
 
   # --- Permissions --- #
 
