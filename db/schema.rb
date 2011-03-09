@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110305210630) do
+ActiveRecord::Schema.define(:version => 20110308183039) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -299,10 +299,12 @@ ActiveRecord::Schema.define(:version => 20110305210630) do
     t.string   "proof_content_type"
     t.integer  "proof_file_size"
     t.datetime "proof_updated_at"
+    t.integer  "program_id"
   end
 
   add_index "uploads", ["event_id"], :name => "index_uploads_on_event_id"
   add_index "uploads", ["owner_id"], :name => "index_uploads_on_owner_id"
+  add_index "uploads", ["program_id"], :name => "index_uploads_on_program_id"
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40
@@ -316,6 +318,8 @@ ActiveRecord::Schema.define(:version => 20110305210630) do
     t.datetime "updated_at"
     t.string   "state",                                   :default => "invited"
     t.datetime "key_timestamp"
+    t.boolean  "reviewer",                                :default => false
+    t.boolean  "agency",                                  :default => false
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"

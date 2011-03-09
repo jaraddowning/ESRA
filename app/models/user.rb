@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
     name          :string, :required, :unique
     email_address :email_address, :login => true
     administrator :boolean, :default => false
+    reviewer      :boolean, :default => false
+    agency        :boolean, :default => false
     timestamps
   end
 

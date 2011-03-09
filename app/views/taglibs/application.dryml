@@ -68,7 +68,6 @@
       <h4 param="heading"><a><name/></a></h4>
     </header>
     <body param>
-      <a:owner param="creator-link"/>
       <ht key="event.collection.count" count="&this.events.size">
          <count:events param/>
       </ht>
@@ -137,7 +136,7 @@
 
 <extend tag="form" for="Event">
   <old-form merge>
-    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_goal, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, egoals, elocations, eparticipants, efundings" param/>
+    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_goal, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings" param/>
   </old-form>
 </extend>
 
@@ -196,9 +195,9 @@
 </def>
 
 <def tag="form" for="Disdec">
-  <form merge param="default">
+  <form merge without-heading param="default">
     <error-messages param/>
-    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Vist FEMA's website.</a></h2><br />
+    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Vist FEMA's website.</a></h2><hr /><br />
     <field-list fields="disaster_declarations" param/>
     <div param="actions">
       <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
@@ -304,6 +303,19 @@
               </ht>
             </a:eecas>
             <collection:eecas  param="eecas-collection"/>
+          </section><br /><br />
+          <section param="uploads-collection-section">
+            <h3 param="uploads-collection-heading">
+              <ht key="upload.collection.heading" count="&this.uploads.count" >
+                <human-collection-name collection="uploads" your/>
+              </ht>
+            </h3>
+            <a:uploads action="new" if="&can_create?(@program.uploads)" param="new-link">
+              <ht key="upload.actions.new" count="1">
+                New Reference/Proof Document
+              </ht>
+            </a:uploads>
+            <collection:uploads  param="uploads-collection"/>
           </section>
         </aside>
       </section-group>
@@ -397,8 +409,8 @@
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
-<!---THIS SECTION IS UNDER DEVELOPMENT. There is an issue with saving the document to the server
-          <section param="uploads-collection-section">
+<!--THIS SECTION IS UNDER DEVELOPMENT. There is an issue with saving the document to the server
+            <section param="uploads-collection-section">
               <h3 param="uploads-collection-heading">
                 <ht key="upload.collection.heading" count="&this.uploads.count" >
                   <human-collection-name collection="uploads" your/>
@@ -415,7 +427,8 @@
                   <field-list: skip="event"/>
                   <submit: label="#{ht 'upload.actions.add', :default=>['Add'] }"/>
                 </form>
-              </section>-->
+              </section>
+            </section> -->
         </aside>
       </section-group>
     </content:>

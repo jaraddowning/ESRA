@@ -138,8 +138,8 @@ en:
     collection:
       count: &collection_count
         zero: &no_model "No %{model}"
-        one: "There is only one %{model} at the moment"
-        other: "There are already %{count} %{model}"
+        one: "There is one %{model}"
+        other: "There are currently %{count} %{model}"
       # you can use the following to completely override the collection heading
       # be aware that you will loose the automatic Your <collection> / Jom's <collection>
       # default output for User models
