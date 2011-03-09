@@ -208,7 +208,7 @@
 
 <!--   SHOW-PAGE DEFINITIONS       -->
 
-<!--<def tag="show-page" for="Program">
+<def tag="show-page" for="Program">
   <page merge title="#{ht 'program.show.title', :default=>['Program'] }">
 
     <body: class="show-page program" param/>
@@ -284,7 +284,7 @@
     </content:>
 
   </page>
-</def>-->
+</def>
 
 <def tag="show-page" for="Event">
   <page merge event-name="#{ht 'event.show.event-name', :default=>['Event'] }">
