@@ -233,9 +233,9 @@
             </h2>
 
             <record-flags fields="continuous_ca_plan, proc_for_devel, ca_tracked" param/>
-            <a href="">
+            <!--<a href="">
                 Program Report
-            </a>
+            </a>-->
             <a action="edit" if="&can_edit?" param="edit-link">
               <ht key="program.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
                 Edit Program
