@@ -320,6 +320,20 @@ li.input-many-template { display:none; }
 ul.check-many { list-style-type: none; margin-left: 0px;}
 ul.check-many li input { vertical-align: -20%;}
 
+/* Custom Styling */
+
+#program_name {height:20px; width:50%;}
+#program_program_jurisdiction {height:20px; width:50%;}
+#program_program_street {height:20px; width:50%;}
+#program_program_city {height:20px; width:50%;}
+#program_program_contact {height:20px; width:50%;}
+#program_contact {height:20px; width:50%;}
+#program_contact_title {height:20px; width:50%;}
+#program_contact_phone {height:20px; width:50%;}
+#program_contact_mobile {height:20px; width:50%;}
+#program_contact_email {height:20px; width:50%;}
+
+
 /* rapid-summary */
 table.app-summary { border: 1px solid; border-collapse: collapse; }
 table.app-summary td { padding: 2px;  border: 1px dotted #bbb; }

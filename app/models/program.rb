@@ -3,17 +3,26 @@ class Program < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name                :string, :required, :unique
-    summary             :html
-    continuous_ca_plan  :boolean
-    proc_for_devel      :boolean
-    ca_tracked          :boolean
-    ca_summary          :html
-    ca_resolved         :html
+    name                 :string, :required, :unique
+    program_jurisdiction :string
+    program_street       :string
+    program_city         :string
+    program_contact      :string
+    contact_title        :string
+    contact_phone        :string
+    contact_mobile       :string
+    contact_email        :string
+    summary              :html
+    continuous_ca_plan   :boolean
+    proc_for_devel       :boolean
+    ca_tracked           :boolean
+    ca_summary           :html
+    ca_resolved          :html
     timestamps
   end
 
   belongs_to :owner, :class_name => "User", :creator => true
+  belongs_to :program_state, :class_name => "State"
 
   has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy

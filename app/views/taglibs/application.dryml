@@ -128,11 +128,21 @@
 
 <!--   FORM DEFINITIONS       -->
 
-<extend tag="form" for="Program">
-  <old-form multipart merge>
-    <field-list: fields="name, continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved"/>
-  </old-form>
-</extend>
+<def tag="form" for="Program">
+  <form merge param="default">
+    <error-messages param/>
+    <h1>General Program Information</h1>
+    <field-list fields="name, program_jurisdiction, program_street, program_city, program_state" param/><br />
+    <h1>Event Strategic Review Contact Information</h1>
+    <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
+    <hr /><h1>Corrective Action Process</h1><br />
+      <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><hr /><br />
+    <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/>
+    <div param="actions">
+      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>>
 
 <extend tag="form" for="Event">
   <old-form merge>
@@ -223,7 +233,9 @@
             </h2>
 
             <record-flags fields="continuous_ca_plan, proc_for_devel, ca_tracked" param/>
-
+            <a href="">
+                Program Report
+            </a>
             <a action="edit" if="&can_edit?" param="edit-link">
               <ht key="program.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
                 Edit Program

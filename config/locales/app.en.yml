@@ -88,6 +88,14 @@ en:
     attributes:
       program:
         name: State Program Name
+        program_jurisdiction: Program Jurisdiction/Agency
+        program_street: Program Address
+        program_city: Program City
+        program_contact: ESRA Point of Contact Name
+        contact_title: ESRA Point of Contact Title
+        contact_phone: ESRA Point of Contact Office Number
+        contact_mobile: ESRA Point of Contact Mobile Number
+        contact_email: ESRA Point of Contact Email Address
         summary: ESR Summary
         continuous_ca_plan: Continuous Corrective Action Process
         proc_for_devel: Corrective Action Development Process

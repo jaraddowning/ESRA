@@ -44,5 +44,8 @@ module Esra
 
     # Configure system-wide application name
     config.hobo.app_name = "ESRA"
+    
+    # Configure reporting system
+    config.autoload_paths << "#{Rails.root}/app/reports"
   end
 end

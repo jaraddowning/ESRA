@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110308183039) do
+ActiveRecord::Schema.define(:version => 20110311175609) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -219,9 +219,19 @@ ActiveRecord::Schema.define(:version => 20110308183039) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
+    t.string   "program_street"
+    t.string   "program_city"
+    t.string   "program_contact"
+    t.string   "contact_title"
+    t.string   "contact_phone"
+    t.string   "contact_mobile"
+    t.string   "contact_email"
+    t.integer  "program_state_id"
+    t.string   "program_jurisdiction"
   end
 
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
+  add_index "programs", ["program_state_id"], :name => "index_programs_on_program_state_id"
 
   create_table "states", :force => true do |t|
     t.string   "name"
@@ -320,6 +330,7 @@ ActiveRecord::Schema.define(:version => 20110308183039) do
     t.datetime "key_timestamp"
     t.boolean  "reviewer",                                :default => false
     t.boolean  "agency",                                  :default => false
+    t.string   "job_title"
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"
