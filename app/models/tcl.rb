@@ -12,7 +12,7 @@ class Tcl < ActiveRecord::Base
   
   belongs_to :event
 
-  belongs_to :tcap
+  belongs_to :tcap, :name = > true
   has_many :alevels, :dependent => :destroy, :accessible => true
 
   has_many :strengths, :dependent => :destroy, :accessible => true

@@ -33,7 +33,7 @@ en:
         other: Corrective Actions
       event:
         one: Event
-        other: Event
+        other: Events
       eeca:
         one: EMAP 4.14
         other: EMAP 4.14
@@ -80,8 +80,8 @@ en:
         one: Training Priority
         other: Training Priorities
       training_plan:
-        one: Training Plan
-        other: Training Plans
+        one: Exercise Plan
+        other: Exercise Plans
       disdec:
         one: Disaster Declaration
         other: Disaster Declarations
@@ -102,7 +102,7 @@ en:
         ca_tracked: Corrective Action Tracking Process
         ca_summary: Corrective Action Process Summary
         ca_resolved: Resolved Corrective Actions
-        training_plans: Training Plan(s)
+        training_plans: Exercise Plan(s)
         disdecs: Disaster Declaration(s)
         hiras: EMAP 4.3
         eecas: EMAP 4.14
@@ -154,8 +154,8 @@ en:
       training_plan:
         name: Plan Title
         tcap: Target Capability
-        texercises: Training Exercise(s)
-        tpriorities: Training Priorities
+        texercises: Exercise(s)
+        tpriorities: Exercise Priorities
       texercise:
         name: Exercise
         tdate: Date
@@ -197,7 +197,7 @@ en:
     attribute_help:
       program:
         ca_resolved: Use this area to list the resolved corrective actions within the last calendar year.
-        ca_summary: Please provide a summary of the agency's corrective action process. You can always return to this page to complete this part.
+        ca_summary: Please provide a summary of the agency's corrective action process. Remember, you can always return to this page to update revise, and complete this section.
         ca_tracked: Are the corrective actions prioritized, tracked through completion and analyzed by program managers? (check for yes)
         proc_for_devel: Does the process include taking observations and recommendations and developing corrective actions? (check for yes)
         continuous_ca_plan: Does the Agency have a continuous corrective action process? (check for yes)

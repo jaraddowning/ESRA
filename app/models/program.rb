@@ -4,14 +4,15 @@ class Program < ActiveRecord::Base
 
   fields do
     name                 :string, :required, :unique
-    program_jurisdiction :string
-    program_street       :string
-    program_city         :string
-    program_contact      :string
+    program_jurisdiction :string, :required, :unique
+    program_street       :string, :required
+    program_city         :string, :required
+    program_zip          :string, :required
+    program_contact      :string, :required
     contact_title        :string
-    contact_phone        :string
+    contact_phone        :string, :required
     contact_mobile       :string
-    contact_email        :string
+    contact_email        :string, :required
     summary              :html
     continuous_ca_plan   :boolean
     proc_for_devel       :boolean

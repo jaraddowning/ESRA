@@ -136,7 +136,7 @@
     <h1>Event Strategic Review Contact Information</h1>
     <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
     <hr /><h1>Corrective Action Process</h1><br />
-      <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><hr /><br />
+      <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
     <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/>
     <div param="actions">
       <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
@@ -159,7 +159,7 @@
 <extend tag="form" for="Tcl">
   <!--<do part="alevels-menu">-->
   <old-form>
-    <field-list: fields="name, summary, tcap, alevels, improvement_plan, improvement_plan_completed, strengths, corrective_actions, improvement_areas" />
+    <field-list: fields="tcap, summary, alevels, improvement_plan, improvement_plan_completed, strengths, corrective_actions, improvement_areas" />
         <!--<alevel-view:>
           <if tcap="&@tcl.tcap">
             <select-one include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))" disable/>

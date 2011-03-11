@@ -81,7 +81,7 @@ en:
     # edit and back_to_parent
     actions:
       new: "New %{model}"
-      create: "Create %{model}"
+      create: "Save %{model}"
       previous: "Previous"
       next: "Next"
       add: "Add"
