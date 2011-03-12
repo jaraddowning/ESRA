@@ -3,7 +3,7 @@ class Tcl < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name                         :string
+    name                         :string, :required
     summary                      :html
     improvement_plan             :boolean
     improvement_plan_completed   :boolean
@@ -12,7 +12,7 @@ class Tcl < ActiveRecord::Base
   
   belongs_to :event
 
-  belongs_to :tcap, :name = > true
+  belongs_to :tcap
   has_many :alevels, :dependent => :destroy, :accessible => true
 
   has_many :strengths, :dependent => :destroy, :accessible => true
