@@ -71,6 +71,9 @@ en:
         one: Target Capability
         other: Target Capabilities
       tcl:
+        one: Goal or Objective
+        other: Goals and Objectives
+      tcap_tcl:
         one: Target Capability
         other: Target Capabilities
       texercise:
@@ -123,7 +126,8 @@ en:
         ema_role: Role of the Emergency Management Program
         efundings: Event Funding Source(s)
         learned_lessons: Lessons Learned
-        tcls: Target Capabilities
+        tcls: Goals and Objectives
+        tcap_tcls: Target Capabilities
         elocations: Event Location(s)/Site(s)
         event_scenarios: Event Scenario(s)
         eparticipants: Event Participant(s)
@@ -178,14 +182,16 @@ en:
       hazard:
         name: Hazard
       tcl:
-        name: Objective
-        tcap: Target Capability
-        alevels: Activity Level(s)
+        name: Goal/Objective
+        tcap_tcls: Target Capability
         improvement_plan: Improvement Plan Provided
         improvement_plan_completed: Improvement Plan Completed
         improvement_areas: Area(s) of Improvement
         corrective_actions: Corrective Action(s)
         emap_standards: EMAP Standard CrossWalk
+      tcap_tcl:
+        tcap: Target Capability
+        alevels: Activity Level(s)
       strength:
         name: Strength
       alevel:

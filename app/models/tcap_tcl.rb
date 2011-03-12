@@ -1,28 +1,26 @@
-class Alevel < ActiveRecord::Base
+class TcapTcl < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name     :string
-    #tcap_id  :integer
     timestamps
   end
 
-  #belongs_to :tcl
-  #belongs_to :tcap, :foreign_key => "tcap_id"
+  belongs_to :tcap
+  has_many :alevels, :dependent => :destroy, :accessible => true
 
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def update_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)

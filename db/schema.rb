@@ -10,16 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311175609) do
+ActiveRecord::Schema.define(:version => 20110312131918) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tcl_id"
   end
-
-  add_index "alevels", ["tcl_id"], :name => "index_alevels_on_tcl_id"
 
   create_table "corrective_actions", :force => true do |t|
     t.string   "name"
@@ -228,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20110311175609) do
     t.string   "contact_email"
     t.integer  "program_state_id"
     t.string   "program_jurisdiction"
+    t.string   "program_zip"
   end
 
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
@@ -248,6 +246,14 @@ ActiveRecord::Schema.define(:version => 20110311175609) do
 
   add_index "strengths", ["tcl_id"], :name => "index_strengths_on_tcl_id"
 
+  create_table "tcap_tcls", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tcap_id"
+  end
+
+  add_index "tcap_tcls", ["tcap_id"], :name => "index_tcap_tcls_on_tcap_id"
+
   create_table "tcaps", :force => true do |t|
     t.string   "name"
     t.integer  "std_num"
@@ -263,11 +269,9 @@ ActiveRecord::Schema.define(:version => 20110311175609) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
-    t.integer  "tcap_id"
   end
 
   add_index "tcls", ["event_id"], :name => "index_tcls_on_event_id"
-  add_index "tcls", ["tcap_id"], :name => "index_tcls_on_tcap_id"
 
   create_table "texercises", :force => true do |t|
     t.string   "name"
