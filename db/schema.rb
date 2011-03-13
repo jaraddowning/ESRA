@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110312131918) do
+ActiveRecord::Schema.define(:version => 20110313123559) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tcap_tcl_id"
   end
 
   create_table "corrective_actions", :force => true do |t|
@@ -250,6 +251,7 @@ ActiveRecord::Schema.define(:version => 20110312131918) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tcap_id"
+    t.integer  "tcl_id"
   end
 
   add_index "tcap_tcls", ["tcap_id"], :name => "index_tcap_tcls_on_tcap_id"
@@ -333,8 +335,9 @@ ActiveRecord::Schema.define(:version => 20110312131918) do
     t.string   "state",                                   :default => "invited"
     t.datetime "key_timestamp"
     t.boolean  "reviewer",                                :default => false
-    t.boolean  "agency",                                  :default => false
+    t.string   "agency"
     t.string   "job_title"
+    t.boolean  "program",                                 :default => false
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"
