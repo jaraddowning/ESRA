@@ -1,27 +1,26 @@
-class Hazard < ActiveRecord::Base
+class Consequence < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name :string
+    consequence :string
     timestamps
   end
 
-  belongs_to :hira
-  has_many :consequences, :dependent => :destroy, :accessible => true
+  belongs_to :hazard
 
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def update_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)

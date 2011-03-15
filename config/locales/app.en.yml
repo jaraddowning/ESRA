@@ -28,6 +28,9 @@ en:
       alevel:
         one: Activity Level
         other: Activity Levels
+      consequence:
+        one: Consequence Analysis
+        other: Consequence Analyses
       corrective_action:
         one: Corrective Action
         other: Corrective Actions
@@ -193,6 +196,7 @@ en:
         name: Goal
       hazard:
         name: Hazard
+        consequences: Consequence Analysis
       tcl:
         summary: Event Summary
         tcap: Target Capability
