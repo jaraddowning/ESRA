@@ -9,6 +9,7 @@ class TclsController < ApplicationController
   def edit
     self.this = Tcl.new(params[:tcl]) if params[:tcl]
     hobo_show do
+      @tcl = this
       hobo_ajax_response if request.xhr?
     end
   end

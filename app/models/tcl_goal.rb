@@ -1,28 +1,26 @@
-class Alevel < ActiveRecord::Base
+class TclGoal < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name     :string
-    #tcap_id  :integer
+    name  :string
     timestamps
   end
 
-  #belongs_to :tcap
   belongs_to :tcl
 
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def update_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)

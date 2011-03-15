@@ -52,6 +52,9 @@ en:
       eparticipant:
         one: Event Participant
         other: Event Participant
+      e_open_ca:
+        one: Event Open Corrective Action
+        other: Event Open Corrective Actions
       escenario:
         one: Event Scenario
         other: Event Scenarios
@@ -71,9 +74,6 @@ en:
         one: Target Capability
         other: Target Capabilities
       tcl:
-        one: Goal or Objective
-        other: Goals and Objectives
-      tcap_tcl:
         one: Target Capability
         other: Target Capabilities
       texercise:
@@ -100,6 +100,18 @@ en:
         contact_mobile: ESRA Point of Contact Mobile Number
         contact_email: ESRA Point of Contact Email Address
         summary: ESR Summary
+        funding7: 2007
+        funding8: 2008
+        funding9: 2009
+        funding10: 2010
+        gfunding7: 2007
+        gfundingsource7: Source
+        gfunding8: 2008
+        gfundingsource8: Source
+        gfunding9: 2009
+        gfundingsource9: Source
+        gfunding10: 2010
+        gfundingsource10: Source
         continuous_ca_plan: Continuous Corrective Action Process
         proc_for_devel: Corrective Action Development Process
         ca_tracked: Corrective Action Tracking Process
@@ -114,7 +126,7 @@ en:
         event_date: Event Start Date
         event_end_date: Event End Date
         event_duration: Event Duration
-        event_duration_description: Event Duration Description
+        event_duration_description: Event Description
         event_host: Event Sponsor/Host
         event_state: Event State
         event_type: Event Type
@@ -126,12 +138,12 @@ en:
         ema_role: Role of the Emergency Management Program
         efundings: Event Funding Source(s)
         learned_lessons: Lessons Learned
-        tcls: Goals and Objectives
+        tcls: Target Capabilities
         tcap_tcls: Target Capabilities
         elocations: Event Location(s)/Site(s)
         event_scenarios: Event Scenario(s)
         eparticipants: Event Participant(s)
-        egoals: Event Goal(s)
+        e_open_cas: Event Open Corrective Action(s)
       eeca:
         ex_prog: Documented Exercise Program
         ex_prog_desc: Program Description
@@ -148,7 +160,7 @@ en:
         partners: Stakeholders/Partners
         ca_proc: Corrective Action Process in Place
         resolution_desc: Corrective Action Process Description
-        resolution_doc: Documentation
+        resolution_doc: Corrective Action Process Documentation
       hira:
         matching: HIRA Consistant with Events
         description: Description
@@ -182,13 +194,20 @@ en:
       hazard:
         name: Hazard
       tcl:
-        name: Goal/Objective
-        tcap_tcls: Target Capability
+        summary: Event Summary
+        tcap: Target Capability
+        alevels: Activity Level(s)
         improvement_plan: Improvement Plan Provided
         improvement_plan_completed: Improvement Plan Completed
         improvement_areas: Area(s) of Improvement
         corrective_actions: Corrective Action(s)
+        tcl_goals: Goal(s)
+        tcl_objectives: Objective(s)
         emap_standards: EMAP Standard CrossWalk
+      tcl_goal:
+        name: Goal
+      tcl_objective:
+        name: Objective
       tcap_tcl:
         tcap: Target Capability
         alevels: Activity Level(s)
@@ -210,21 +229,21 @@ en:
         summary: Please provide a summary of the event strategic review. This should be a concise abstract which encompasses the various aspects reviewed.
       tcl:
         name: Please enter the Program's objective for this Target Capability.
-        summary: Provide a brief summary of the Target Capability objective.
-        tcap: Please select a Target Capability from the list
-        alevel: Once the TCL has been selected, select an activity level
+        tcap: Please select a Target Capability from the list.
+        alevel: Once the TCL has been selected, select an activity level.
         alevels: Click the plus sign (+) to add activity level(s) for the TCL.
         improvement_plan: Has the program provided an improvement plan? (check for yes)
         improvement_plan_completed: Has the program completed the improvement plan? (check for yes)
         strengths: Click the plus sign (+) to add a Strength of the Program.
         corrective_actions: Click the plus sign (+) to add a Corrective Action.
-        improvement_areas: Click the plus sign (+) to add an Area of Improvement
+        improvement_areas: Click the plus sign (+) to add an Area of Improvement.
+        tcl_goals: Click the plus sign (+) to add a Goal.
+        tcl_objectives: Click the plus sign (+) to add an Objective.
       event:
         event_name: Name of the event.
         event_date: Day the event initiated.
         event_end_date: Day the event ended.
         event_duration: Length of the event (in hours).
-        event_duration_description: If necessary, describe the reasons for the length of the event.
         event_host: Organization that hosted the event.
         event_goal: Goal for having the event (not necessary for real-world events).
         event_scenario_summary: Brief summary of the event, necessary if scenerio is "Other".

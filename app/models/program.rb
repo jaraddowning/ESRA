@@ -14,6 +14,18 @@ class Program < ActiveRecord::Base
     contact_mobile       :string
     contact_email        :string, :required
     summary              :html
+    funding7             :string
+    funding8             :string
+    funding9             :string
+    funding10            :string
+    gfunding7            :string
+    gfundingsource7      :string
+    gfunding8            :string
+    gfundingsource8      :string
+    gfunding9            :string
+    gfundingsource9      :string
+    gfunding10           :string
+    gfundingsource10     :string
     continuous_ca_plan   :boolean
     proc_for_devel       :boolean
     ca_tracked           :boolean
