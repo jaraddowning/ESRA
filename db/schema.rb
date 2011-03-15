@@ -10,14 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110313123559) do
+ActiveRecord::Schema.define(:version => 20110315065542) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tcap_tcl_id"
+    t.integer  "tcl_id"
   end
+
+  add_index "alevels", ["tcl_id"], :name => "index_alevels_on_tcl_id"
+
+  create_table "consequences", :force => true do |t|
+    t.string   "consequence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hazard_id"
+  end
+
+  add_index "consequences", ["hazard_id"], :name => "index_consequences_on_hazard_id"
 
   create_table "corrective_actions", :force => true do |t|
     t.string   "name"
@@ -264,16 +275,18 @@ ActiveRecord::Schema.define(:version => 20110313123559) do
   end
 
   create_table "tcls", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                       :default => "TCL:"
     t.text     "summary"
     t.boolean  "improvement_plan"
     t.boolean  "improvement_plan_completed"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.integer  "tcap_id"
   end
 
   add_index "tcls", ["event_id"], :name => "index_tcls_on_event_id"
+  add_index "tcls", ["tcap_id"], :name => "index_tcls_on_tcap_id"
 
   create_table "texercises", :force => true do |t|
     t.string   "name"
