@@ -1,11 +1,17 @@
 GIT
-  remote: git://github.com/sandal/prawn.git
-  revision: 89ba0ebf7ac3705756330a25ab4c88e4c71e36d8
-  tag: 0.10.2
+  remote: git://github.com/sandal/prawn
+  revision: fd42b7f457f2274d7e991569ee2e4247f6d75b2c
   submodules: true
   specs:
-    prawn (0.10.2)
-      pdf-reader (>= 0.8.1)
+    prawn (0.11.1.pre)
+      pdf-reader (>= 0.9.0)
+      ttfunk (~> 1.0.0)
+
+GIT
+  remote: https://github.com/sandal/ttfunk.git
+  revision: c467d86c74eeffecb1f0887d11e5aacf08202507
+  specs:
+    ttfunk (1.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -106,3 +112,4 @@ DEPENDENCIES
   prawn!
   rails (= 3.0.5)
   sqlite3
+  ttfunk!

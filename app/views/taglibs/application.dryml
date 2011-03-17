@@ -141,7 +141,7 @@
   <form merge param="default">
     <error-messages param/>
     <h1>General Program Information</h1>
-    <field-list fields="name, program_jurisdiction, program_street, program_city, program_state" param/><br />
+    <field-list fields="name, program_jurisdiction, program_street, program_city, program_zip, program_state" param/><br />
     <h1>Event Strategic Review Contact Information</h1>
     <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
     <hr /><h1>Exercise Funding</h1><br />
