@@ -1,4 +1,3 @@
-require 'rubygems'
 require File.dirname(__FILE__) + '/../lib/prawnto'
 
 module TemplateHandlerTestMocks
@@ -34,6 +33,13 @@ module TemplateHandlerTestMocks
   end
 
   class ActionController
+    def self.before_filter(method)
+      @@init_method = method
+    end
+
+    def initialize
+      eval @@init_method.to_s
+    end
 
     include Prawnto::ActionController
 
