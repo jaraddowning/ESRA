@@ -85,22 +85,21 @@ The ESR is not prescriptive in nature, rather the ESR applies existing standards
 pdf.move_down(10)
 pdf.text "Documents to be reviewed and/or considered:"
 pdf.move_down(10)
-pad(20) { pdf.text "•	Exercise Events (Discussion Based, Tabletops, Functional & Full-Scale)" }
-pad(30){
+pdf.text "•	Exercise Events (Discussion Based, Tabletops, Functional & Full-Scale)", :indent_paragraphs => 30
+
 pdf.text "o	State Preparedness Report(s)
 o	After Action Report(s)
 o	Improvement Plan(s)
 o	Corrective Action Plan(s)
-o	Training & Exercise Work Plan(s)"
-}
+o	Training & Exercise Work Plan(s)", :indent_paragraphs => 60
 
-pad(20) { pdf.text "•	Real World Events" }
-pad(30) {
+pdf.text "•	Real World Events", :indent_paragraphs => 30
+
 pdf.text "o	Incident Action Plan(s)
 o	After Action Report(s)
 o	Improvement Plan(s)
-o	Corrective Action Plan(s)"
-}
+o	Corrective Action Plan(s)", :indent_paragraphs => 60
+
 pdf.move_down(10)
 pdf.text "Criteria that will be collected and analyzed will span from 2006 to present:"
 pdf.move_down(10)
@@ -111,7 +110,7 @@ pdf.text "  •	Event details (date, location, type of event/exercise, etc.)
   •	Agency funding for Exercise(s)
   •	Identified strengths and areas of improvement 
   •	EMAP Standard 4.3: Hazard Identification, Risk Assessment and Consequence Analysis 
-  •	EMAP Standard 4.14: Exercises, Evaluations and Corrective Actions"
+  •	EMAP Standard 4.14: Exercises, Evaluations and Corrective Actions", :indent_paragraphs => 30
 pdf.move_down(10)
 pdf.text "B.	Organization of Review Findings", :size => 12, :style => :bold, :spacing => 4
 pdf.move_down(10)
@@ -123,10 +122,30 @@ end
 pdf.start_new_page
 pdf.text "IV.	Exercise Review Findings", :size => 14, :style => :bold, :spacing => 5
 pdf.move_down(10)
-avents = @program.events
-pdf.text "A.  ##{@program.events.name}", :spacing => 16
-pdf.text "Summary: #{@program.summary}", :spacing => 16
-pdf.text "Corrective Action Summary: #{@program.ca_summary}"
+
+  @program.events.each do |item|
+    pdf.text "Event: #{item.event_name}", :size => 13, :style => :bold, :spacing => 5, :indent_paragraphs => 15
+    pdf.move_down(8)
+    pdf.text "Event Start Date: #{item.event_date.strftime("%d %b %y")}", :indent_paragraphs => 30
+    pdf.text "Event End Date: #{item.event_end_date.strftime("%d %b %y")}", :indent_paragraphs => 30
+    pdf.text "Event Duration: #{item.event_duration}", :indent_paragraphs => 30
+    pdf.text "Event Host: #{item.event_host}", :indent_paragraphs => 30
+    pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
+    item.efundings.each do |fund|
+      pdf.text "• #{fund.name}", :indent_paragraphs => 42
+    end
+
+    pdf.text "Event State: #{item.event_state}", :indent_paragraphs => 30
+    pdf.text "Event Location(s)/Site(s):", :indent_paragraphs => 30
+    item.elocations.each do |location|
+      pdf.text "• #{location.name}", :indent_paragraphs => 42
+    end
+    pdf.text "Event Type: #{item.event_type}", :indent_paragraphs => 30
+    pdf.text "Event Scenario Summary:", :indent_paragraphs => 30
+    pdf.text "#{item.event_scenario_summary}", :spacing => 16, :indent_paragraphs => 30, :indent_paragraphs => 35
+    pdf.text "Event Location(s)/Site(s): ", :indent_paragraphs => 30
+  end
+ 
 pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
 pagecount = pdf.page_count
 pdf.text "Page #{pagecount}"
