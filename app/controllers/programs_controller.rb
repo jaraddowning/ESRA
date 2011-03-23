@@ -4,8 +4,6 @@ class ProgramsController < ApplicationController
 
   auto_actions :all
 
-  #prawnto :prawn => { :top_margin => 50, :left_margin => 50, :right_margin => 50 }
-
   def show
     @program = Program.find(params[:id])
     

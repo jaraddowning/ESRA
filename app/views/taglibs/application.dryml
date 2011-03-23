@@ -27,6 +27,9 @@
   </old-page>
 </extend>
 
+<extend tag="input" for="date">
+   <old-input merge order="month,day,year" start-year="&2006" end-year="&2011" />
+</extend>
 
 <!--   CARD DEFINITIONS       -->
 
