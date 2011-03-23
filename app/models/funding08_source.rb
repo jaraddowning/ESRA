@@ -12,19 +12,20 @@ class Funding08Source < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    acting_user.signed_up?
   end
 
   def update_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
   def view_permitted?(field)
-    true
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+
   end
 
 end

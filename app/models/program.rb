@@ -56,15 +56,15 @@ class Program < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.signed_up?
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
 
   end
 
