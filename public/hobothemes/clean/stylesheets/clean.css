@@ -333,7 +333,18 @@ ul.check-many li input { vertical-align: -20%;}
 #program_contact_phone {height:20px; width:50%;}
 #program_contact_mobile {height:20px; width:50%;}
 #program_contact_email {height:20px; width:50%;}
-
+#program_funding7 {height:20px; width:50%;}
+#program_funding8 {height:20px; width:50%;}
+#program_funding9 {height:20px; width:50%;}
+#program_funding10 {height:20px; width:50%;}
+#program_gfunding7 {height:20px; width:40%;}
+#program_gfunding8 {height:20px; width:40%;}
+#program_gfunding9 {height:20px; width:40%;}
+#program_gfunding10 {height:20px; width:40%;}
+#program_gfundingsource7 {height:20px; width:60%;}
+#program_gfundingsource8 {height:20px; width:60%;}
+#program_gfundingsource9 {height:20px; width:60%;}
+#program_gfundingsource10 {height:20px; width:60%;}
 
 /* rapid-summary */
 table.app-summary { border: 1px solid; border-collapse: collapse; }
