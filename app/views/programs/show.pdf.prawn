@@ -121,7 +121,7 @@ pagecount = pdf.page_count
 pdf.text "Page #{pagecount}"
 end
 pdf.start_new_page
-pdf.text "IV.	Exercise Review Findings", :size => 14, :style => :bold, :spacing => 5
+pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 5
 pdf.move_down(10)
 
   @program.events.each do |item|
