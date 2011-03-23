@@ -123,7 +123,7 @@
 
 <extend tag="card" for="LearnedLesson"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h2><a /></h2>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Lesson Learned</a></h5>
   </card> 

@@ -1,4 +1,5 @@
 logopath = "#{RAILS_ROOT}/public/images/emap_logo.jpg"
+sigpath = "#{RAILS_ROOT}/public/images/NI_sig.png"
 pdf.font "Times-Roman"
 pdf.font_size 12
 
@@ -21,13 +22,15 @@ EMAP will review and translate data collected into an aggregate format that will
 
 Please find attached a summary report that outlines preliminary findings of the review team. Thank you for devoting programmatic time, as well as the time of your staff towards the ESR pilot. We would like to take this opportunity to recognize the exemplary professionalism and assistance provided by the staff of State of Illinois and the Illinois Emergency Management Agency.  
 
-Emergency management requires the cooperation and collaboration of all organizations having a role in response and recovery. Your cooperation and efforts demonstrate the level of leadership and commitment required for the continual professionalization of emergency management to ensure our collective ability to protect the citizens we serve.
-    
-Sincerely, 
-
-
- 
-Nicole M. Ishmael
+Emergency management requires the cooperation and collaboration of all organizations having a role in response and recovery. Your cooperation and efforts demonstrate the level of leadership and commitment required for the continual professionalization of emergency management to ensure our collective ability to protect the citizens we serve."
+pdf.move_down(42)
+pdf.text "Sincerely,"
+pdf.move_down(17)
+pdf.bounding_box([pdf.bounds.left + 20,pdf.bounds.top - 455], :width => 256, :height => 64) do
+pdf.image sigpath, :width => 256, :height => 64
+end
+pdf.move_down(17)
+pdf.text "Nicole M. Ishmael
 EMAP Executive Director", :size => 12, :spacing => 4
 pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
 pagecount = pdf.page_count
@@ -42,34 +45,32 @@ pdf.move_down(10)
 pdf.text "Program: #{@program.name}", :size => 12, :style => :bold, :spacing => 4
 pdf.move_down(8)
 pdf.text " Program Address:", :size => 12, :style => :bold, :spacing => 4
-pdf.bounding_box([pdf.bounds.left + 30,pdf.bounds.top - 98], :width => 100, :height => 55) do
-pdf.text "#{@program.program_jurisdiction}"
-pdf.text "#{@program.program_street}"
-pdf.text "#{@program.program_city}, #{@program.program_state}"
-pdf.text "#{@program.program_zip}"
-end
+pdf.move_down(12)
+pdf.text "#{@program.program_jurisdiction}", :indent_paragraphs => 40
+pdf.text "#{@program.program_street}", :indent_paragraphs => 40
+pdf.text "#{@program.program_city}, #{@program.program_state}", :indent_paragraphs => 40
+pdf.text "#{@program.program_zip}", :indent_paragraphs => 40
+
 pdf.move_down(8)
 pdf.text " ESR Contact:", :size => 12, :style => :bold, :spacing => 4
-pdf.bounding_box([pdf.bounds.left + 30,pdf.bounds.top - 178], :width => 100, :height => 65) do
-pdf.text "#{@program.program_contact}"
-pdf.text "#{@program.contact_title}"
-pdf.text "#{@program.contact_phone}"
-pdf.text "#{@program.contact_mobile}"
-pdf.text "#{@program.contact_email}"
-end
+pdf.move_down(12)
+pdf.text "#{@program.program_contact}", :indent_paragraphs => 40
+pdf.text "#{@program.contact_title}", :indent_paragraphs => 40
+pdf.text "#{@program.contact_phone}", :indent_paragraphs => 40
+pdf.text "#{@program.contact_mobile}", :indent_paragraphs => 40
+pdf.text "#{@program.contact_email}", :indent_paragraphs => 40
 pdf.move_down(12)
 pdf.text "B.	ESR Team", :size => 14, :style => :bold, :spacing => 4
 pdf.move_down(10)
 pdf.text "Mrs. Christine Y. Jacobs, EMAP Projects Coordinator
 Mr. Mark Howard, Arizona Div. of Emergency Management 
-Mr. John Berzins, South Carolina Emergency Management Division
-Mrs. Nancy Freeman, Retired, Nassau (FL) County Emergency Management"
+Ms. Cathi Slaminski"
 pdf.move_down(10)
 pdf.text "C.	ESR Methodology", :size => 14, :style => :bold, :spacing => 4
 pdf.move_down(10)
-pdf.text "As this was an “integrated” pilot, an additional EMAP Reviewer was incorporated into the Assessor Team assembled for an existing scheduled baseline assessment. The process followed many of the same components of the proven peer-review process used by EMAP. The Program was given an opportunity to complete a Self-review, submit supportive documentation and complete an On-site Review prior to the arrival of the Assessor Team. 
+pdf.text "As this was a “stand-alone” pilot, an EMAP Reviewer team was assembled to conduct an On-site review seperate from an existing scheduled baseline assessment. The process followed many of the same components of the proven peer-review process used by EMAP. The Program was given an opportunity to complete a Self-review, submit supportive documentation and complete an On-site Review prior to the arrival of the Assessor Team. 
  
-The program completed an internal self review against pilot methodology and EMAP Standards. The On-site Review was conducted by an EMAP liaison, which provided pilot guidance and direct observation for measuring ESR pilot delivery; monitored progress and outcomes; and coordinated the activities of three (3) independent trained reviewers from outside the pilot program."
+The program completed an internal self review against pilot methodology and EMAP Standards. The On-site Review was conducted by a team of EMAP liaisons, which provided pilot guidance and direct observation for measuring ESR pilot delivery; monitored progress and outcomes; and coordinated the activities of three (3) independent trained reviewers from outside the pilot program."
 pdf.move_down(10)
 pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
 pagecount = pdf.page_count
