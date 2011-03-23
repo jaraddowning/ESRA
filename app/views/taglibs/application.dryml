@@ -123,7 +123,7 @@
 
 <extend tag="card" for="LearnedLesson"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h2><a /></h2>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Lesson Learned</a></h5>
   </card> 
@@ -144,14 +144,14 @@
   <form merge param="default">
     <error-messages param/>
     <h1>General Program Information</h1>
-    <field-list fields="name, program_jurisdiction, program_street, program_city, program_zip, program_state" param/><br />
+    <field-list fields="name, program_jurisdiction, program_street, program_city, program_zip" param/><br />
     <h1>Event Strategic Review Contact Information</h1>
     <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
     <hr /><h1>Exercise Funding</h1><br />
     <p>How much local funding has been allocated for Exercises annually?</p>
     <field-list fields="funding7, funding8, funding9, funding10" param/><br />
     <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
-    <field-list fields="gfunding7, gfundingsource7, gfunding8, gfundingsource8, gfunding9, gfundingsource8, gfunding10, gfundingsource10" param/><br />
+    <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
     <hr /><h1>Corrective Action Process</h1><br />
       <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
     <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/>
@@ -200,7 +200,7 @@
       <h3>4.14.2</h3><p>The Emergency Management Program shall evaluate plans, procedures, and capabilities through periodic reviews, testing, post-incident reports, lessons learned, performance evaluations, exercises and real-world events.  The products of these evaluations are documented and disseminated within the Emergency Management Program including and to key stakeholders and selected partners.</p><hr /><br />
     <field-list fields="ex_eval_proc, eep_desc, eep_doc, plans_procs_review, pp_rev_frequency, caps_reviewed, partners" param/><br />
       <h3>4.14.3</h3><p>A process for corrective actions shall be established and implemented to prioritize and track the resolution of deficiencies in real world and exercise events.  Corrective actions identified in the corrective action process shall be used to revise relevant plans.</p><hr /><br />
-    <field-list fields="ca_proc, resolution_desc, resolution_doc, program" param/>
+    <field-list fields="ca_proc, resolution_desc, resolution_doc" param/>
     <div param="actions">
       <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -261,7 +261,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="summary, ca_summary, ca_resolved" param/>
+            <field-list fields="program_jurisdiction, program_contact, ca_summary, ca_resolved" param/>
             <section param="collection-section">
               <h3 param="collection-heading">
                 <ht key="event.collection.heading" count="&this.events.count" >
@@ -289,7 +289,7 @@
             </h3>
             <a:training_plans action="new" if="&can_create?(@program.training_plans)" param="new-link">
               <ht key="training_plan.actions.new" count="1">
-                Enter Training Program
+                Enter Exercise Program
               </ht>
             </a:training_plans>
             <collection:training_plans  param="training_plans-collection"/>

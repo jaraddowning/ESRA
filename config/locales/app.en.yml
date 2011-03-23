@@ -108,13 +108,13 @@ en:
         funding9: 2009
         funding10: 2010
         gfunding7: 2007
-        gfundingsource7: Source
+        funding07_sources: 2007 Funding Source
         gfunding8: 2008
-        gfundingsource8: Source
+        funding08_sources: 2008 Funding Source
         gfunding9: 2009
-        gfundingsource9: Source
+        funding09_sources: 2009 Funding Source
         gfunding10: 2010
-        gfundingsource10: Source
+        funding10_sources: 2010 Funding Source
         continuous_ca_plan: Continuous Corrective Action Process
         proc_for_devel: Corrective Action Development Process
         ca_tracked: Corrective Action Tracking Process
