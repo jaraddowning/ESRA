@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321191607) do
+ActiveRecord::Schema.define(:version => 20110323013037) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -174,6 +174,42 @@ ActiveRecord::Schema.define(:version => 20110321191607) do
   add_index "events", ["event_type_id"], :name => "index_events_on_event_type_id"
   add_index "events", ["program_id"], :name => "index_events_on_program_id"
 
+  create_table "funding07_sources", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source"
+    t.integer  "program_id"
+  end
+
+  add_index "funding07_sources", ["program_id"], :name => "index_funding07_sources_on_program_id"
+
+  create_table "funding08_sources", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source"
+    t.integer  "program_id"
+  end
+
+  add_index "funding08_sources", ["program_id"], :name => "index_funding08_sources_on_program_id"
+
+  create_table "funding09_sources", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source"
+    t.integer  "program_id"
+  end
+
+  add_index "funding09_sources", ["program_id"], :name => "index_funding09_sources_on_program_id"
+
+  create_table "funding10_sources", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source"
+    t.integer  "program_id"
+  end
+
+  add_index "funding10_sources", ["program_id"], :name => "index_funding10_sources_on_program_id"
+
   create_table "hazards", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -251,13 +287,9 @@ ActiveRecord::Schema.define(:version => 20110321191607) do
     t.string   "funding9"
     t.string   "funding10"
     t.string   "gfunding7"
-    t.string   "gfundingsource7"
     t.string   "gfunding8"
-    t.string   "gfundingsource8"
     t.string   "gfunding9"
-    t.string   "gfundingsource9"
     t.string   "gfunding10"
-    t.string   "gfundingsource10"
   end
 
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"

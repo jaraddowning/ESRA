@@ -19,13 +19,9 @@ class Program < ActiveRecord::Base
     funding9             :string
     funding10            :string
     gfunding7            :string
-    gfundingsource7      :string
     gfunding8            :string
-    gfundingsource8      :string
     gfunding9            :string
-    gfundingsource9      :string
     gfunding10           :string
-    gfundingsource10     :string
     continuous_ca_plan   :boolean
     proc_for_devel       :boolean
     ca_tracked           :boolean
@@ -36,6 +32,11 @@ class Program < ActiveRecord::Base
 
   belongs_to :owner, :class_name => "User", :creator => true
   belongs_to :program_state, :class_name => "State"
+
+  has_many :funding07_sources, :dependent => :destroy, :accessible => true
+  has_many :funding08_sources, :dependent => :destroy, :accessible => true
+  has_many :funding09_sources, :dependent => :destroy, :accessible => true
+  has_many :funding10_sources, :dependent => :destroy, :accessible => true
 
   has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy
