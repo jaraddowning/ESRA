@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315065542) do
+ActiveRecord::Schema.define(:version => 20110321191607) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(:version => 20110315065542) do
   end
 
   add_index "disdecs", ["program_id"], :name => "index_disdecs_on_program_id"
+
+  create_table "e_open_cas", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+    t.string   "name"
+  end
+
+  add_index "e_open_cas", ["event_id"], :name => "index_e_open_cas_on_event_id"
 
   create_table "eecas", :force => true do |t|
     t.string   "name",                :default => "Exercises, Evals & CAs"
@@ -148,7 +157,6 @@ ActiveRecord::Schema.define(:version => 20110315065542) do
     t.string   "event_duration"
     t.text     "event_duration_description"
     t.string   "event_host"
-    t.text     "event_goal"
     t.text     "event_scenario_summary"
     t.boolean  "statewide_event"
     t.boolean  "multistate_event"
@@ -238,6 +246,18 @@ ActiveRecord::Schema.define(:version => 20110315065542) do
     t.integer  "program_state_id"
     t.string   "program_jurisdiction"
     t.string   "program_zip"
+    t.string   "funding7"
+    t.string   "funding8"
+    t.string   "funding9"
+    t.string   "funding10"
+    t.string   "gfunding7"
+    t.string   "gfundingsource7"
+    t.string   "gfunding8"
+    t.string   "gfundingsource8"
+    t.string   "gfunding9"
+    t.string   "gfundingsource9"
+    t.string   "gfunding10"
+    t.string   "gfundingsource10"
   end
 
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
@@ -258,21 +278,30 @@ ActiveRecord::Schema.define(:version => 20110315065542) do
 
   add_index "strengths", ["tcl_id"], :name => "index_strengths_on_tcl_id"
 
-  create_table "tcap_tcls", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "tcap_id"
-    t.integer  "tcl_id"
-  end
-
-  add_index "tcap_tcls", ["tcap_id"], :name => "index_tcap_tcls_on_tcap_id"
-
   create_table "tcaps", :force => true do |t|
     t.string   "name"
     t.integer  "std_num"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tcl_goals", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tcl_id"
+  end
+
+  add_index "tcl_goals", ["tcl_id"], :name => "index_tcl_goals_on_tcl_id"
+
+  create_table "tcl_objectives", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tcl_id"
+  end
+
+  add_index "tcl_objectives", ["tcl_id"], :name => "index_tcl_objectives_on_tcl_id"
 
   create_table "tcls", :force => true do |t|
     t.string   "name",                       :default => "TCL:"
