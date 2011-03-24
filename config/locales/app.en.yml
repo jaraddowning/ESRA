@@ -93,7 +93,7 @@ en:
         other: Disaster Declarations
     attributes:
       program:
-        name: State Program Name
+        name: Program Name
         program_jurisdiction: Program Jurisdiction/Agency
         program_street: Program Address
         program_city: Program City
@@ -119,7 +119,7 @@ en:
         proc_for_devel: Corrective Action Development Process
         ca_tracked: Corrective Action Tracking Process
         ca_summary: Corrective Action Process Summary
-        ca_resolved: Resolved Corrective Actions
+        ca_resolved: Resolved Corrective Actions in the previous year
         training_plans: Exercise Plan(s)
         disdecs: Disaster Declaration(s)
         hiras: EMAP 4.3
@@ -130,7 +130,7 @@ en:
         event_end_date: Event End Date
         event_duration: Event Duration
         event_duration_description: Event Description
-        event_host: Event Sponsor/Host
+        ehosts: Event Sponsor(s)/Host(s)
         event_state: Event State
         event_type: Event Type
         event_goal: Event Goal(s)
@@ -247,7 +247,7 @@ en:
         event_name: Name of the event.
         event_date: Day the event initiated.
         event_end_date: Day the event ended.
-        event_duration: Length of the event (in hours).
+        event_duration: Length of the event.
         event_host: Organization that hosted the event.
         event_goal: Goal for having the event (not necessary for real-world events).
         event_scenario_summary: Brief summary of the event, necessary if scenerio is "Other".

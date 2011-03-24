@@ -17,7 +17,7 @@
     </after-scripts:>
     <footer:>
       <div>
-        <a href="privacy.html">Terms and Conditions</a>&nbsp;
+        <a href="privacy.html">EMAP Privacy Policy</a>&nbsp;
         Copyright &#64; 2011 - EMAP
         <a href="&admin_users_url" if="&current_user.administrator?">
           <t key="hobo.admin.subsite_name">Admin</t>
@@ -156,14 +156,14 @@
       <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
     <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/>
     <div param="actions">
-      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
 </def>>
 
 <extend tag="form" for="Event">
-  <old-form merge>
-    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
+  <old-form merge without-cancel>
+    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
   </old-form>
 </extend>
 
@@ -175,7 +175,7 @@
 
 <extend tag="form" for="Tcl">
   <!--<do part="alevel-part">-->
-  <old-form>
+  <old-form without-cancel>
     <field-list: fields="tcap, alevels, summary, improvement_plan, improvement_plan_completed, strengths, corrective_actions, improvement_areas, tcl_goals, tcl_objectives" />
         <!--<alevel-view:>
           <if tcap="&@tcl.tcap">
@@ -202,7 +202,7 @@
       <h3>4.14.3</h3><p>A process for corrective actions shall be established and implemented to prioritize and track the resolution of deficiencies in real world and exercise events.  Corrective actions identified in the corrective action process shall be used to revise relevant plans.</p><hr /><br />
     <field-list fields="ca_proc, resolution_desc, resolution_doc" param/>
     <div param="actions">
-      <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
 </def>
@@ -216,7 +216,7 @@
     <h3>4.3.2</h3><p>The Emergency Management Program shall conduct a consequence analysis for the hazards identified in 4.3.1 to consider the impact on the public; responders; continuity of operations including continued delivery of services; property, facilities, and, infrastructure; the environment; the economic condition of the jurisdiction and public confidence in the jurisdiction’s governance.</p><hr /><br />
     <field-list fields="matching, description, hazards" param/>
     <div param="actions">
-      <submit label="#{ht 'hira.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'hira.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
 </def>
@@ -227,7 +227,7 @@
     <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Vist FEMA's website.</a></h2><hr /><br />
     <field-list fields="disaster_declarations" param/>
     <div param="actions">
-      <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
 </def>
@@ -313,12 +313,12 @@
                 <human-collection-name collection="hiras" your/>
               </ht>
             </h3>
-            <a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
+            <!--<a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
               <ht key="hira.actions.new" count="1">
                 Enter EMAP 4.3 Information (HIRA)
               </ht>
-            </a:hiras>
-            <collection:hiras  param="hiras-collection"/>
+            </a:hiras>-->
+            <collection:hiras without-new-link param="hiras-collection"/>
           </section><br /><br />
           <section param="eecas-collection-section">
             <h3 param="eecas-collection-heading">
@@ -326,12 +326,12 @@
                 <human-collection-name collection="eecas" your/>
               </ht>
             </h3>
-            <a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
+            <!--<a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
               <ht key="eeca.actions.new" count="1">
                 Enter EMAP 4.14 Information (Exercises, Evaluations and Corrective Actions)
               </ht>
-            </a:eecas>
-            <collection:eecas  param="eecas-collection"/>
+            </a:eecas>-->
+            <collection:eecas without-new-link param="eecas-collection"/>
           </section><br /><br />
           <section param="uploads-collection-section">
             <h3 param="uploads-collection-heading">
@@ -378,7 +378,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_scenario_summary, ema_role, event_scenario, event_state, event_type" param/>
+            <field-list fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario_summary, ema_role, event_scenario, event_state, event_type" param/>
             <section param="collection-section">
               <h3 param="collection-heading">
                 <ht key="tcl.collection.heading" count="&this.tcls.count" >

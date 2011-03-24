@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
     event_end_date             :date
     event_duration             :string, :required
     event_duration_description :html
-    event_host                 :string, :required
+    #event_host                 :string, :required
     event_scenario_summary     :html
     statewide_event            :boolean
     multistate_event           :boolean
@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
 
   has_many :eparticipants, :dependent => :destroy, :accessible => true
   has_many :e_open_cas, :dependent => :destroy, :accessible => true
+  has_many :ehosts, :dependent => :destroy, :accessible => true
   has_many :egoals, :dependent => :destroy, :accessible => true
   has_many :elocations, :dependent => :destroy, :accessible => true
   has_many :efundings, :dependent => :destroy, :accessible => true

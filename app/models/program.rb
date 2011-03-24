@@ -45,7 +45,10 @@ class Program < ActiveRecord::Base
   has_many :eecas, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
 
-  #after_create :create_eeca
+  def after_create
+    Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
+    Hira.create(:name => "HIRA", :program_id => id)
+  end
 
   children :events, :training_plans, :eecas
 

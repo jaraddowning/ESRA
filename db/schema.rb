@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323013037) do
+ActiveRecord::Schema.define(:version => 20110323174428) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -110,6 +110,15 @@ ActiveRecord::Schema.define(:version => 20110323013037) do
 
   add_index "egoals", ["event_id"], :name => "index_egoals_on_event_id"
 
+  create_table "ehosts", :force => true do |t|
+    t.string   "host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+  end
+
+  add_index "ehosts", ["event_id"], :name => "index_ehosts_on_event_id"
+
   create_table "elocations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -156,7 +165,6 @@ ActiveRecord::Schema.define(:version => 20110323013037) do
     t.date     "event_end_date"
     t.string   "event_duration"
     t.text     "event_duration_description"
-    t.string   "event_host"
     t.text     "event_scenario_summary"
     t.boolean  "statewide_event"
     t.boolean  "multistate_event"
