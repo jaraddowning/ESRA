@@ -3,7 +3,7 @@ class Eeca < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name                :string, :default => 'Exercises, Evals & CAs'
+    name                :string
     ex_prog             :boolean
     ex_prog_desc        :html
     ex_prog_doc         :string

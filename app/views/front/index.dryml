@@ -6,10 +6,10 @@
     <header class="content-header">
       <h1>Welcome to <app-name/></h1>
       <section class="welcome-message">
-        <h3>Event Strategic Review by EMAP</h3>
+        <h3>Event Strategic Review by EMAP</h3><br />
         <ul>
-          <li><a href="esra_manual.doc" target="_blank">Click here for the ESRA User's Manual</a></li>
-          <li><a href="http://www.fema.gov/pdf/government/training/tcl.pdf" target='_blank'>Click here for the DHS FEMA 2007 Target Capabilities</a></li> 
+          <li><a href="esra_manual.doc" target="_blank">Click here for the ESRA User's Manual</a></li><br />
+          <li><a href="http://www.fema.gov/pdf/government/training/tcl.pdf" target='_blank'>Click here for the DHS FEMA 2007 Target Capabilities</a></li><br />
           <li>Please submit any issues or feedback to <a href="mailto:jdowning@csg.org?subject=ESRA assisstance">jdowning@csg.org</a></li>
         </ul>
 

@@ -163,7 +163,7 @@
 
 <extend tag="form" for="Event">
   <old-form merge without-cancel>
-    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
+    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
   </old-form>
 </extend>
 
@@ -313,12 +313,12 @@
                 <human-collection-name collection="hiras" your/>
               </ht>
             </h3>
-            <a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
+            <!--<a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
               <ht key="hira.actions.new" count="1">
                 Enter EMAP 4.3 Information (HIRA)
               </ht>
-            </a:hiras>
-            <collection:hiras  param="hiras-collection"/>
+            </a:hiras>-->
+            <collection:hiras without-new-link param="hiras-collection"/>
           </section><br /><br />
           <section param="eecas-collection-section">
             <h3 param="eecas-collection-heading">
@@ -326,12 +326,12 @@
                 <human-collection-name collection="eecas" your/>
               </ht>
             </h3>
-            <a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
+            <!--<a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
               <ht key="eeca.actions.new" count="1">
                 Enter EMAP 4.14 Information (Exercises, Evaluations and Corrective Actions)
               </ht>
-            </a:eecas>
-            <collection:eecas  param="eecas-collection"/>
+            </a:eecas>-->
+            <collection:eecas without-new-link param="eecas-collection"/>
           </section><br /><br />
           <section param="uploads-collection-section">
             <h3 param="uploads-collection-heading">
@@ -378,7 +378,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="event_name, event_date, event_end_date, event_duration, event_duration_description, event_host, event_scenario_summary, ema_role, event_scenario, event_state, event_type" param/>
+            <field-list fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario_summary, ema_role, event_scenario, event_state, event_type" param/>
             <section param="collection-section">
               <h3 param="collection-heading">
                 <ht key="tcl.collection.heading" count="&this.tcls.count" >
