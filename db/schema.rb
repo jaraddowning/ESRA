@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323174428) do
+ActiveRecord::Schema.define(:version => 20110324185403) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
   add_index "e_open_cas", ["event_id"], :name => "index_e_open_cas_on_event_id"
 
   create_table "eecas", :force => true do |t|
-    t.string   "name",                :default => "Exercises, Evals & CAs"
+    t.string   "name"
     t.boolean  "ex_prog"
     t.text     "ex_prog_desc"
     t.string   "ex_prog_doc"
@@ -376,16 +376,24 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
 
   add_index "tpriorities", ["training_plan_id"], :name => "index_tpriorities_on_training_plan_id"
 
+  create_table "train_tcaps", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "training_plan_id"
+    t.integer  "tcap_id"
+  end
+
+  add_index "train_tcaps", ["tcap_id"], :name => "index_train_tcaps_on_tcap_id"
+  add_index "train_tcaps", ["training_plan_id"], :name => "index_train_tcaps_on_training_plan_id"
+
   create_table "training_plans", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
-    t.integer  "tcap_id"
   end
 
   add_index "training_plans", ["program_id"], :name => "index_training_plans_on_program_id"
-  add_index "training_plans", ["tcap_id"], :name => "index_training_plans_on_tcap_id"
 
   create_table "uploads", :force => true do |t|
     t.string   "name"

@@ -92,6 +92,75 @@ en:
         one: Disaster Declaration
         other: Disaster Declarations
     attributes:
+      alevel:
+        name: Activity Level
+      corrective_action:
+        name: CA
+      disaster_declaration:
+        name: Disaster
+        ddate: Date
+      disdec:
+        disaster_declarations: Declaration(s)
+      eeca:
+        ex_prog: Documented Exercise Program
+        ex_prog_desc: Program Description
+        ex_prog_doc: Documentation
+        test_sae_frequency: Personnel Test Frequency
+        test_epef_frequency: Program Test Frequency
+        match_hira: HIRA Based
+        ex_eval_proc: Exercise Evaluation Process
+        eep_desc: Exercise Evaluation Process Description
+        eep_doc: Exercise Evaluation Process Documentation
+        plans_procs_review: Plans and Procedures Reviewed
+        pp_rev_frequency: Plans and Procedures Review Frequency
+        caps_reviewed: Capabilities Reviewed
+        partners: Stakeholders/Partners
+        ca_proc: Corrective Action Process in Place
+        resolution_desc: Corrective Action Process Description
+        resolution_doc: Corrective Action Process Documentation
+      efunding:
+        name: Source
+      egoal:
+        name: Goal
+      elocation:
+        name: Location
+      eparticipant:
+        name: Participant
+      event:
+        event_name: Event Name
+        event_date: Event Start Date
+        event_end_date: Event End Date
+        event_duration: Event Duration
+        event_duration_description: Event Description
+        ehosts: Event Sponsor(s)/Host(s)
+        event_state: Event State
+        event_type: Event Type
+        event_goal: Event Goal(s)
+        event_scenario: Event Scenario
+        event_scenario_summary: Event Scenario Summarization
+        statewide_event: Statewide Event
+        multistate_event: Multi-state Event
+        ema_role: Role of the Emergency Management Program
+        efundings: Event Funding Source(s)
+        learned_lessons: Lessons Learned
+        tcls: Target Capabilities
+        tcap_tcls: Target Capabilities
+        elocations: Event Location(s)/Site(s)
+        event_scenarios: Event Scenario(s)
+        eparticipants: Event Participant(s)
+        e_open_cas: Event Open Corrective Action(s)
+      event_scenario:
+        name: Scenario
+        description: Scenario Summarization
+      hira:
+        matching: HIRA Consistant with Events
+        description: Description
+        hazards: List Hazard(s)
+      hazard:
+        name: Hazard
+        consequences: Consequence Analysis
+      improvement_area:
+        name: Area of Improvement
       program:
         name: Program Name
         program_jurisdiction: Program Jurisdiction/Agency
@@ -124,79 +193,11 @@ en:
         disdecs: Disaster Declaration(s)
         hiras: EMAP 4.3
         eecas: EMAP 4.14
-      event:
-        event_name: Event Name
-        event_date: Event Start Date
-        event_end_date: Event End Date
-        event_duration: Event Duration
-        event_duration_description: Event Description
-        ehosts: Event Sponsor(s)/Host(s)
-        event_state: Event State
-        event_type: Event Type
-        event_goal: Event Goal(s)
-        event_scenario: Event Scenario
-        event_scenario_summary: Event Scenario Summarization
-        statewide_event: Statewide Event
-        multistate_event: Multi-state Event
-        ema_role: Role of the Emergency Management Program
-        efundings: Event Funding Source(s)
-        learned_lessons: Lessons Learned
-        tcls: Target Capabilities
-        tcap_tcls: Target Capabilities
-        elocations: Event Location(s)/Site(s)
-        event_scenarios: Event Scenario(s)
-        eparticipants: Event Participant(s)
-        e_open_cas: Event Open Corrective Action(s)
-      eeca:
-        ex_prog: Documented Exercise Program
-        ex_prog_desc: Program Description
-        ex_prog_doc: Documentation
-        test_sae_frequency: Personnel Test Frequency
-        test_epef_frequency: Program Test Frequency
-        match_hira: HIRA Based
-        ex_eval_proc: Exercise Evaluation Process
-        eep_desc: Exercise Evaluation Process Description
-        eep_doc: Exercise Evaluation Process Documentation
-        plans_procs_review: Plans and Procedures Reviewed
-        pp_rev_frequency: Plans and Procedures Review Frequency
-        caps_reviewed: Capabilities Reviewed
-        partners: Stakeholders/Partners
-        ca_proc: Corrective Action Process in Place
-        resolution_desc: Corrective Action Process Description
-        resolution_doc: Corrective Action Process Documentation
-      hira:
-        matching: HIRA Consistant with Events
-        description: Description
-        hazards: List Hazard(s)
-      efunding:
-        name: Source
-      training_plan:
-        name: Plan Title
+      strength:
+        name: Strength
+      tcap_tcl:
         tcap: Target Capability
-        texercises: Exercise(s)
-        tpriorities: Exercise Priorities
-      texercise:
-        name: Exercise
-        tdate: Date
-      tpriority:
-        name: Priority
-      disaster_declaration:
-        name: Disaster
-        ddate: Date
-      disdec:
-        disaster_declarations: Declaration(s)
-      event_scenario:
-        name: Scenario
-        description: Scenario Summarization
-      elocation:
-        name: Location
-      eparticipant:
-        name: Participant
-      egoal:
-        name: Goal
-      hazard:
-        name: Hazard
-        consequences: Consequence Analysis
+        alevels: Activity Level(s)
       tcl:
         summary: Event Summary
         tcap: Target Capability
@@ -212,17 +213,18 @@ en:
         name: Goal
       tcl_objective:
         name: Objective
-      tcap_tcl:
+      texercise:
+        name: Exercise
+        tdate: Date
+      tpriority:
+        name: Priority
+      train_tcap:
         tcap: Target Capability
-        alevels: Activity Level(s)
-      strength:
-        name: Strength
-      alevel:
-        name: Activity Level
-      improvement_area:
-        name: Area of Improvement
-      corrective_action:
-        name: CA
+      training_plan:
+        name: Plan Title
+        train_tcaps: Target Capabilities
+        texercises: Exercise(s)
+        tpriorities: Exercise Priorities
     attribute_help:
       program:
         ca_resolved: Use this area to list the resolved corrective actions within the last calendar year.

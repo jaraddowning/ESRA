@@ -15,19 +15,19 @@ class Interview < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator? || acting_user.reviewer?
   end
 
   def update_permitted?
-    acting_user.signed_up?
+    acting_user.administrator? || acting_user.reviewer?
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator? || acting_user.reviewer?
   end
 
   def view_permitted?(field)
-    true
+    acting_user.administrator? || acting_user.reviewer?
   end
 
 end

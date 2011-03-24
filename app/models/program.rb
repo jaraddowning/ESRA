@@ -48,6 +48,7 @@ class Program < ActiveRecord::Base
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
+    Disdec.create(:name => "Disaster Declarations", :program_id => id)
   end
 
   children :events, :training_plans, :eecas
@@ -68,7 +69,6 @@ class Program < ActiveRecord::Base
 
   def view_permitted?(field)
     acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
-
   end
 
 end

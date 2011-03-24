@@ -16,15 +16,15 @@ class Funding09Source < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.signed_up?
   end
 
   def destroy_permitted?
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.signed_up?
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.signed_up?
   end
 
 end

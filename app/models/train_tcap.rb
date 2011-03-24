@@ -1,17 +1,13 @@
-class TrainingPlan < ActiveRecord::Base
+class TrainTcap < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name  :string, :unique, :required
     timestamps
   end
-  
-  belongs_to :program
 
-  has_many :train_tcaps, :dependent => :destroy, :accessible => true
-  has_many :tpriorities, :dependent => :destroy, :accessible => true
-  has_many :texercises, :dependent => :destroy, :accessible => true
+  belongs_to :training_plan
+  belongs_to :tcap
 
   # --- Permissions --- #
 
