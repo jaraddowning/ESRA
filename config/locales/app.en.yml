@@ -96,6 +96,10 @@ en:
         name: Activity Level
       corrective_action:
         name: CA
+        assigned_to: Assigned To
+        completed_by: Completed By
+        completed_date: Completed Date
+        reviewer_ob: Reviewer Finding
       disaster_declaration:
         name: Disaster
         ddate: Date

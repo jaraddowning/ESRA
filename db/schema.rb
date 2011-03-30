@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330010124) do
+ActiveRecord::Schema.define(:version => 20110330135328) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20110330010124) do
     t.string   "assigned_to"
     t.string   "completed_by"
     t.date     "completed_date"
+    t.text     "reviewer_ob"
   end
 
   add_index "corrective_actions", ["tcl_id"], :name => "index_corrective_actions_on_tcl_id"

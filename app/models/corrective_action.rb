@@ -7,6 +7,7 @@ class CorrectiveAction < ActiveRecord::Base
     assigned_to :string
     completed_by :string
     completed_date :date
+    reviewer_ob :html
     timestamps
   end
 
