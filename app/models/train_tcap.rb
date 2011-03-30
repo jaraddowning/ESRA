@@ -1,18 +1,13 @@
-class CorrectiveAction < ActiveRecord::Base
+class TrainTcap < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name :string
-    assigned_to :string
-    completed_by :string
-    completed_date :date
     timestamps
   end
 
-  belongs_to :tcl
-
-  has_many :ca_docs, :dependent => :destroy, :accessible => true
+  belongs_to :training_plan
+  belongs_to :tcap
 
   # --- Permissions --- #
 

@@ -17,7 +17,7 @@
     </after-scripts:>
     <footer:>
       <div>
-        <a href="privacy.html">EMAP Privacy Policy</a>&nbsp;
+        <a href="#{Rails.root}/privacy.html">EMAP Privacy Policy</a>&nbsp;
         Copyright &#64; 2011 - EMAP
         <a href="&admin_users_url" if="&current_user.administrator?">
           <t key="hobo.admin.subsite_name">Admin</t>
@@ -26,6 +26,41 @@
     </footer:>
   </old-page>
 </extend>
+
+<!-- ====== Breadcrumb Navigation ====== 
+
+<extend tag="new-page">
+  <old-new-page merge> 
+    <content-header:>
+      <%= get_bread_crumb(request.path, 'program').html_safe%> New<br/>
+    </content-header:>
+  </old-new-page>
+</extend>
+ 
+<extend tag="show-page">
+  <old-show-page merge> 
+    <content-header:>
+      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br/>
+    </content-header:> 
+  </old-show-page>
+</extend> 
+
+<extend tag="index-page">
+  <old-index-page merge> 
+    <content-header:>
+      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br/>
+    </content-header:>
+  </old-index-page>
+</extend> 
+
+<extend tag="edit-page">
+  <old-edit-page merge> 
+    <content-header:>
+      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br/>
+      <delete-button update="self"/>
+    </content-header:>
+  </old-edit-page>
+</extend> -->
 
 <extend tag="input" for="date">
    <old-input merge order="month,day,year" start-year="&2006" end-year="&2011" />
@@ -92,7 +127,6 @@
 <extend tag="card" for="Disdec"> 
   <card>
     <br /><h3><a /></h3>
-    <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Disaster Declarations</a></h5>
   </card> 
 </extend>
@@ -100,7 +134,7 @@
 <extend tag="card" for="Eeca"> 
   <card>
     <br /><h3><a /></h3>
-    <delete-button class="actions" />
+    <!--<delete-button class="actions" />-->
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit EMAP 4.14</a></h5>
   </card> 
 </extend>
@@ -108,7 +142,7 @@
 <extend tag="card" for="Hira"> 
   <card>
     <br /><h3><a /></h3>
-    <delete-button class="actions" />
+    <!--<delete-button class="actions" />-->
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit EMAP 4.3</a></h5>
   </card> 
 </extend>
@@ -123,7 +157,7 @@
 
 <extend tag="card" for="LearnedLesson"> 
   <card>
-    <br /><h2><a /></h2>
+    <br /><name />
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Lesson Learned</a></h5>
   </card> 
@@ -167,6 +201,24 @@
   </old-form>
 </extend>
 
+<extend tag="form" for="LearnedLesson">
+  <old-form multipart merge>
+    <field-list: skip="event"/>
+  </old-form>
+</extend>
+
+<extend tag="form" for="TrainingPlan">
+  <old-form multipart merge>
+    <field-list: skip="program"/>
+  </old-form>
+</extend>
+
+<extend tag="form" for="Interview">
+  <old-form multipart merge>
+    <field-list: skip="event"/>
+  </old-form>
+</extend>
+
 <extend tag="form" for="Upload">
   <old-form multipart merge>
     <field-list: fields="name, proof"/>
@@ -176,7 +228,7 @@
 <extend tag="form" for="Tcl">
   <!--<do part="alevel-part">-->
   <old-form without-cancel>
-    <field-list: fields="tcap, alevels, summary, improvement_plan, improvement_plan_completed, strengths, corrective_actions, improvement_areas, tcl_goals, tcl_objectives" />
+    <field-list: fields="tcap, alevels, summary, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives" />
         <!--<alevel-view:>
           <if tcap="&@tcl.tcap">
             <select-one include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))" disable/>
@@ -300,12 +352,12 @@
                 <human-collection-name collection="disdecs" your/>
               </ht>
             </h3>
-            <a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
+            <!--<a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
               <ht key="disdec.actions.new" count="1">
                 Enter Disaster Declarations
               </ht>
-            </a:disdecs>
-            <collection:disdecs  param="disdecs-collection"/>
+            </a:disdecs>-->
+            <collection:disdecs without-new-link param="disdecs-collection"/>
           </section><br /><br />
           <section param="hiras-collection-section">
             <h3 param="hiras-collection-heading">

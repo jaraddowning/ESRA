@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323174428) do
+ActiveRecord::Schema.define(:version => 20110330010124) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
   end
 
   add_index "alevels", ["tcl_id"], :name => "index_alevels_on_tcl_id"
+
+  create_table "ca_docs", :force => true do |t|
+    t.string   "document"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "corrective_action_id"
+  end
+
+  add_index "ca_docs", ["corrective_action_id"], :name => "index_ca_docs_on_corrective_action_id"
 
   create_table "consequences", :force => true do |t|
     t.string   "consequence"
@@ -35,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tcl_id"
+    t.string   "assigned_to"
+    t.string   "completed_by"
+    t.date     "completed_date"
   end
 
   add_index "corrective_actions", ["tcl_id"], :name => "index_corrective_actions_on_tcl_id"
@@ -68,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
   add_index "e_open_cas", ["event_id"], :name => "index_e_open_cas_on_event_id"
 
   create_table "eecas", :force => true do |t|
-    t.string   "name",                :default => "Exercises, Evals & CAs"
+    t.string   "name"
     t.boolean  "ex_prog"
     t.text     "ex_prog_desc"
     t.string   "ex_prog_doc"
@@ -303,6 +315,25 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
   add_index "programs", ["program_state_id"], :name => "index_programs_on_program_state_id"
 
+  create_table "review_assignments", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "review_id"
+  end
+
+  add_index "review_assignments", ["review_id"], :name => "index_review_assignments_on_review_id"
+  add_index "review_assignments", ["user_id"], :name => "index_review_assignments_on_user_id"
+
+  create_table "reviews", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "program_id"
+  end
+
+  add_index "reviews", ["program_id"], :name => "index_reviews_on_program_id"
+
   create_table "states", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -376,16 +407,24 @@ ActiveRecord::Schema.define(:version => 20110323174428) do
 
   add_index "tpriorities", ["training_plan_id"], :name => "index_tpriorities_on_training_plan_id"
 
+  create_table "train_tcaps", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "training_plan_id"
+    t.integer  "tcap_id"
+  end
+
+  add_index "train_tcaps", ["tcap_id"], :name => "index_train_tcaps_on_tcap_id"
+  add_index "train_tcaps", ["training_plan_id"], :name => "index_train_tcaps_on_training_plan_id"
+
   create_table "training_plans", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
-    t.integer  "tcap_id"
   end
 
   add_index "training_plans", ["program_id"], :name => "index_training_plans_on_program_id"
-  add_index "training_plans", ["tcap_id"], :name => "index_training_plans_on_tcap_id"
 
   create_table "uploads", :force => true do |t|
     t.string   "name"

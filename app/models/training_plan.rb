@@ -8,8 +8,8 @@ class TrainingPlan < ActiveRecord::Base
   end
   
   belongs_to :program
-  belongs_to :tcap
 
+  has_many :train_tcaps, :dependent => :destroy, :accessible => true
   has_many :tpriorities, :dependent => :destroy, :accessible => true
   has_many :texercises, :dependent => :destroy, :accessible => true
 

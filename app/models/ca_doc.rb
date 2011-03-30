@@ -1,30 +1,30 @@
-class Funding09Source < ActiveRecord::Base
+class CaDoc < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    source :string
+    document :string
     timestamps
   end
 
-  belongs_to :program
+  belongs_to :corrective_action
 
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def update_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def destroy_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)
-    acting_user.signed_up?
+    true
   end
 
 end
