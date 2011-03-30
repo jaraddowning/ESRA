@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324185403) do
+ActiveRecord::Schema.define(:version => 20110330010124) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20110324185403) do
   end
 
   add_index "alevels", ["tcl_id"], :name => "index_alevels_on_tcl_id"
+
+  create_table "ca_docs", :force => true do |t|
+    t.string   "document"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "corrective_action_id"
+  end
+
+  add_index "ca_docs", ["corrective_action_id"], :name => "index_ca_docs_on_corrective_action_id"
 
   create_table "consequences", :force => true do |t|
     t.string   "consequence"
@@ -35,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20110324185403) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tcl_id"
+    t.string   "assigned_to"
+    t.string   "completed_by"
+    t.date     "completed_date"
   end
 
   add_index "corrective_actions", ["tcl_id"], :name => "index_corrective_actions_on_tcl_id"
@@ -302,6 +314,25 @@ ActiveRecord::Schema.define(:version => 20110324185403) do
 
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
   add_index "programs", ["program_state_id"], :name => "index_programs_on_program_state_id"
+
+  create_table "review_assignments", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "review_id"
+  end
+
+  add_index "review_assignments", ["review_id"], :name => "index_review_assignments_on_review_id"
+  add_index "review_assignments", ["user_id"], :name => "index_review_assignments_on_user_id"
+
+  create_table "reviews", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "program_id"
+  end
+
+  add_index "reviews", ["program_id"], :name => "index_reviews_on_program_id"
 
   create_table "states", :force => true do |t|
     t.string   "name"

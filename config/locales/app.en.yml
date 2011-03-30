@@ -101,6 +101,8 @@ en:
         ddate: Date
       disdec:
         disaster_declarations: Declaration(s)
+      e_open_ca:
+        name: Open CA
       eeca:
         ex_prog: Documented Exercise Program
         ex_prog_desc: Program Description
@@ -128,8 +130,8 @@ en:
         name: Participant
       event:
         event_name: Event Name
-        event_date: Event Start Date
-        event_end_date: Event End Date
+        event_date: Response Start Date
+        event_end_date: Response End Date
         event_duration: Event Duration
         event_duration_description: Event Description
         ehosts: Event Sponsor(s)/Host(s)
@@ -247,8 +249,8 @@ en:
         tcl_objectives: Click the plus sign (+) to add an Objective.
       event:
         event_name: Name of the event.
-        event_date: Day the event initiated.
-        event_end_date: Day the event ended.
+        event_date: Day the response initiated.
+        event_end_date: Day the response ended. Please do not include recovery time.
         event_duration: Length of the event.
         event_host: Organization that hosted the event.
         event_goal: Goal for having the event (not necessary for real-world events).

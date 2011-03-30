@@ -4,10 +4,15 @@ class CorrectiveAction < ActiveRecord::Base
 
   fields do
     name :string
+    assigned_to :string
+    completed_by :string
+    completed_date :date
     timestamps
   end
 
   belongs_to :tcl
+
+  has_many :ca_docs, :dependent => :destroy, :accessible => true
 
   # --- Permissions --- #
 

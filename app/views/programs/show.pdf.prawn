@@ -1,5 +1,5 @@
-logopath = "#{RAILS_ROOT}/public/images/emap_logo.jpg"
-sigpath = "#{RAILS_ROOT}/public/images/NI_sig.png"
+logopath = "#{Rails.root}/public/images/emap_logo.jpg"
+sigpath = "#{Rails.root}/public/images/NI_sig.png"
 pdf.font "Times-Roman"
 pdf.font_size 12
 
@@ -130,7 +130,10 @@ pdf.move_down(10)
     pdf.text "Event Start Date: #{item.event_date.strftime("%d %b %y")}", :indent_paragraphs => 30
     pdf.text "Event End Date: #{item.event_end_date.strftime("%d %b %y")}", :indent_paragraphs => 30
     pdf.text "Event Duration: #{item.event_duration}", :indent_paragraphs => 30
-    pdf.text "Event Host: #{item.event_host}", :indent_paragraphs => 30
+    pdf.text "Event Host(s):", :indent_paragraphs => 30
+    item.ehosts.each do |host|
+      pdf.text "• #{host.ehost}", :indent_paragraphs => 42
+    end
     pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
     item.efundings.each do |fund|
       pdf.text "• #{fund.name}", :indent_paragraphs => 42
@@ -142,11 +145,67 @@ pdf.move_down(10)
       pdf.text "• #{location.name}", :indent_paragraphs => 42
     end
     pdf.text "Event Type: #{item.event_type}", :indent_paragraphs => 30
+    pdf.text "Event Goals:", :indent_paragraphs => 30
+    item.egoals.each do |goal|
+      pdf.text "• #{goal.name}", :indent_paragraphs => 42
+    end
+    pdf.text "Event Scenario: #{item.event_scenario}", :indent_paragraphs => 30
     pdf.text "Event Scenario Summary:", :indent_paragraphs => 30
-    pdf.text "#{item.event_scenario_summary}", :spacing => 16, :indent_paragraphs => 30, :indent_paragraphs => 35
-    pdf.text "Event Location(s)/Site(s): ", :indent_paragraphs => 30
+    pdf.text "#{item.event_scenario_summary}", :spacing => 16, :indent_paragraphs => 30
+    pdf.text "Statewide Event and/or MutiState Event: ", :indent_paragraphs => 30
+    pdf.text "Event Participants:", :indent_paragraphs => 30
+    item.eparticipants.each do |participant|
+      pdf.text "• #{participant.name}", :indent_paragraphs => 42
+    end
+    pdf.text "Role of the State Emergency Management Program: #{item.ema_role}", :spacing => 16, :indent_paragraphs => 30
+    pdf.text "Target Capabilities, Corrective Actions & Strengths:", :spacing => 16, :indent_paragraphs => 35
+    item.tcls.each do |target|
+      pdf.text "#{target.tcap}", :spacing => 16, :indent_paragraphs => 40
+      pdf.text "Activity Level(s):", :spacing => 16, :indent_paragraphs => 40
+      target.alevels.each do |activity| 
+        pdf.text "• #{activity.name}", :spacing => 16, :indent_paragraphs => 47
+      end
+      pdf.text "Summary: #{target.summary}", :spacing => 16, :indent_paragraphs => 40
+      pdf.text "Corrective Actions:", :spacing => 16, :indent_paragraphs => 40
+      target.corrective_actions.each do |cas|
+        pdf.text "• #{cas.name}", :spacing => 16, :indent_paragraphs => 47
+      end
+      pdf.text "Improvement Plan Provided: #{target.improvement_plan}", :spacing => 16, :indent_paragraphs => 40
+      pdf.text "Improvement Plan Completed: #{target.improvement_plan_completed}", :spacing => 16, :indent_paragraphs => 40
+    end
+    pdf.text "Exercise Funding Data", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+    pdf.move_down(18)
+    pdf.text "Local Funding Provided for Exercises Annually:", :spacing => 16, :size => 13, :indent_paragraphs => 37
   end
- 
+  pdf.move_down(12)
+  pdf.text "2007: #{@program.funding7}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "2008: #{@program.funding8}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "2009: #{@program.funding9}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "2010: #{@program.funding10}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.move_down(12)
+  pdf.text "Federal Funding Provided for Exercises Annually:", :spacing => 16, :size => 13, :indent_paragraphs => 37
+  pdf.move_down(12)
+  pdf.text "2007: #{@program.gfunding7}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  @program.funding07_sources.each do |federal7|
+    pdf.text "#{federal7.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
+  end
+  pdf.text "2008: #{@program.gfunding8}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  @program.funding08_sources.each do |federal8|
+    pdf.text "#{federal8.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
+  end
+  pdf.text "2009: #{@program.gfunding9}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  @program.funding09_sources.each do |federal9|
+    pdf.text "#{federal9.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
+  end
+  pdf.text "2010: #{@program.gfunding10}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  @program.funding10_sources.each do |federal10|
+    pdf.text "#{federal10.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
+  end
+
 pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
 pagecount = pdf.page_count
 pdf.text "Page #{pagecount}"

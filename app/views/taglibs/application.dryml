@@ -17,7 +17,7 @@
     </after-scripts:>
     <footer:>
       <div>
-        <a href="privacy.html">EMAP Privacy Policy</a>&nbsp;
+        <a href="#{Rails.root}/privacy.html">EMAP Privacy Policy</a>&nbsp;
         Copyright &#64; 2011 - EMAP
         <a href="&admin_users_url" if="&current_user.administrator?">
           <t key="hobo.admin.subsite_name">Admin</t>
@@ -228,7 +228,7 @@
 <extend tag="form" for="Tcl">
   <!--<do part="alevel-part">-->
   <old-form without-cancel>
-    <field-list: fields="tcap, alevels, summary, improvement_plan, improvement_plan_completed, strengths, corrective_actions, improvement_areas, tcl_goals, tcl_objectives" />
+    <field-list: fields="tcap, alevels, summary, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives" />
         <!--<alevel-view:>
           <if tcap="&@tcl.tcap">
             <select-one include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))" disable/>
