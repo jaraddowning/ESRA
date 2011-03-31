@@ -352,11 +352,11 @@
                 <human-collection-name collection="disdecs" your/>
               </ht>
             </h3>
-            <!--<a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
+            <a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
               <ht key="disdec.actions.new" count="1">
                 Enter Disaster Declarations
               </ht>
-            </a:disdecs>-->
+            </a:disdecs>
             <collection:disdecs param="disdecs-collection"/>
           </section><br /><br />
           <section param="hiras-collection-section">
