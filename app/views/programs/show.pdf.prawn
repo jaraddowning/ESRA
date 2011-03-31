@@ -1,6 +1,6 @@
 logopath = "#{Rails.root}/public/images/emap_logo.jpg"
 sigpath = "#{Rails.root}/public/images/NI_sig.png"
-require "sanitize"
+#require "sanitize"
 
 pdf.font "Times-Roman"
 pdf.font_size 12
