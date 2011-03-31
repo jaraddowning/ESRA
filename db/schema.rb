@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330135328) do
+ActiveRecord::Schema.define(:version => 20110330195738) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20110330135328) do
     t.integer  "tcl_id"
     t.string   "assigned_to"
     t.string   "completed_by"
-    t.date     "completed_date"
+    t.string   "completed_date"
     t.text     "reviewer_ob"
   end
 

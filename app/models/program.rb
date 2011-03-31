@@ -38,7 +38,7 @@ class Program < ActiveRecord::Base
   has_many :funding09_sources, :dependent => :destroy, :accessible => true
   has_many :funding10_sources, :dependent => :destroy, :accessible => true
 
-  has_many :events, :dependent => :destroy
+  has_many :events, :dependent => :destroy, :autosave => true
   has_many :training_plans, :dependent => :destroy
   has_many :disdecs, :dependent => :destroy
   has_many :hiras, :dependent => :destroy

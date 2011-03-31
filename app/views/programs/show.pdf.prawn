@@ -1,8 +1,11 @@
 logopath = "#{Rails.root}/public/images/emap_logo.jpg"
 sigpath = "#{Rails.root}/public/images/NI_sig.png"
+require "sanitize"
+
 pdf.font "Times-Roman"
 pdf.font_size 12
 
+#   Cover Page
 pdf.bounding_box([pdf.bounds.left + 55,pdf.bounds.top - 30], :width => 378, :height => 136) do
 pdf.image logopath, :width => 378, :height => 136
 end
@@ -11,9 +14,8 @@ pdf.move_down(70)
 pdf.text "#{@program.name}", :size => 32, :style => :bold, :spacing => 10, :align => :center
 pdf.move_down(100)
 
+#   Executive Summary
 pdf.start_new_page
-
-
 pdf.text "I.	Executive Summary", :size => 16, :style => :bold, :spacing => 4
 pdf.move_down(10)
 pdf.text "EMAP truly appreciated the opportunity to partner with the State of Illinois staff in successfully accomplishing the initial Event Strategic Review (ESR). EMAP, partnering with stakeholders from the Federal Emergency Management Agency (FEMA), National Emergency Management Agency (NEMA), and International Association of Emergency Managers (IAEM) has developed the Event Strategic Review (ESR). The goal of the pilot project is to utilize EMAP’s independent peer-review process to collect and analyze data that will support and assist the FEMA National Preparedness Assessment Division (NPAD) in meeting goals established in the Post Katrina Emergency Management Reform Act of 2006 and Remedial Action Management Program. Additionally, the pilot provided EMAP Training & Technology an opportunity to alpha test the ESR Application (ESRA) currently in development. For the purposes of the initial pilot, ESRA was alpha tested as an Access Database to provide a template by which the pilot software platform could be initiated.   
@@ -32,10 +34,9 @@ end
 pdf.move_down(17)
 pdf.text "Nicole M. Ishmael
 EMAP Executive Director", :size => 12, :spacing => 4
-pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
-pagecount = pdf.page_count
-pdf.text "Page #{pagecount}"
-end
+
+
+#   Candidate Information
 pdf.start_new_page
 pdf.move_down(5)
 pdf.text "II.	Introduction", :size => 15, :style => :bold, :spacing => 4
@@ -76,6 +77,8 @@ pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :heigh
 pagecount = pdf.page_count
 pdf.text "Page #{pagecount}"
 end
+
+#   Purpose, Scope & Organization
 pdf.start_new_page
 pdf.text "III.	Applying the ESR Data Points", :size => 15, :style => :bold, :spacing => 4
 pdf.move_down(10)
@@ -116,13 +119,10 @@ pdf.move_down(10)
 pdf.text "B.	Organization of Review Findings", :size => 12, :style => :bold, :spacing => 4
 pdf.move_down(10)
 pdf.text "Section IV of the review report lists foundational documentation that provided for review and data points.  Review and data points were applied to the Program, and describe the findings of the review team for each point.  Any exemplary or otherwise noteworthy aspects of the Program that were brought to light during the review are included."
-pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
-pagecount = pdf.page_count
-pdf.text "Page #{pagecount}"
-end
-pdf.start_new_page
 
-#   Funding Data
+
+#   Program Funding Data
+pdf.start_new_page
 pdf.text "Exercise Funding Data", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
 pdf.move_down(18)
 pdf.text "Local Funding Provided for Exercises Annually:", :spacing => 16, :size => 13, :indent_paragraphs => 37
@@ -135,35 +135,41 @@ pdf.move_down(12)
 pdf.text "Federal Funding Provided for Exercises Annually:", :spacing => 16, :size => 13, :indent_paragraphs => 37
 pdf.move_down(12)
 pdf.text "2007: #{@program.gfunding7}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+pdf.move_down(2)
 pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
 @program.funding07_sources.each do |federal7|
   pdf.text "#{federal7.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
 end
 pdf.text "2008: #{@program.gfunding8}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+pdf.move_down(2)
 pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
 @program.funding08_sources.each do |federal8|
   pdf.text "#{federal8.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
 end
 pdf.text "2009: #{@program.gfunding9}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+pdf.move_down(2)
 pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
 @program.funding09_sources.each do |federal9|
   pdf.text "#{federal9.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
 end
 pdf.text "2010: #{@program.gfunding10}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+pdf.move_down(2)
 pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 44
 @program.funding10_sources.each do |federal10|
   pdf.text "#{federal10.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
 end
 
+
 #   Disaster Declarations
 pdf.move_down(10)
 @program.disdecs.each do |disaster|
-  pdf.text "#{disaster.name}", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+  pdf.text "Disaster Declarations", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
   disaster.disaster_declarations.each do |declar|
     pdf.text "•	#{declar.name}", :spacing => 16, :size => 12, :indent_paragraphs => 44
     pdf.text "•	#{declar.ddate}", :spacing => 16, :size => 12, :indent_paragraphs => 44
   end
 end
+
 
 #   Exercise Plans
 pdf.move_down(10)
@@ -184,82 +190,125 @@ pdf.text "Exercise Plan(s)", :spacing => 16, :size => 14, :style => :bold, :inde
   end
 end
 
+
 #   EMAP 4.3
 pdf.move_down(10)
 pdf.text "Hazard Identification, Risk Assessment and Consequence Analysis", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+pdf.move_down(10)
 @program.hiras.each do |haz|
   pdf.text "Does the Exercise Plan match the HIRA? #{haz.matching}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.move_down(8)
   pdf.text "Identified Hazards:", :spacing => 16, :size => 12, :indent_paragraphs => 44
   haz.hazards.each do |list|
     pdf.text "• #{list.name}", :spacing => 16, :size => 12, :indent_paragraphs => 50
   end
 end
 
+
 #   Events
 pdf.move_down(10)
 pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 5
+
 @program.events.each do |item|
-  pdf.text "Event: #{item.event_name}", :size => 13, :style => :bold, :spacing => 5, :indent_paragraphs => 15
+  pdf.move_down(10)
+  pdf.text "Event: #{item.event_name}", :size => 13, :style => :bold, :spacing => 5, :indent_paragraphs => 20
   pdf.move_down(8)
   pdf.text "Event Start Date: #{item.event_date.strftime("%d %b %y")}", :indent_paragraphs => 30
   pdf.text "Event End Date: #{item.event_end_date.strftime("%d %b %y")}", :indent_paragraphs => 30
   pdf.text "Event Duration: #{item.event_duration}", :indent_paragraphs => 30
-  pdf.text "Event Host(s):", :indent_paragraphs => 30
-  item.ehosts.each do |host|
-    pdf.text "• #{host.ehost}", :indent_paragraphs => 42
-  end
-  pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
-  item.efundings.each do |fund|
-    pdf.text "• #{fund.name}", :indent_paragraphs => 42
-  end
-
+  pdf.move_down(5)
   pdf.text "Event State: #{item.event_state}", :indent_paragraphs => 30
   pdf.text "Event Location(s)/Site(s):", :indent_paragraphs => 30
+  pdf.move_down(3)
   item.elocations.each do |location|
     pdf.text "• #{location.name}", :indent_paragraphs => 42
   end
+  pdf.move_down(5)
   pdf.text "Event Type: #{item.event_type}", :indent_paragraphs => 30
+  pdf.text "Event Host(s):", :indent_paragraphs => 30
+  pdf.move_down(3)
+  item.ehosts.each do |host|
+    pdf.text "• #{host.ehost}", :indent_paragraphs => 42
+  end
+  pdf.move_down(5)
+  pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
+  pdf.move_down(3)
+  item.efundings.each do |fund|
+    pdf.text "• #{fund.name}", :indent_paragraphs => 42
+  end
+  pdf.move_down(5)
   pdf.text "Event Goals:", :indent_paragraphs => 30
+  pdf.move_down(3)
   item.egoals.each do |goal|
     pdf.text "• #{goal.name}", :indent_paragraphs => 42
   end
+  pdf.move_down(5)
   pdf.text "Event Scenario: #{item.event_scenario}", :indent_paragraphs => 30
+  pdf.move_down(3)
   pdf.text "Event Scenario Summary:", :indent_paragraphs => 30
+  pdf.move_down(3)
   pdf.text "#{item.event_scenario_summary}", :spacing => 16, :indent_paragraphs => 30
+  pdf.move_down(5)
   pdf.text "Statewide Event and/or MutiState Event: ", :indent_paragraphs => 30
+  pdf.move_down(3)
   pdf.text "Event Participants:", :indent_paragraphs => 30
+  pdf.move_down(3)
   item.eparticipants.each do |participant|
     pdf.text "• #{participant.name}", :indent_paragraphs => 42
   end
+  pdf.move_down(5)
   pdf.text "Role of the State Emergency Management Program: #{item.ema_role}", :spacing => 16, :indent_paragraphs => 30
-  pdf.text "Target Capabilities, Corrective Actions & Strengths:", :spacing => 16, :indent_paragraphs => 35
+
+
+  #       TCL Data
+  pdf.move_down(5)
+  pdf.text "Target Capabilities, Corrective Actions & Strengths:", :spacing => 16, :style => :bold, :indent_paragraphs => 40
+  pdf.move_down(5)
   item.tcls.each do |target|
     pdf.text "#{target.tcap}", :spacing => 16, :indent_paragraphs => 40
+    pdf.move_down(3)
     pdf.text "Activity Level(s):", :spacing => 16, :indent_paragraphs => 40
     target.alevels.each do |activity| 
       pdf.text "• #{activity.name}", :spacing => 16, :indent_paragraphs => 47
     end
+    pdf.move_down(3)
     pdf.text "Summary: #{target.summary}", :spacing => 16, :indent_paragraphs => 40
+    pdf.move_down(5)
+
+
+    #     Corrective Actions
     pdf.text "Corrective Actions:", :spacing => 16, :indent_paragraphs => 40
     target.corrective_actions.each do |cas|
-      pdf.text "• #{cas.name}", :spacing => 16, :indent_paragraphs => 47
+      pdf.move_down(3)
+      pdf.text "• #{cas.name}", :spacing => 16, :indent_paragraphs => 46
+      pdf.move_down(3)
+      pdf.text "Assigned To: #{cas.assigned_to}"
+      pdf.text "Completed By: #{cas.completed_by}"
+      pdf.text "Completed Date: #{cas.completed_date}"
+      pdf.text "Reviewer Findings: #{cas.reviewer_ob}"
     end
+    pdf.move_down(5)
     pdf.text "Improvement Plan Provided: #{target.improvement_plan}", :spacing => 16, :indent_paragraphs => 40
     pdf.text "Improvement Plan Completed: #{target.improvement_plan_completed}", :spacing => 16, :indent_paragraphs => 40
   end
+  pdf.move_down(5)
+
+  #     Lessons Learned
   pdf.text "Lessons Learned:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
   item.learned_lessons.each do |lesson|
+    pdf.move_down(3)
     pdf.text "• #{lesson.title}", :spacing => 16, :indent_paragraphs => 47
-    pdf.text "• #{lesson.description}", :spacing => 16, :indent_paragraphs => 50
+    pdf.text "#{lesson.description}", :spacing => 16, :indent_paragraphs => 50
   end
+  pdf.move_down(5)
+
+  #     Interviews
+  pdf.text "Interviews:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
   item.interviews.each do |interview|
-    pdf.text "• #{interview.name}", :spacing => 16, :indent_paragraphs => 47
+    pdf.move_down(3)
+    pdf.text "#{interview.name}", :spacing => 16, :indent_paragraphs => 47
     pdf.text "#{interview.title}", :spacing => 16, :indent_paragraphs => 50
     pdf.text "#{interview.date}", :spacing => 16, :indent_paragraphs => 50
     pdf.text "#{interview.summary}", :spacing => 16, :indent_paragraphs => 50
   end
-end
-pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
-pagecount = pdf.page_count
-pdf.text "Page #{pagecount}"
 end
