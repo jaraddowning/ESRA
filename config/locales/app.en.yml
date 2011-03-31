@@ -28,6 +28,9 @@ en:
       alevel:
         one: Activity Level
         other: Activity Levels
+      ca_doc:
+        one: Document
+        other: Documents
       consequence:
         one: Consequence Analysis
         other: Consequence Analyses
@@ -100,6 +103,7 @@ en:
         completed_by: Completed By
         completed_date: Completed Date
         reviewer_ob: Reviewer Finding
+        ca_docs: Documentation
       disaster_declaration:
         name: Disaster
         ddate: Date
@@ -205,7 +209,7 @@ en:
         tcap: Target Capability
         alevels: Activity Level(s)
       tcl:
-        summary: Event Summary
+        summary: Reviewer Observations
         tcap: Target Capability
         alevels: Activity Level(s)
         improvement_plan: Improvement Plan Provided

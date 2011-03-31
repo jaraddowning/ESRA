@@ -76,7 +76,7 @@
       <view:name />
     </p>-->
     <p>
-      <a href="#{this.proof.url(:original, false)}">Download File</a>
+      <a href="#{this.proof.url(:original, false)}" target="_blank">Download File</a>
     </p>
     <!--<p>
       Uploaded:<br /> 
@@ -228,7 +228,7 @@
 <extend tag="form" for="Tcl">
   <!--<do part="alevel-part">-->
   <old-form without-cancel>
-    <field-list: fields="tcap, alevels, summary, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives" />
+    <field-list: fields="tcap, alevels, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives, summary" />
         <!--<alevel-view:>
           <if tcap="&@tcl.tcap">
             <select-one include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))" disable/>
@@ -357,7 +357,7 @@
                 Enter Disaster Declarations
               </ht>
             </a:disdecs>-->
-            <collection:disdecs without-new-link param="disdecs-collection"/>
+            <collection:disdecs param="disdecs-collection"/>
           </section><br /><br />
           <section param="hiras-collection-section">
             <h3 param="hiras-collection-heading">
