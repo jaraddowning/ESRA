@@ -357,7 +357,7 @@
                 Enter Disaster Declarations
               </ht>
             </a:disdecs>-->
-            <collection:disdecs without-new-link param="disdecs-collection"/>
+            <collection:disdecs param="disdecs-collection"/>
           </section><br /><br />
           <section param="hiras-collection-section">
             <h3 param="hiras-collection-heading">
