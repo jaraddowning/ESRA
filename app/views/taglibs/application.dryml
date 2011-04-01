@@ -70,8 +70,8 @@
 
 <extend tag="card" for="Upload"> 
   <card> 
-    <br /><h5><a /></h5> 
-    <!--<p> 
+    <br /><h5><name /></h5> 
+    <!--<p>
       <a><img src="#{this.proof.url :thumbnail}" /></a>
       <view:name />
     </p>-->
@@ -182,7 +182,7 @@
     <h1>Event Strategic Review Contact Information</h1>
     <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
     <hr /><h1>Exercise Funding</h1><br />
-    <p>How much local funding has been allocated for Exercises annually?</p>
+    <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
     <field-list fields="funding7, funding8, funding9, funding10" param/><br />
     <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
     <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
