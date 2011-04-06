@@ -34,6 +34,6 @@ gem "paperclip"
 gem "bluecloth"
 gem "ttfunk", :git => "https://github.com/sandal/ttfunk.git"
 gem 'prawn', :git => "git://github.com/sandal/prawn", :submodules => true
-gem 'nokogiri'
+gem 'nokogiri', :submodules => true
 #gem 'libxml2', ">=2.7.2"
 gem 'sanitize', :submodules => true
