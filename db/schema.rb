@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330195738) do
+ActiveRecord::Schema.define(:version => 20110405190809) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -41,13 +41,13 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
 
   create_table "corrective_actions", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "tcl_id"
     t.string   "assigned_to"
     t.string   "completed_by"
     t.string   "completed_date"
     t.text     "reviewer_ob"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tcl_id"
   end
 
   add_index "corrective_actions", ["tcl_id"], :name => "index_corrective_actions_on_tcl_id"
@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
   add_index "disdecs", ["program_id"], :name => "index_disdecs_on_program_id"
 
   create_table "e_open_cas", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
-    t.string   "name"
   end
 
   add_index "e_open_cas", ["event_id"], :name => "index_e_open_cas_on_event_id"
@@ -196,36 +196,36 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
   add_index "events", ["program_id"], :name => "index_events_on_program_id"
 
   create_table "funding07_sources", :force => true do |t|
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source"
     t.integer  "program_id"
   end
 
   add_index "funding07_sources", ["program_id"], :name => "index_funding07_sources_on_program_id"
 
   create_table "funding08_sources", :force => true do |t|
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source"
     t.integer  "program_id"
   end
 
   add_index "funding08_sources", ["program_id"], :name => "index_funding08_sources_on_program_id"
 
   create_table "funding09_sources", :force => true do |t|
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source"
     t.integer  "program_id"
   end
 
   add_index "funding09_sources", ["program_id"], :name => "index_funding09_sources_on_program_id"
 
   create_table "funding10_sources", :force => true do |t|
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source"
     t.integer  "program_id"
   end
 
@@ -284,25 +284,16 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
 
   create_table "programs", :force => true do |t|
     t.string   "name"
-    t.text     "summary"
-    t.boolean  "continuous_ca_plan"
-    t.boolean  "proc_for_devel"
-    t.boolean  "ca_tracked"
-    t.text     "ca_summary"
-    t.text     "ca_resolved"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "owner_id"
+    t.string   "program_jurisdiction"
     t.string   "program_street"
     t.string   "program_city"
+    t.string   "program_zip"
     t.string   "program_contact"
     t.string   "contact_title"
     t.string   "contact_phone"
     t.string   "contact_mobile"
     t.string   "contact_email"
-    t.integer  "program_state_id"
-    t.string   "program_jurisdiction"
-    t.string   "program_zip"
+    t.text     "summary"
     t.string   "funding7"
     t.string   "funding8"
     t.string   "funding9"
@@ -311,6 +302,15 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
     t.string   "gfunding8"
     t.string   "gfunding9"
     t.string   "gfunding10"
+    t.boolean  "continuous_ca_plan"
+    t.boolean  "proc_for_devel"
+    t.boolean  "ca_tracked"
+    t.text     "ca_summary"
+    t.text     "ca_resolved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "owner_id"
+    t.integer  "program_state_id"
   end
 
   add_index "programs", ["owner_id"], :name => "index_programs_on_owner_id"
@@ -432,12 +432,12 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.integer  "program_id"
     t.integer  "owner_id"
     t.string   "proof_file_name"
     t.string   "proof_content_type"
     t.integer  "proof_file_size"
     t.datetime "proof_updated_at"
-    t.integer  "program_id"
   end
 
   add_index "uploads", ["event_id"], :name => "index_uploads_on_event_id"
@@ -451,15 +451,15 @@ ActiveRecord::Schema.define(:version => 20110330195738) do
     t.datetime "remember_token_expires_at"
     t.string   "name"
     t.string   "email_address"
+    t.string   "agency"
+    t.string   "job_title"
     t.boolean  "administrator",                           :default => false
+    t.boolean  "reviewer",                                :default => false
+    t.boolean  "program",                                 :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state",                                   :default => "invited"
     t.datetime "key_timestamp"
-    t.boolean  "reviewer",                                :default => false
-    t.string   "agency"
-    t.string   "job_title"
-    t.boolean  "program",                                 :default => false
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"

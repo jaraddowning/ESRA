@@ -5,6 +5,7 @@
 <include src="taglibs/auto/rapid/cards"/>
 <include src="taglibs/auto/rapid/pages"/>
 <include src="taglibs/auto/rapid/forms"/>
+<include src="hobo-jquery" plugin="hobo-jquery" />
 <include src="paperclip" plugin="paperclip_with_hobo"/>
 
 <set-theme name="clean-sidemenu"/>
@@ -12,6 +13,7 @@
 <extend tag="page">
   <old-page merge without-live-search>
     <after-scripts:>
+      <javascript name="saveform"/>
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
     </after-scripts:>
@@ -27,7 +29,15 @@
   </old-page>
 </extend>
 
-<!-- ====== Breadcrumb Navigation ====== 
+<extend tag="page">
+  <old-page merge>
+    <custom-scripts:>
+      <hjq-assets/>
+    </custom-scripts>
+  </old-page>
+</extend>
+
+<!-- ====== Breadcrumb Navigation ====== -->
 
 <extend tag="new-page">
   <old-new-page merge> 
@@ -60,7 +70,7 @@
       <delete-button update="self"/>
     </content-header:>
   </old-edit-page>
-</extend> -->
+</extend>
 
 <extend tag="input" for="date">
    <old-input merge order="month,day,year" start-year="&2006" end-year="&2011" />
