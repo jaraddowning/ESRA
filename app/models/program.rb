@@ -31,6 +31,7 @@ class Program < ActiveRecord::Base
   end
 
   belongs_to :owner, :class_name => "User", :creator => true
+
   belongs_to :program_state, :class_name => "State"
 
   has_many :funding07_sources, :dependent => :destroy, :accessible => true

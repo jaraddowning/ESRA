@@ -1,6 +1,6 @@
 logopath = "#{Rails.root}/public/images/emap_logo.jpg"
 sigpath = "#{Rails.root}/public/images/NI_sig.png"
-#require "sanitize"
+require 'sanitize'
 
 pdf.font "Times-Roman"
 pdf.font_size 12
@@ -72,11 +72,7 @@ pdf.move_down(10)
 pdf.text "As this was a “stand-alone” pilot, an EMAP Reviewer team was assembled to conduct an On-site review seperate from an existing scheduled baseline assessment. The process followed many of the same components of the proven peer-review process used by EMAP. The Program was given an opportunity to complete a Self-review, submit supportive documentation and complete an On-site Review prior to the arrival of the Assessor Team. 
  
 The program completed an internal self review against pilot methodology and EMAP Standards. The On-site Review was conducted by a team of EMAP liaisons, which provided pilot guidance and direct observation for measuring ESR pilot delivery; monitored progress and outcomes; and coordinated the activities of three (3) independent trained reviewers from outside the pilot program."
-pdf.move_down(10)
-pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do
-pagecount = pdf.page_count
-pdf.text "Page #{pagecount}"
-end
+
 
 #   Purpose, Scope & Organization
 pdf.start_new_page
@@ -213,8 +209,8 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
   pdf.move_down(10)
   pdf.text "Event: #{item.event_name}", :size => 13, :style => :bold, :spacing => 5, :indent_paragraphs => 20
   pdf.move_down(8)
-  pdf.text "Event Start Date: #{item.event_date.strftime("%d %b %y")}", :indent_paragraphs => 30
-  pdf.text "Event End Date: #{item.event_end_date.strftime("%d %b %y")}", :indent_paragraphs => 30
+  pdf.text "Event Start Date: #{item.event_date.strftime("%b %d %y")}", :indent_paragraphs => 30
+  pdf.text "Event End Date: #{item.event_end_date.strftime("%b %d %y")}", :indent_paragraphs => 30
   pdf.text "Event Duration: #{item.event_duration}", :indent_paragraphs => 30
   pdf.move_down(5)
   pdf.text "Event State: #{item.event_state}", :indent_paragraphs => 30
@@ -233,8 +229,8 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
   pdf.move_down(5)
   pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
   pdf.move_down(3)
-  item.efundings.each do |fund|
-    pdf.text "• #{fund.name}", :indent_paragraphs => 42
+  item.efundings.each do |fend|
+    pdf.text "• #{fend.name}", :indent_paragraphs => 42
   end
   pdf.move_down(5)
   pdf.text "Event Goals:", :indent_paragraphs => 30
@@ -247,7 +243,8 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
   pdf.move_down(3)
   pdf.text "Event Scenario Summary:", :indent_paragraphs => 30
   pdf.move_down(3)
-  pdf.text "#{item.event_scenario_summary}", :spacing => 16, :indent_paragraphs => 30
+  sums = Sanitize.clean(item.event_scenario_summary)
+  pdf.text sums, :spacing => 16, :indent_paragraphs => 30
   pdf.move_down(5)
   pdf.text "Statewide Event and/or MutiState Event: ", :indent_paragraphs => 30
   pdf.move_down(3)
@@ -257,8 +254,9 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
     pdf.text "• #{participant.name}", :indent_paragraphs => 42
   end
   pdf.move_down(5)
-  pdf.text "Role of the State Emergency Management Program: #{item.ema_role}", :spacing => 16, :indent_paragraphs => 30
-
+  pdf.text "Role of the State Emergency Management Program:", :spacing => 16, :indent_paragraphs => 30
+  roll = Sanitize.clean(item.ema_role)
+  pdf.text roll, :spacing => 16, :indent_paragraphs => 30
 
   #       TCL Data
   pdf.move_down(5)
@@ -272,7 +270,9 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
       pdf.text "• #{activity.name}", :spacing => 16, :indent_paragraphs => 47
     end
     pdf.move_down(3)
-    pdf.text "Summary: #{target.summary}", :spacing => 16, :indent_paragraphs => 40
+    pdf.text "Summary:", :spacing => 16, :indent_paragraphs => 40
+      sums = Sanitize.clean(target.summary)
+    pdf.text sums, :spacing => 16, :indent_paragraphs => 44
     pdf.move_down(5)
 
 
@@ -282,10 +282,10 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
       pdf.move_down(3)
       pdf.text "• #{cas.name}", :spacing => 16, :indent_paragraphs => 46
       pdf.move_down(3)
-      pdf.text "Assigned To: #{cas.assigned_to}"
-      pdf.text "Completed By: #{cas.completed_by}"
-      pdf.text "Completed Date: #{cas.completed_date}"
-      pdf.text "Reviewer Findings: #{cas.reviewer_ob}"
+      pdf.text "Assigned To: #{cas.assigned_to}", :indent_paragraphs => 40
+      pdf.text "Completed By: #{cas.completed_by}", :indent_paragraphs => 40
+      pdf.text "Completed Date: #{cas.completed_date}", :indent_paragraphs => 40
+      pdf.text "Reviewer Findings: #{cas.reviewer_ob}", :indent_paragraphs => 40
     end
     pdf.move_down(5)
     pdf.text "Improvement Plan Provided: #{target.improvement_plan}", :spacing => 16, :indent_paragraphs => 40
@@ -309,6 +309,7 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
     pdf.text "#{interview.name}", :spacing => 16, :indent_paragraphs => 47
     pdf.text "#{interview.title}", :spacing => 16, :indent_paragraphs => 50
     pdf.text "#{interview.date}", :spacing => 16, :indent_paragraphs => 50
-    pdf.text "#{interview.summary}", :spacing => 16, :indent_paragraphs => 50
+      sums = Sanitize.clean(interview.summary)
+    pdf.text sums, :spacing => 16, :indent_paragraphs => 50
   end
 end
