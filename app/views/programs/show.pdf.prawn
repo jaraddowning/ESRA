@@ -223,8 +223,8 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
   pdf.text "Event Type: #{item.event_type}", :indent_paragraphs => 30
   pdf.text "Event Host(s):", :indent_paragraphs => 30
   pdf.move_down(3)
-  item.ehosts.each do |host|
-    pdf.text "• #{host.ehost}", :indent_paragraphs => 42
+  item.ehosts.each do |hist|
+    pdf.text "• #{hist.host}", :indent_paragraphs => 42
   end
   pdf.move_down(5)
   pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
