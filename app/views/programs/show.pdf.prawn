@@ -155,6 +155,20 @@ pdf.text "Source of funds:", :spacing => 16, :size => 12, :indent_paragraphs => 
   pdf.text "#{federal10.source}", :spacing => 16, :size => 12, :indent_paragraphs => 51
 end
 
+#   Corrective Action Process
+pdf.move_down(10)
+pdf.text "Corrective Action Process", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+pdf.text "The Program has a Continuous Corrective Action process: #{@program.continuous_ca_plan}", :spacing => 16, :size => 12, :indent_paragraphs => 37
+pdf.text "The Program has a Corrective Action Development Process: #{@program.proc_for_devel}", :spacing => 16, :size => 12, :indent_paragraphs => 37
+pdf.text "The Program has a Corrective Action Tracking Process: #{@program.ca_tracked}", :spacing => 16, :size => 12, :indent_paragraphs => 37
+pdf.text "Corrective Action Process Summary:", :spacing => 16, :size => 12, :indent_paragraphs => 37
+caps = Sanitize.clean(@program.ca_summary)
+pdf.text caps, :spacing => 16, :size => 12, :indent_paragraphs => 40
+pdf.text "Resolved Corrective Actions in the previous year:", :spacing => 16, :size => 12, :indent_paragraphs => 37
+capr = Sanitize.clean(@program.ca_resolved)
+pdf.text capr, :spacing => 16, :size => 12, :indent_paragraphs => 40
+
+
 
 #   Disaster Declarations
 pdf.move_down(10)
@@ -192,7 +206,7 @@ pdf.move_down(10)
 pdf.text "Hazard Identification, Risk Assessment and Consequence Analysis", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
 pdf.move_down(10)
 @program.hiras.each do |haz|
-  pdf.text "Does the Exercise Plan match the HIRA? #{haz.matching}", :spacing => 16, :size => 12, :indent_paragraphs => 44
+  pdf.text "The Program's Exercise Plan matches their HIRA: #{haz.matching}", :spacing => 16, :size => 12, :indent_paragraphs => 44
   pdf.move_down(8)
   pdf.text "Identified Hazards:", :spacing => 16, :size => 12, :indent_paragraphs => 44
   haz.hazards.each do |list|
@@ -312,4 +326,12 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
       sums = Sanitize.clean(interview.summary)
     pdf.text sums, :spacing => 16, :indent_paragraphs => 50
   end
+  pdf.move_down(10)
+  pdf.text "Documents Reviewed", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+  item.uploads.each do |proof|
+    pdf.text "• #{proof.proof_file_name}", :spacing => 16, :size => 12, :indent_paragraphs => 37
+  end
+end
+@program.uploads.each do |docs|
+  pdf.text "• #{docs.proof_file_name}", :spacing => 16, :size => 12, :indent_paragraphs => 37
 end

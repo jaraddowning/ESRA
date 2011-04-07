@@ -128,7 +128,7 @@
 
 <extend tag="card" for="TrainingPlan"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h5><a /></h5>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Exercise Plan</a></h5>
   </card> 
@@ -175,7 +175,7 @@
 
 <extend tag="card" for="Interview"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h5><a /></h5>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Interview</a></h5>
   </card> 
@@ -192,8 +192,10 @@
     <h1>Event Strategic Review Contact Information</h1>
     <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
     <hr /><h1>Exercise Funding</h1><br />
+    <h2>&nbsp;&nbsp;&nbsp;Local Funding</h2><br />
     <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
     <field-list fields="funding7, funding8, funding9, funding10" param/><br />
+    <h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
     <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
     <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
     <hr /><h1>Corrective Action Process</h1><br />
@@ -236,7 +238,13 @@
 </extend>
 
 <extend tag="form" for="Tcl">
-  <!--<do part="alevel-part">-->
+  <old-form without-cancel>
+    <field-list: fields="tcap, alevels, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives, summary" />
+  </old-form>
+</extend>
+
+<!--<extend tag="form" for="Tcl">
+  <!--<do part="alevel-part">
   <old-form without-cancel>
     <field-list: fields="tcap, alevels, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives, summary" />
         <!--<alevel-view:>
@@ -247,10 +255,10 @@
             <select disable><option>First choose a Target Capability</option></select>
           </else>
         </alevel-view:>
-      </field-list:>-->
+      </field-list:>
   </old-form>
-  <!--</do>-->
-</extend>
+  <!--</do>
+</extend>-->
 
 <def tag="form" for="Eeca">
   <form merge param="default">
@@ -286,7 +294,7 @@
 <def tag="form" for="Disdec">
   <form merge without-heading param="default">
     <error-messages param/>
-    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Vist FEMA's website.</a></h2><hr /><br />
+    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><hr /><br />
     <field-list fields="disaster_declarations" param/>
     <div param="actions">
       <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
