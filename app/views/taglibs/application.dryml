@@ -37,7 +37,7 @@
   </old-page>
 </extend>
 
-<!-- ====== Breadcrumb Navigation ====== -->
+<!-- ====== Breadcrumb Navigation ====== 
 
 <extend tag="new-page">
   <old-new-page merge> 
@@ -70,7 +70,7 @@
       <delete-button update="self"/>
     </content-header:>
   </old-edit-page>
-</extend>
+</extend>-->
 
 <extend tag="input" for="date">
    <old-input merge order="month,day,year" start-year="&2006" end-year="&2011" />
@@ -125,6 +125,16 @@
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Program</a></h5>
   </card>
 </def>
+
+<extend tag="card" for="User"> 
+  <card>
+    <header>
+      <h4 param="heading"><a><name/></a></h4>
+    </header>
+    <delete-button class="actions" />
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Account</a></h5>
+  </card> 
+</extend>
 
 <extend tag="card" for="TrainingPlan"> 
   <card>
