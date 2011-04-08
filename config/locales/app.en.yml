@@ -271,7 +271,7 @@ en:
         ema_role: What role did the State Emergency Management Agency play in the event?
         event_type: Please select the type of event.
         event_scenario: Please select the event scenario.
-        eparticipants: Indicate who played a role in the event (add participants by pushing the "+" button).
+        eparticipants: Indicate Event Particpants (add participants by pushing the "+" button).
         egoals: Indicate what the goals of the event were (add goals by pushing the "+" button).
         efundings: Indicate organizations who funded the event (add sources by pushing the "+" button).
         elocations: Location(s) for the event (add locations by pushing the "+" button).
