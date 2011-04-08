@@ -117,7 +117,7 @@ en:
       eeca:
         ex_prog: Documented Exercise Program
         ex_prog_desc: Program Description
-        ex_prog_doc: Documentation
+        ex_prog_doc: Corrective Action Process Documentation
         test_sae_frequency: Personnel Test Frequency
         test_epef_frequency: Program Test Frequency
         match_hira: HIRA Based
