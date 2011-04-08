@@ -177,7 +177,7 @@
 
 <extend tag="card" for="LearnedLesson"> 
   <card>
-    <br /><name />
+    <br /><h5><name /></h5>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Lesson Learned</a></h5>
   </card> 
@@ -357,44 +357,44 @@
             </a:training_plans>
             <collection:training_plans  param="training_plans-collection"/>
           </section><br /><br />
-          <section param="disdecs-collection-section">
-            <h3 param="disdecs-collection-heading">
+          <section param="disdecs-collection-section"><hr />
+            <!--<h3 param="disdecs-collection-heading">
               <ht key="disdec.collection.heading" count="&this.disdecs.count" >
                 <human-collection-name collection="disdecs" your/>
               </ht>
             </h3>
-            <!--<a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
+            <a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
               <ht key="disdec.actions.new" count="1">
                 Enter Disaster Declarations
               </ht>
             </a:disdecs>-->
             <collection:disdecs without-new-link param="disdecs-collection"/>
-          </section><br /><br />
+          </section>
           <section param="hiras-collection-section">
-            <h3 param="hiras-collection-heading">
+            <!--<h3 param="hiras-collection-heading">
               <ht key="hira.collection.heading" count="&this.hiras.count" >
                 <human-collection-name collection="hiras" your/>
               </ht>
             </h3>
-            <!--<a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
+            <a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
               <ht key="hira.actions.new" count="1">
                 Enter EMAP 4.3 Information (HIRA)
               </ht>
             </a:hiras>-->
             <collection:hiras without-new-link param="hiras-collection"/>
-          </section><br /><br />
+          </section>
           <section param="eecas-collection-section">
-            <h3 param="eecas-collection-heading">
+            <!--<h3 param="eecas-collection-heading">
               <ht key="eeca.collection.heading" count="&this.eecas.count" >
                 <human-collection-name collection="eecas" your/>
               </ht>
             </h3>
-            <!--<a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
+            <a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
               <ht key="eeca.actions.new" count="1">
                 Enter EMAP 4.14 Information (Exercises, Evaluations and Corrective Actions)
               </ht>
             </a:eecas>-->
-            <collection:eecas without-new-link param="eecas-collection"/>
+            <collection:eecas without-new-link param="eecas-collection"/><hr />
           </section><br /><br />
           <section param="uploads-collection-section">
             <h3 param="uploads-collection-heading">
