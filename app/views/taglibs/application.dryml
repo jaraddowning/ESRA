@@ -138,7 +138,7 @@
 
 <extend tag="card" for="TrainingPlan"> 
   <card>
-    <br /><h5><a /></h5>
+    <br /><h5><name /></h5>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Exercise Plan</a></h5>
   </card> 
@@ -249,7 +249,7 @@
 
 <extend tag="form" for="Tcl">
   <old-form without-cancel>
-    <field-list: fields="tcap, alevels, improvement_plan, corrective_actions, improvement_plan_completed, strengths, improvement_areas, tcl_goals, tcl_objectives, summary" />
+    <field-list: fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas, summary" />
   </old-form>
 </extend>
 
@@ -351,51 +351,19 @@
               </ht>
             </h3>
             <a:training_plans action="new" if="&can_create?(@program.training_plans)" param="new-link">
-              <ht key="training_plan.actions.new" count="1">
-                Enter Exercise Program
-              </ht>
+              <ht key="training_plan.actions.new" count="1"></ht>
             </a:training_plans>
             <collection:training_plans  param="training_plans-collection"/>
-          </section><br /><br />
+          </section><br />
           <section param="disdecs-collection-section"><hr />
-            <!--<h3 param="disdecs-collection-heading">
-              <ht key="disdec.collection.heading" count="&this.disdecs.count" >
-                <human-collection-name collection="disdecs" your/>
-              </ht>
-            </h3>
-            <a:disdecs action="new" if="&can_create?(@program.disdecs)" param="new-link">
-              <ht key="disdec.actions.new" count="1">
-                Enter Disaster Declarations
-              </ht>
-            </a:disdecs>-->
             <collection:disdecs without-new-link param="disdecs-collection"/>
           </section>
           <section param="hiras-collection-section">
-            <!--<h3 param="hiras-collection-heading">
-              <ht key="hira.collection.heading" count="&this.hiras.count" >
-                <human-collection-name collection="hiras" your/>
-              </ht>
-            </h3>
-            <a:hiras action="new" if="&can_create?(@program.hiras)" param="new-link">
-              <ht key="hira.actions.new" count="1">
-                Enter EMAP 4.3 Information (HIRA)
-              </ht>
-            </a:hiras>-->
             <collection:hiras without-new-link param="hiras-collection"/>
           </section>
           <section param="eecas-collection-section">
-            <!--<h3 param="eecas-collection-heading">
-              <ht key="eeca.collection.heading" count="&this.eecas.count" >
-                <human-collection-name collection="eecas" your/>
-              </ht>
-            </h3>
-            <a:eecas action="new" if="&can_create?(@program.eecas)" param="new-link">
-              <ht key="eeca.actions.new" count="1">
-                Enter EMAP 4.14 Information (Exercises, Evaluations and Corrective Actions)
-              </ht>
-            </a:eecas>-->
             <collection:eecas without-new-link param="eecas-collection"/><hr />
-          </section><br /><br />
+          </section><br />
           <section param="uploads-collection-section">
             <h3 param="uploads-collection-heading">
               <ht key="upload.collection.heading" count="&this.uploads.count" >
@@ -403,9 +371,7 @@
               </ht>
             </h3>
             <a:uploads action="new" if="&can_create?(@program.uploads)" param="new-link">
-              <ht key="upload.actions.new" count="1">
-                New Reference/Proof Document
-              </ht>
+              <ht key="upload.actions.new" count="1"></ht>
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
@@ -473,7 +439,7 @@
               </ht>
             </a:learned_lessons>
             <collection:learned_lessons  param="learned_lessons-collection"/>
-          </section><br /><br />
+          </section><br /><hr /><br />
           <section param="interviews-collection-section">
             <h3 param="interviews-collection-heading">
               <ht key="interview.collection.heading" count="&this.interviews.count" >
@@ -486,7 +452,7 @@
               </ht>
             </a:interviews>
             <collection:interviews  param="interviews-collection"/>
-          </section><br /><br />
+          </section><br /><hr /><br />
           <section param="uploads-collection-section">
             <h3 param="uploads-collection-heading">
               <ht key="upload.collection.heading" count="&this.uploads.count" >
