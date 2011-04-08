@@ -146,14 +146,14 @@
 
 <extend tag="card" for="Disdec"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h3><name /></h3>
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Disaster Declarations</a></h5>
   </card> 
 </extend>
 
 <extend tag="card" for="Eeca"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h3><name /></h3>
     <!--<delete-button class="actions" />-->
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit EMAP 4.14</a></h5>
   </card> 
@@ -161,7 +161,7 @@
 
 <extend tag="card" for="Hira"> 
   <card>
-    <br /><h3><a /></h3>
+    <br /><h3><name /></h3>
     <!--<delete-button class="actions" />-->
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit EMAP 4.3</a></h5>
   </card> 
@@ -185,7 +185,7 @@
 
 <extend tag="card" for="Interview"> 
   <card>
-    <br /><h5><a /></h5>
+    <br /><h5><name /></h5>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Interview</a></h5>
   </card> 
