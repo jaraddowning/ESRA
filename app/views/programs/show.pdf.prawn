@@ -283,6 +283,18 @@ pdf.text "IV.	Event Review Findings", :size => 14, :style => :bold, :spacing => 
     target.alevels.each do |activity| 
       pdf.text "• #{activity.name}", :spacing => 16, :indent_paragraphs => 47
     end
+    pdf.text "Strength(s):", :spacing => 16, :indent_paragraphs => 40
+    target.strengths.each do |stren|
+      pdf.move_down(10)
+      sname = Sanitize.clean(stren.name)
+      pdf.text sname, :spacing => 16, :indent_paragraphs => 47
+    end
+    pdf.text "Area(s) of Improvement:", :spacing => 16, :indent_paragraphs => 40
+    target.improvement_areas.each do |aoi|
+      pdf.move_down(10)
+      aname = Sanitize.clean(aoi.name)
+      pdf.text aname, :spacing => 16, :indent_paragraphs => 47
+    end
     pdf.move_down(3)
     pdf.text "Summary:", :spacing => 16, :indent_paragraphs => 40
       sums = Sanitize.clean(target.summary)
