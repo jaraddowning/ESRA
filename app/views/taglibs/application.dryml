@@ -19,7 +19,7 @@
     </after-scripts:>
     <footer:>
       <div>
-        <a href="#{Rails.root}/privacy.html">EMAP Privacy Policy</a>&nbsp;
+        <a href="http://esra.emaponline.org/privacy.html">EMAP Privacy Policy</a>&nbsp;
         Copyright &#64; 2011 - EMAP
         <a href="&admin_users_url" if="&current_user.administrator?">
           <t key="hobo.admin.subsite_name">Admin</t>
