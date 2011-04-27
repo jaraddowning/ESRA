@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/bryanlarsen/hobo-jquery.git
+  revision: 7277d79bde338efdd6bc36c856671c8dcfd738a4
+  branch: rails3
+  specs:
+    hobo-jquery (1.3.0pre1)
+
+GIT
   remote: git://github.com/sandal/prawn
   revision: fd42b7f457f2274d7e991569ee2e4247f6d75b2c
   submodules: true
@@ -111,6 +118,7 @@ PLATFORMS
 DEPENDENCIES
   bluecloth
   hobo (>= 1.3.0.pre29)
+  hobo-jquery!
   nokogiri
   paperclip
   prawn!

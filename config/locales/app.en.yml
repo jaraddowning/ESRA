@@ -243,7 +243,7 @@ en:
         tpriorities: Exercise Priorities
     attribute_help:
       program:
-        ca_resolved: Use this area to list the resolved corrective actions within the last calendar year.
+        ca_resolved: Use this area to list the top ten (10) resolved corrective actions within the last calendar year.
         ca_summary: Please provide a summary of the agency's corrective action process. Remember, you can always return to this page to update revise, and complete this section.
         ca_tracked: Are the corrective actions prioritized, tracked through completion and analyzed by program managers? (check for yes)
         proc_for_devel: Does the process include taking observations and recommendations and developing corrective actions? (check for yes)

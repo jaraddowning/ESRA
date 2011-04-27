@@ -32,6 +32,7 @@ gem 'sqlite3'
 gem "hobo", ">= 1.3.0.pre29"
 gem "paperclip"
 gem "bluecloth"
+gem "hobo-jquery", :git => "git://github.com/bryanlarsen/hobo-jquery.git", :branch => "rails3"
 gem "ttfunk", :git => "https://github.com/sandal/ttfunk.git"
 gem 'prawn', :git => "git://github.com/sandal/prawn", :submodules => true
 gem 'nokogiri'

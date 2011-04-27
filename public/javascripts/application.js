@@ -10,3 +10,8 @@
 //         });
 //     }
 //});
+
+jQuery(function() {
+	jQuery( "button, input:save, a", ".demo" ).button();
+	jQuery( "a", ".demo" ).click(function() { return false; });
+});
