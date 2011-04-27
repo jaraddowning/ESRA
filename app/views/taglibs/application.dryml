@@ -16,10 +16,8 @@
       <hjq-assets/>
     </custom-scripts:>
     <after-scripts:>
-      <javascript name="jquery.autosave"/>
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
-      <javascript name="saveform"/>
     </after-scripts:>
     <footer:>
       <div>
@@ -33,13 +31,14 @@
   </old-page>
 </extend>
 
-<extend tag="page">
-  <old-page merge>
-    <custom-scripts:>
-      <hjq-assets/>
-    </custom-scripts>
-  </old-page>
-</extend>
+<def tag="annotate-tag">
+  <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
+</def>
+
+<!--THIS IS NOT WORKING-->
+<def tag="input" for="Date"> 
+  <hjq-datepicker dateFormat="mm-dd-yy" merge /> 
+</def>
 
 <!-- ====== Breadcrumb Navigation ====== 
 
@@ -76,9 +75,6 @@
   </old-edit-page>
 </extend>-->
 
-<extend tag="input" for="date">
-   <old-input merge order="month,day,year" start-year="&2006" end-year="&2011" />
-</extend>
 
 <!--   CARD DEFINITIONS       -->
 
@@ -229,8 +225,8 @@
       <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
     <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/>
     <div param="actions">
-      <button>Quick Save</button>
       <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
+      <a with="&Program">Submit</a>
     </div>
   </form>
 </def>>
@@ -278,12 +274,6 @@
   </form>
 </def>
 
-<!--<extend tag="form" for="Upload">
-  <old-form multipart merge>
-    <after-submit: uri="#{url_for(this_parent)}" />
-    <field-list: fields="name, proof"/>
-  </old-form>
-</extend>-->
 
 <def tag="form" for="Eeca">
   <form merge param="default">
@@ -525,26 +515,6 @@
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
-<!--THIS SECTION IS UNDER DEVELOPMENT. There is an issue with saving the document to the server
-            <section param="uploads-collection-section">
-              <h3 param="uploads-collection-heading">
-                <ht key="upload.collection.heading" count="&this.uploads.count" >
-                  <human-collection-name collection="uploads" your/>
-                </ht>
-              </h3>
-              <collection:uploads param="uploads-collection"/>
-              <section param="add-to-collection" if="&can_create?(@event.uploads)">
-                <h3 param="add-form-heading">
-                  <ht key="upload.collection.add_form_heading" count="1">
-                    Add an Upload
-                  </ht>
-                </h3>
-                <form with="&@upload || new_for_current_user(@event.uploads)" owner="event" message="Uploading..." update="attachments-div" without-cancel reset-form refocus-form reload-page param>
-                  <field-list: skip="event"/>
-                  <submit: label="#{ht 'upload.actions.add', :default=>['Add'] }"/>
-                </form>
-              </section>
-            </section> -->
         </aside>
       </section-group>
     </content:>
