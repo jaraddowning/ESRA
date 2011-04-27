@@ -191,6 +191,19 @@
   </card> 
 </extend>
 
+<extend tag="card" for="Review"> 
+  <old-card merge>
+    <append-body:>
+    <div class="program">
+      Program: <view:program><a/></view><else>None</else>
+    </div>
+    <div class="users">
+      Assigned Reviewers: <repeat:users join=", "><a/></repeat><else>None</else>
+    </div>
+    <a action="edit" if="&can_edit?" param="edit-link" >Edit Review</a>
+  </append-body:>
+  </old-card> 
+</extend>
 
 <!--   FORM DEFINITIONS       -->
 
@@ -241,17 +254,31 @@
   </old-form>
 </extend>
 
-<extend tag="form" for="Upload">
-  <old-form multipart merge>
-    <field-list: fields="name, proof"/>
-  </old-form>
-</extend>
-
 <extend tag="form" for="Tcl">
   <old-form without-cancel>
     <field-list: fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas, summary" />
   </old-form>
 </extend>
+
+
+
+<def tag="form" for="Upload">
+  <form merge param="default">
+    <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
+    <field-list fields="name, proof" param/>
+    <div param="actions">
+      <submit label="#{ht 'upload.actions.save', :default=>['Save']}" param/>
+    </div>
+  </form>
+</def>
+
+<!--<extend tag="form" for="Upload">
+  <old-form multipart merge>
+    <after-submit: uri="#{url_for(this_parent)}" />
+    <field-list: fields="name, proof"/>
+  </old-form>
+</extend>-->
 
 <def tag="form" for="Eeca">
   <form merge param="default">

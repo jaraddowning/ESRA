@@ -45,8 +45,10 @@ class Program < ActiveRecord::Base
   has_many :hiras, :dependent => :destroy
   has_many :eecas, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
-  has_many :reviews, :dependent => :destroy
 
+  has_many :reviews, :dependent => :destroy
+  has_many :revis, :through => :reviews, :source => :reviewers
+  
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
@@ -62,15 +64,15 @@ class Program < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(revis) || owner_is?(acting_user)
   end
 
   def destroy_permitted?
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.administrator? || owner_is?(acting_user)
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(revis) || owner_is?(acting_user)
   end
 
 end

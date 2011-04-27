@@ -37,6 +37,9 @@ en:
       corrective_action:
         one: Corrective Action
         other: Corrective Actions
+      disdec:
+        one: Disaster Declaration
+        other: Disaster Declarations
       event:
         one: Event
         other: Events
@@ -78,7 +81,7 @@ en:
         other: Lessons Learned
       program:
         one: Program
-        other: Program
+        other: Programs
       tcap:
         one: Target Capability
         other: Target Capabilities
@@ -94,9 +97,9 @@ en:
       training_plan:
         one: Exercise Plan
         other: Exercise Plans
-      disdec:
-        one: Disaster Declaration
-        other: Disaster Declarations
+      upload:
+        one: Upload
+        other: Upload
     attributes:
       alevel:
         name: Activity Level
@@ -117,7 +120,7 @@ en:
       eeca:
         ex_prog: Documented Exercise Program
         ex_prog_desc: Program Description
-        ex_prog_doc: Corrective Action Process Documentation
+        ex_prog_doc:  Documentation
         test_sae_frequency: Personnel Test Frequency
         test_epef_frequency: Program Test Frequency
         match_hira: HIRA Based

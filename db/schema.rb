@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110408004953) do
+ActiveRecord::Schema.define(:version => 20110421135749) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -41,13 +41,13 @@ ActiveRecord::Schema.define(:version => 20110408004953) do
 
   create_table "corrective_actions", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tcl_id"
     t.string   "assigned_to"
     t.string   "completed_by"
     t.string   "completed_date"
     t.text     "reviewer_ob"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "tcl_id"
   end
 
   add_index "corrective_actions", ["tcl_id"], :name => "index_corrective_actions_on_tcl_id"
@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(:version => 20110408004953) do
   add_index "disdecs", ["program_id"], :name => "index_disdecs_on_program_id"
 
   create_table "e_open_cas", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.string   "name"
   end
 
   add_index "e_open_cas", ["event_id"], :name => "index_e_open_cas_on_event_id"
@@ -196,36 +196,36 @@ ActiveRecord::Schema.define(:version => 20110408004953) do
   add_index "events", ["program_id"], :name => "index_events_on_program_id"
 
   create_table "funding07_sources", :force => true do |t|
-    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source"
     t.integer  "program_id"
   end
 
   add_index "funding07_sources", ["program_id"], :name => "index_funding07_sources_on_program_id"
 
   create_table "funding08_sources", :force => true do |t|
-    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source"
     t.integer  "program_id"
   end
 
   add_index "funding08_sources", ["program_id"], :name => "index_funding08_sources_on_program_id"
 
   create_table "funding09_sources", :force => true do |t|
-    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source"
     t.integer  "program_id"
   end
 
   add_index "funding09_sources", ["program_id"], :name => "index_funding09_sources_on_program_id"
 
   create_table "funding10_sources", :force => true do |t|
-    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source"
     t.integer  "program_id"
   end
 
@@ -327,7 +327,6 @@ ActiveRecord::Schema.define(:version => 20110408004953) do
   add_index "review_assignments", ["user_id"], :name => "index_review_assignments_on_user_id"
 
   create_table "reviews", :force => true do |t|
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
