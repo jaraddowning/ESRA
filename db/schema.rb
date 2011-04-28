@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421135749) do
+ActiveRecord::Schema.define(:version => 20110428202432) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tcap_id"
     t.integer  "tcl_id"
   end
 
@@ -267,10 +268,10 @@ ActiveRecord::Schema.define(:version => 20110421135749) do
     t.text     "summary"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "event_id"
+    t.integer  "program_id"
   end
 
-  add_index "interviews", ["event_id"], :name => "index_interviews_on_event_id"
+  add_index "interviews", ["program_id"], :name => "index_interviews_on_program_id"
 
   create_table "learned_lessons", :force => true do |t|
     t.string   "title"
@@ -351,9 +352,9 @@ ActiveRecord::Schema.define(:version => 20110421135749) do
 
   create_table "tcaps", :force => true do |t|
     t.string   "name"
-    t.integer  "std_num"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "std_id"
   end
 
   create_table "tcl_goals", :force => true do |t|

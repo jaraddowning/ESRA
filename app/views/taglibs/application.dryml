@@ -225,13 +225,15 @@
     <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
     <hr /><h1>Corrective Action Process</h1><br />
       <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
-    <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/>
+    <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
+    <h2>Reviewer Section</h2>
+    <field-list fields="summary"/><br />
     <div param="actions">
-      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;
-      <a action="show" if="&can_view?" param="show-link">
+      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
+      <a action="show" if="&can_view?" param="show-link"><button>
               <ht key="program.actions.show" name="&this.respond_to?(:name) ? this.name : ''">
-                Submit Form
-              </ht>
+                Submit Program Information
+              </ht></button>
       </a>
     </div>
   </form>
@@ -244,30 +246,45 @@
 </extend>
 
 <extend tag="form" for="LearnedLesson">
-  <old-form multipart merge>
+  <old-form merge without-cancel>
     <field-list: skip="event"/>
   </old-form>
 </extend>
 
 <extend tag="form" for="TrainingPlan">
-  <old-form multipart merge>
+  <old-form merge without-cancel>
     <field-list: skip="program"/>
   </old-form>
 </extend>
 
 <extend tag="form" for="Interview">
-  <old-form multipart merge>
+  <old-form merge without-cancel>
     <field-list: skip="event"/>
   </old-form>
 </extend>
 
+<!--<extend tag="form" for="Tcl">
+    <old-form merge>
+      <field-list: fields="tcap, alevel">
+        <level-view:>
+          <do part="level-menu">
+            <if test="&@tcl.tcap">
+              <select-one options="&@tcl.tcap.alevels" disabled/>
+            </if>
+            <else>
+              <select disabled><option>First choose a Target Capability</option></select>
+            </else>
+          </do>
+        </level-view:>
+      </field-list:>
+    </old-form>
+</extend>-->
+
 <extend tag="form" for="Tcl">
-  <old-form without-cancel>
-    <field-list: fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas, summary" />
-  </old-form>
+    <old-form merge without-cancel>
+      <field-list: fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas, summary" param/>
+    </old-form>
 </extend>
-
-
 
 <def tag="form" for="Upload">
   <form merge param="default">
@@ -430,6 +447,19 @@
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
+          <section param="interviews-collection-section">
+            <h3 param="interviews-collection-heading">
+              <ht key="interview.collection.heading" count="&this.interviews.count" >
+                <human-collection-name collection="interviews" your/>
+              </ht>
+            </h3>
+            <a:interviews action="new" if="&can_create?(@program.interviews)" param="new-link">
+              <ht key="interview.actions.new" count="1">
+                New Interview
+              </ht>
+            </a:interviews>
+            <collection:interviews  param="interviews-collection"/>
+          </section><br /><hr /><br />
         </aside>
       </section-group>
     </content:>
@@ -494,19 +524,6 @@
               </ht>
             </a:learned_lessons>
             <collection:learned_lessons  param="learned_lessons-collection"/>
-          </section><br /><hr /><br />
-          <section param="interviews-collection-section">
-            <h3 param="interviews-collection-heading">
-              <ht key="interview.collection.heading" count="&this.interviews.count" >
-                <human-collection-name collection="interviews" your/>
-              </ht>
-            </h3>
-            <a:interviews action="new" if="&can_create?(@event.interviews)" param="new-link">
-              <ht key="interview.actions.new" count="1">
-                New Interview
-              </ht>
-            </a:interviews>
-            <collection:interviews  param="interviews-collection"/>
           </section><br /><hr /><br />
           <section param="uploads-collection-section">
             <h3 param="uploads-collection-heading">

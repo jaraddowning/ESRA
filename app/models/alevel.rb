@@ -4,11 +4,10 @@ class Alevel < ActiveRecord::Base
 
   fields do
     name     :string
-    #tcap_id  :integer
+    tcap_id  :integer
     timestamps
   end
 
-  #belongs_to :tcap
   belongs_to :tcl
 
   # --- Permissions --- #

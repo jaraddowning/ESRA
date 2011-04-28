@@ -39,15 +39,15 @@ class Program < ActiveRecord::Base
   has_many :funding09_sources, :dependent => :destroy, :accessible => true
   has_many :funding10_sources, :dependent => :destroy, :accessible => true
 
-  has_many :events, :dependent => :destroy, :autosave => true
+  has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy
   has_many :disdecs, :dependent => :destroy
   has_many :hiras, :dependent => :destroy
   has_many :eecas, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
+  has_many :interviews, :dependent => :destroy
 
   has_many :reviews, :dependent => :destroy
-  has_many :revis, :through => :reviews, :source => :reviewers
   
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
@@ -60,11 +60,11 @@ class Program < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator? || acting_user.program?
   end
 
   def update_permitted?
-    acting_user.administrator? || acting_user.in?(revis) || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
   def destroy_permitted?
@@ -72,7 +72,7 @@ class Program < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.in?(revis) || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
 end

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   fields do
     name          :string, :required, :unique
     email_address :email_address, :login => true
-    agency        :string#, :required, :unique
-    job_title     :string#, :required, :unique
+    agency        :string
+    job_title     :string
     administrator :boolean, :default => false
     reviewer      :boolean, :default => false
     program       :boolean, :default => false
