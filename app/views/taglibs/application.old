@@ -35,6 +35,11 @@
   <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
 </def>
 
+<!--THIS IS NOT WORKING-->
+<def tag="input" for="Date"> 
+  <hjq-datepicker dateFormat="mm-dd-yy" merge /> 
+</def>
+
 <!-- ====== Breadcrumb Navigation ====== 
 
 <extend tag="new-page">

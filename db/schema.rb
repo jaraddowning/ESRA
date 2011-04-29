@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428202432) do
+ActiveRecord::Schema.define(:version => 20110429132450) do
 
   create_table "alevels", :force => true do |t|
     t.string   "name"
@@ -322,8 +322,10 @@ ActiveRecord::Schema.define(:version => 20110428202432) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "review_id"
+    t.integer  "program_id"
   end
 
+  add_index "review_assignments", ["program_id"], :name => "index_review_assignments_on_program_id"
   add_index "review_assignments", ["review_id"], :name => "index_review_assignments_on_review_id"
   add_index "review_assignments", ["user_id"], :name => "index_review_assignments_on_user_id"
 

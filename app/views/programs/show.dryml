@@ -1,0 +1,8 @@
+<show-page>
+  <events-collection: replace>
+    <table-plus with="&@events" fields="this, event_date, tcls.count">
+      <empty-message:>No events match your criteria</empty-message:>
+      <controls:/>
+    </table-plus>
+  </events-collection:>
+</show-page>

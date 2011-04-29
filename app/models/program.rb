@@ -47,7 +47,8 @@ class Program < ActiveRecord::Base
   has_many :uploads, :dependent => :destroy
   has_many :interviews, :dependent => :destroy
 
-  has_many :reviews, :dependent => :destroy
+  has_many :review_assignments
+  has_many :reviewers, :through => :review_assignments, :source => :user
   
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
