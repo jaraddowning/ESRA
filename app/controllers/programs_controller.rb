@@ -11,6 +11,12 @@ class ProgramsController < ApplicationController
                 :order_by => parse_sort_param(:event_date, :event_name))
 
     @program = Program.find(params[:id])
+
+# => Trying to convert boolean to Yes:No
+#    scopes
+#    scopes[:continuous_ca_plan] = true if params[:continuous_ca_plan]._?.== 'Yes'
+#    scopes[:continuous_ca_plan] = false if params[:continuous_ca_plan]._?.== 'No'
+#    hobo_show Program.apply_scopes(scopes)
     
     hobo_show do |format|
       format.html # show.html.erb

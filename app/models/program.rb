@@ -47,6 +47,7 @@ class Program < ActiveRecord::Base
   has_many :uploads, :dependent => :destroy
   has_many :interviews, :dependent => :destroy
 
+  has_many :reviews
   has_many :review_assignments
   has_many :reviewers, :through => :review_assignments, :source => :user
   
