@@ -35,5 +35,6 @@ gem "paperclip"
 gem "bluecloth"
 gem "hobo-jquery", :git => "git://github.com/bryanlarsen/hobo-jquery.git", :branch => "rails3"
 gem 'prawn'
+gem 'pdf-reader'
 gem 'nokogiri'
 gem 'sanitize', :submodules => true

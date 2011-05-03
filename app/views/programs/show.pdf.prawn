@@ -174,12 +174,15 @@
   pdf.move_down(8)
   pdf.text "Corrective Action Process Summary:", :spacing => 16, :size => 12, :indent_paragraphs => 37
   caps = Sanitize.clean(@program.ca_summary)
-  pdf.text caps, :spacing => 16, :size => 12, :indent_paragraphs => 40
+  pdf.span(350, :position => :center) do
+    pdf.text caps, :spacing => 16, :size => 12, :indent_paragraphs => 20
+  end
   pdf.move_down(12)
   pdf.text "Resolved Corrective Actions in the previous year:", :spacing => 16, :size => 12, :indent_paragraphs => 37
   capr = Sanitize.clean(@program.ca_resolved)
-  pdf.text capr, :spacing => 16, :size => 12, :indent_paragraphs => 40
-
+  pdf. span(350, :position => :center) do
+    pdf.text capr, :spacing => 16, :size => 12, :indent_paragraphs => 40
+  end
 
 
   #   Disaster Declarations
@@ -354,7 +357,9 @@
       pdf.move_down(3)
       pdf.text "• #{lesson.title}", :spacing => 16, :indent_paragraphs => 42
         lsl = Sanitize.clean(lesson.description)
-      pdf.text lsl, :spacing => 16, :indent_paragraphs => 47
+      pdf.span(350, :position => :center) do
+        pdf.text lsl, :spacing => 16, :indent_paragraphs => 20
+      end
     end
 
     #     Uploads *EVENT*
@@ -384,10 +389,9 @@
 
   #   Page Numbering
   #pdf.number_pages "<page> of <total>", [pdf.bounds.right - 50, 0]
-  pdf.bounding_box [530, 10], :width => 30 do
+  pdf.bounding_box [510, 10], :width => 30 do
     pdf.page_count.times do |i|
        pdf.go_to_page(i+1)
        pdf.text "#{i + 1}", :align => :left, :size => 9
     end
   end
-end

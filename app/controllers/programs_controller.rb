@@ -19,9 +19,9 @@ class ProgramsController < ApplicationController
 #    hobo_show Program.apply_scopes(scopes)
     
     hobo_show do |format|
-      format.html # show.html.erb
+      format.html
       format.xml { render :xml => @program }
-      #format.pdf { render :layout => false }
+      #format.pdf
       format.pdf do
         prawnto :prawn => { :top_margin => 72, :left_margin => 72, :right_margin => 72 }#, :filename => "Report#{id}.pdf"
       end
