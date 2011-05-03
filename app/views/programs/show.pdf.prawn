@@ -1,6 +1,4 @@
 #  Report Generator
-require 'prawn'
-  pdf = Prawn::Document.new
   pdf.render_file('public/documents/report.pdf')
 
   logopath = "#{Rails.root}/public/images/emap_logo.jpg"
@@ -241,134 +239,133 @@ require 'prawn'
   pdf.move_down(12)
   pdf.text "IV. Event Review Findings", :size => 16, :style => :bold, :spacing => 5
   @program.events.each do |item|
-    pdf.page_count.times do |i|
-      pdf.move_down(10)
-      pdf.text "#{i + 1}. Event: #{item.event_name}", :size => 13, :style => :bold, :spacing => 5, :indent_paragraphs => 20
-      pdf.move_down(8)
-      pdf.text "Event Start Date: #{item.event_date.strftime("%b %d %y")}", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event End Date: #{item.event_end_date.strftime("%b %d %y")}", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event Duration: #{item.event_duration}", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event State: #{item.event_state}", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event Location(s)/Site(s):", :indent_paragraphs => 30
+    pdf.move_down(10)
+    pdf.text "Event: #{item.event_name}", :size => 13, :style => :bold, :spacing => 5, :indent_paragraphs => 20
+    pdf.move_down(8)
+    pdf.text "Event Start Date: #{item.event_date.strftime("%b %d %y")}", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event End Date: #{item.event_end_date.strftime("%b %d %y")}", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event Duration: #{item.event_duration}", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event State: #{item.event_state}", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event Location(s)/Site(s):", :indent_paragraphs => 30
+    pdf.move_down(3)
+    item.elocations.each do |location|
+      pdf.text "• #{location.name}", :indent_paragraphs => 42
+    end
+    pdf.move_down(8)
+    pdf.text "Event Type: #{item.event_type}", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event Host(s):", :indent_paragraphs => 30
+    pdf.move_down(3)
+    item.ehosts.each do |hist|
+      pdf.text "• #{hist.host}", :indent_paragraphs => 42
+    end
+    pdf.move_down(8)
+    pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
+    pdf.move_down(3)
+    item.efundings.each do |fend|
+      pdf.text "• #{fend.name}", :indent_paragraphs => 42
+    end
+    pdf.move_down(8)
+    pdf.text "Event Goals:", :indent_paragraphs => 30
+    pdf.move_down(3)
+    item.egoals.each do |goal|
+      pdf.text "• #{goal.name}", :indent_paragraphs => 42
+    end
+    pdf.move_down(8)
+    pdf.text "Event Scenario: #{item.event_scenario}", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event Scenario Summary:", :indent_paragraphs => 30
+    pdf.move_down(3)
+    sums = Sanitize.clean(item.event_scenario_summary)
+    pdf.text sums, :indent_paragraphs => 42
+    pdf.move_down(8)
+    pdf.text "Statewide Event and/or MutiState Event: ", :indent_paragraphs => 30
+    pdf.move_down(8)
+    pdf.text "Event Participants:", :indent_paragraphs => 30
+    pdf.move_down(3)
+    item.eparticipants.each do |participant|
+      pdf.text "• #{participant.name}", :indent_paragraphs => 42
+    end
+    pdf.move_down(8)
+    pdf.text "Role of the State Emergency Management Program:", :spacing => 16, :indent_paragraphs => 30
+    roll = Sanitize.clean(item.ema_role)
+    pdf.text roll, :spacing => 16, :indent_paragraphs => 30
+
+    #       TCL Data
+    pdf.move_down(12)
+    pdf.text "Target Capabilities, Corrective Actions & Strengths:", :size => 13, :spacing => 16, :style => :bold, :indent_paragraphs => 30
+    pdf.move_down(8)
+    item.tcls.each do |target|
+      pdf.text "#{target.tcap}", :spacing => 16, :indent_paragraphs => 42
       pdf.move_down(3)
-      item.elocations.each do |location|
-        pdf.text "• #{location.name}", :indent_paragraphs => 42
+      pdf.text "Activity Level(s):", :spacing => 16, :indent_paragraphs => 42
+      target.alevels.each do |activity| 
+        pdf.text "• #{activity.name}", :spacing => 16, :indent_paragraphs => 47
       end
       pdf.move_down(8)
-      pdf.text "Event Type: #{item.event_type}", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event Host(s):", :indent_paragraphs => 30
+      pdf.text "Strength(s):", :spacing => 16, :indent_paragraphs => 42
       pdf.move_down(3)
-      item.ehosts.each do |hist|
-        pdf.text "• #{hist.host}", :indent_paragraphs => 42
+      target.strengths.each do |stren|
+        sname = Sanitize.clean(stren.name)
+        pdf.text sname, :spacing => 16, :indent_paragraphs => 47
       end
       pdf.move_down(8)
-      pdf.text "Event Funding Source(s):", :indent_paragraphs => 30
+      pdf.text "Area(s) of Improvement:", :spacing => 16, :indent_paragraphs => 42
       pdf.move_down(3)
-      item.efundings.each do |fend|
-        pdf.text "• #{fend.name}", :indent_paragraphs => 42
+      target.improvement_areas.each do |aoi|
+        aname = Sanitize.clean(aoi.name)
+        pdf.text aname, :spacing => 16, :indent_paragraphs => 47
       end
       pdf.move_down(8)
-      pdf.text "Event Goals:", :indent_paragraphs => 30
+      pdf.text "Summary:", :spacing => 16, :indent_paragraphs => 42
       pdf.move_down(3)
-      item.egoals.each do |goal|
-        pdf.text "• #{goal.name}", :indent_paragraphs => 42
-      end
-      pdf.move_down(8)
-      pdf.text "Event Scenario: #{item.event_scenario}", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event Scenario Summary:", :indent_paragraphs => 30
-      pdf.move_down(3)
-      sums = Sanitize.clean(item.event_scenario_summary)
-      pdf.text sums, :indent_paragraphs => 42
-      pdf.move_down(8)
-      pdf.text "Statewide Event and/or MutiState Event: ", :indent_paragraphs => 30
-      pdf.move_down(8)
-      pdf.text "Event Participants:", :indent_paragraphs => 30
-      pdf.move_down(3)
-      item.eparticipants.each do |participant|
-        pdf.text "• #{participant.name}", :indent_paragraphs => 42
-      end
-      pdf.move_down(8)
-      pdf.text "Role of the State Emergency Management Program:", :spacing => 16, :indent_paragraphs => 30
-      roll = Sanitize.clean(item.ema_role)
-      pdf.text roll, :spacing => 16, :indent_paragraphs => 30
-  
-      #       TCL Data
+        sums = Sanitize.clean(target.summary)
+      pdf.text sums, :spacing => 16, :indent_paragraphs => 47
+
+
+      #     Corrective Actions
       pdf.move_down(12)
-      pdf.text "Target Capabilities, Corrective Actions & Strengths:", :size => 13, :spacing => 16, :style => :bold, :indent_paragraphs => 30
+      pdf.text "Corrective Actions:", :spacing => 16, :indent_paragraphs => 42
+      target.corrective_actions.each do |cas|
+        pdf.move_down(8)
+        pdf.text "• #{cas.name}", :spacing => 16, :indent_paragraphs => 42
+        pdf.move_down(3)
+        pdf.text "Assigned To: #{cas.assigned_to}", :indent_paragraphs => 47
+        pdf.text "Completed By: #{cas.completed_by}", :indent_paragraphs => 47
+        pdf.text "Completed Date: #{cas.completed_date}", :indent_paragraphs => 47
+        pdf.move_down(8)
+          robs = Sanitize.clean(cas.reviewer_ob)
+        pdf.text "Reviewer Findings:", :indent_paragraphs => 40
+        pdf.text robs, :indent_paragraphs => 47
+      end
       pdf.move_down(8)
-      item.tcls.each do |target|
-        pdf.text "#{target.tcap}", :spacing => 16, :indent_paragraphs => 42
-        pdf.move_down(3)
-        pdf.text "Activity Level(s):", :spacing => 16, :indent_paragraphs => 42
-        target.alevels.each do |activity| 
-          pdf.text "• #{activity.name}", :spacing => 16, :indent_paragraphs => 47
-        end
-        pdf.move_down(8)
-        pdf.text "Strength(s):", :spacing => 16, :indent_paragraphs => 42
-        pdf.move_down(3)
-        target.strengths.each do |stren|
-          sname = Sanitize.clean(stren.name)
-          pdf.text sname, :spacing => 16, :indent_paragraphs => 47
-        end
-        pdf.move_down(8)
-        pdf.text "Area(s) of Improvement:", :spacing => 16, :indent_paragraphs => 42
-        pdf.move_down(3)
-        target.improvement_areas.each do |aoi|
-          aname = Sanitize.clean(aoi.name)
-          pdf.text aname, :spacing => 16, :indent_paragraphs => 47
-        end
-        pdf.move_down(8)
-        pdf.text "Summary:", :spacing => 16, :indent_paragraphs => 42
-        pdf.move_down(3)
-          sums = Sanitize.clean(target.summary)
-        pdf.text sums, :spacing => 16, :indent_paragraphs => 47
-  
-  
-        #     Corrective Actions
-        pdf.move_down(12)
-        pdf.text "Corrective Actions:", :spacing => 16, :indent_paragraphs => 42
-        target.corrective_actions.each do |cas|
-          pdf.move_down(8)
-          pdf.text "• #{cas.name}", :spacing => 16, :indent_paragraphs => 42
-          pdf.move_down(3)
-          pdf.text "Assigned To: #{cas.assigned_to}", :indent_paragraphs => 47
-          pdf.text "Completed By: #{cas.completed_by}", :indent_paragraphs => 47
-          pdf.text "Completed Date: #{cas.completed_date}", :indent_paragraphs => 47
-          pdf.move_down(8)
-            robs = Sanitize.clean(cas.reviewer_ob)
-          pdf.text "Reviewer Findings:", :indent_paragraphs => 40
-          pdf.text robs, :indent_paragraphs => 47
-        end
-        pdf.move_down(8)
-        pdf.text "Improvement Plan Provided: #{target.improvement_plan}", :spacing => 16, :indent_paragraphs => 42
-        pdf.text "Improvement Plan Completed: #{target.improvement_plan_completed}", :spacing => 16, :indent_paragraphs => 42
-      end
-  
-      #     Lessons Learned
-      pdf.move_down(12)
-      pdf.text "Lessons Learned:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
-      item.learned_lessons.each do |lesson|
-        pdf.move_down(3)
-        pdf.text "• #{lesson.title}", :spacing => 16, :indent_paragraphs => 42
-          lsl = Sanitize.clean(lesson.description)
-        pdf.text lsl, :spacing => 16, :indent_paragraphs => 47
-      end
-  
-      #     Uploads *EVENT*
-      pdf.move_down(12)
-      pdf.text "Documents Reviewed", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+      pdf.text "Improvement Plan Provided: #{target.improvement_plan}", :spacing => 16, :indent_paragraphs => 42
+      pdf.text "Improvement Plan Completed: #{target.improvement_plan_completed}", :spacing => 16, :indent_paragraphs => 42
+    end
+
+    #     Lessons Learned
+    pdf.move_down(12)
+    pdf.text "Lessons Learned:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+    item.learned_lessons.each do |lesson|
       pdf.move_down(3)
-      item.uploads.each do |proof|
-        pdf.text "• #{proof.proof_file_name}", :spacing => 16, :size => 12, :indent_paragraphs => 37
-      end
+      pdf.text "• #{lesson.title}", :spacing => 16, :indent_paragraphs => 42
+        lsl = Sanitize.clean(lesson.description)
+      pdf.text lsl, :spacing => 16, :indent_paragraphs => 47
+    end
+
+    #     Uploads *EVENT*
+    pdf.move_down(12)
+    pdf.text "Documents Reviewed", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+    pdf.move_down(3)
+    item.uploads.each do |proof|
+      pdf.text "• #{proof.proof_file_name}", :spacing => 16, :size => 12, :indent_paragraphs => 37
     end
   end
+
   #   Uploads *PROGRAM*
   @program.uploads.each do |docs|
     pdf.text "• #{docs.proof_file_name}", :spacing => 16, :size => 12, :indent_paragraphs => 37
@@ -393,3 +390,4 @@ require 'prawn'
        pdf.text "#{i + 1}", :align => :left, :size => 9
     end
   end
+end
