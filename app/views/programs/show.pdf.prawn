@@ -1,4 +1,5 @@
 #  Report Generator
+#prawn_document do |pdf|
 
   logopath = "#{Rails.root}/public/images/emap_logo.jpg"
   sigpath = "#{Rails.root}/public/images/NI_sig.png"
@@ -412,4 +413,6 @@
     end
   end
 
-  pdf.render_file('public/documents/report.pdf')
+  pdf.render_file('public/documents/ESR_Report_#{id}.pdf')
+
+#end

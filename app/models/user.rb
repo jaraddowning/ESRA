@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     create :invite,
            :available_to => "acting_user if acting_user.administrator?",
            :subsite => "admin",
-           :params => [:name, :email_address],
+           :params => [:name, :email_address, :agency, :job_title],
            :new_key => true,
            :become => :invited do
        UserMailer.invite(self, lifecycle.key).deliver
