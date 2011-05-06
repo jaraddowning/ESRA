@@ -14,7 +14,7 @@
         </ul>
         <br />
         <br />
-		  <p><font size="9">All graphical webbrowsers will work with this website. We recommend using Internet Explorer 9, Google Chrome, or Mozilla Firefox to use this website.</font></p>
+		  <p><font size=9>All graphical webbrowsers will work with this website. We recommend using Internet Explorer 9, Google Chrome, or Mozilla Firefox to use this website.</font></p>
         <% if User.count == 0 -%>
           <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
           <form with="&this || User.new" without-cancel>
