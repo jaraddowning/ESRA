@@ -4,9 +4,10 @@
 
   <content:>
     <header class="content-header">
-      <h1>Welcome to <app-name/></h1>
+      <h1><app-name/></h1>&nbsp;<h2>The Event Strategic Review Online Application</h2>
       <section class="welcome-message">
         <h3>Event Strategic Review by EMAP</h3><br />
+        
         <ul>
           <li><a href="http://esra.emaponline.org/documents/esra_manual.doc" target="_blank">Click here for the ESRA User's Manual</a></li><br />
           <li><a href="http://esra.emaponline.org/documents/tcl.pdf" target='_blank'>Click here for the DHS FEMA 2007 Target Capabilities</a></li><br />
@@ -14,7 +15,7 @@
         </ul>
         <br />
         <br />
-		  <p><font size=9>All graphical webbrowsers will work with this website. We recommend using Internet Explorer 9, Google Chrome, or Mozilla Firefox to use this website.</font></p>
+		  <p><font id="wb-disclaimer">All graphical web browsers will work with this website however, we recommend using <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer 9</a>, <a href="http://www.google.com/chrome/">Google Chrome</a>, or <a href="http://www.mozilla.com/en-US/firefox/new/">Mozilla Firefox</a> to achieve full functionality.</font></p>
         <% if User.count == 0 -%>
           <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
           <form with="&this || User.new" without-cancel>
@@ -22,12 +23,14 @@
             <submit: label="Register Administrator"/>
           </form>
         <% end -%>
-
-
       </section>
     </header>
 
     <section class="content-body">
+    <div id="sn-class">
+		<a class="sn-link" href="http://twitter.com/#!/EMAP_US" target="_blank"><img src="../images/twitter.png" alt="Follow us on Twitter"/></a>
+		<a class="sn-link" href="http://www.facebook.com/group.php?gid=76820551288" target="_blank" ><img src="../images/facebook.png" alt="Visit our Facebook Page" /></a>
+	 </div>    
     </section>
   </content:>
 

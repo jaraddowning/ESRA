@@ -1,6 +1,6 @@
 body {
 	background: url(../images/webbackground.png) -150px -5px no-repeat;
-	background-color: #B6A9DA;	
+	background-color: #4E81B8;	
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 }
@@ -16,6 +16,10 @@ a:link {
 	color: #235;
 	background: none;
 	border-bottom: 1px solid #235;
+}
+
+ul {
+	padding-left: 20px;
 }
 
 a:visited {
@@ -80,4 +84,16 @@ div.aside {
 	-moz-border-radius: 10px;
 	background-color: #EDEDED;
 	background-image: url(../images/50-B6C9DA-EDEDED.png);
+}
+
+a.sn-link {
+	border: none;
+}
+
+div#sn-class {
+	text-align: right;
+} 
+
+font#wb-disclaimer {
+	font-size: 10px;
 }

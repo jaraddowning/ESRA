@@ -18,6 +18,10 @@ a:link {
 	border-bottom: 1px solid #235;
 }
 
+ul {
+	padding-left: 20px;
+}
+
 a:visited {
 	color: #193440;
 	background: none;
@@ -80,4 +84,16 @@ div.aside {
 	-moz-border-radius: 10px;
 	background-color: #EDEDED;
 	background-image: url(../images/50-B6C9DA-EDEDED.png);
+}
+
+a.sn-link {
+	border: none;
+}
+
+div#sn-class {
+	text-align: right;
+} 
+
+font#wb-disclaimer {
+	font-size: 11px;
 }
