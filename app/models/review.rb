@@ -11,6 +11,9 @@ class Review < ActiveRecord::Base
 
   has_many :review_assignments, :dependent => :destroy
   has_many :reviewers, :through => :review_assignments, :source => :user, :accessible => true
+  
+  children :review_assignments
+  children :reviewers
 
   # --- Permissions --- #
 

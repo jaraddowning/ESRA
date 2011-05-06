@@ -47,10 +47,12 @@ class Program < ActiveRecord::Base
   has_many :uploads, :dependent => :destroy
   has_many :interviews, :dependent => :destroy
 
+
   has_many :reviews
-  has_many :review_assignments
-  has_many :reviewers, :through => :review_assignments, :source => :user
-  
+  has_many :review_assignments, :through => :reviews
+  has_many :reviewers, :through => :review_assignments
+
+
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
@@ -62,7 +64,7 @@ class Program < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator? || acting_user.program?
+    acting_user.administrator? || acting_user.signed_up?
   end
 
   def update_permitted?

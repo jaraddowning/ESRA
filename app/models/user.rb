@@ -61,6 +61,8 @@ class User < ActiveRecord::Base
   def signed_up?
     state=="active"
   end
+  
+  children :reviews
 
   # --- Permissions --- #
 

@@ -11,7 +11,7 @@
 <set-theme name="clean-sidemenu"/>
 
 <extend tag="page">
-  <old-page merge without-live-search>
+  <old-page merge without-live-search without-count>
     <custom-scripts:>
       <hjq-assets/>
     </custom-scripts:>
@@ -443,7 +443,7 @@
               <ht key="upload.actions.new" count="1"></ht>
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
-          </section>
+          </section><hr /><br />
           <section param="interviews-collection-section">
             <h3 param="interviews-collection-heading">
               <ht key="interview.collection.heading" count="&this.interviews.count" >
@@ -456,7 +456,7 @@
               </ht>
             </a:interviews>
             <collection:interviews  param="interviews-collection"/>
-          </section><br /><hr /><br />
+          </section>
         </aside>
       </section-group>
     </content:>
@@ -540,3 +540,5 @@
     </content:>
   </page>
 </def>
+
+
