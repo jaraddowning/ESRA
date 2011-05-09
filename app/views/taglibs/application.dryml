@@ -444,19 +444,19 @@
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section><hr /><br />
-          <section param="interviews-collection-section">
+          <!--<section param="interviews-collection-section">
             <h3 param="interviews-collection-heading">
               <ht key="interview.collection.heading" count="&this.interviews.count" >
                 <human-collection-name collection="interviews" your/>
               </ht>
             </h3>
-            <!--<a:interviews action="new" if="&can_create?(@program.interviews)" param="new-link">
+            <a:interviews action="new" if="&can_create?(@program.interviews)" param="new-link">
               <ht key="interview.actions.new" count="1">
                 New Interview
               </ht>
             </a:interviews>
-            <collection:interviews  param="interviews-collection"/>-->
-          </section>
+            <collection:interviews  param="interviews-collection"/>
+          </section>-->
         </aside>
       </section-group>
     </content:>

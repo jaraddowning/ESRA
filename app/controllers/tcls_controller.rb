@@ -4,7 +4,7 @@ class TclsController < ApplicationController
 
   auto_actions :all, :except => :index
 
-  auto_actions_for :event, :new
+  auto_actions_for :event, [:new, :create]
 
 
 #  def new
