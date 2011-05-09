@@ -286,20 +286,20 @@
 </extend>
 
 <def tag="form" for="Upload">
-  <form merge param="default">
+  <form enctype="multipart/form-data" merge>
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
-    <field-list fields="name, proof" param/>
+    <field-list fields="name, proof" />
     <div param="actions">
-      <submit label="#{ht 'upload.actions.save', :default=>['Save']}" param/>
+      <submit label="#{ht 'upload.actions.save', :default=>['Save']}" />
     </div>
   </form>
 </def>
 
-
 <def tag="form" for="Eeca">
   <form merge param="default">
     <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
       <h1>4.14: Exercises, Evaluations and Corrective Actions</h1><hr /><br />
       <h2>Overview</h2><p>An accredited Emergency Management Program will encompass an exercise, evaluation and corrective action process.</p><hr /><br />
       <h3>4.14.1</h3><p> A documented exercise program is established that regularly tests the skills, abilities, and experience of emergency personnel as well as the plans, policies, procedures, equipment, and facilities of the Emergency Management Program. The exercise program is tailored to the range of hazards that confronts the jurisdiction.</p><hr /><br />
@@ -317,6 +317,7 @@
 <def tag="form" for="Hira">
   <form merge param="default">
     <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
     <h1>4.3: Hazard Identification, Risk Assessment and Consequence Analysis</h1>
     <h2>Overview</h2><p>An accredited Emergency Management Program will encompass a Hazard Identification, Risk Assessment (HIRA) and Consequence Analysis.  The chapter includes responsibilities and activities associated with the identification of hazards and assessment of risks to persons, public and private property and structures.</p><hr /><br />
     <h3>4.3.1</h3><p>The Emergency Management Program shall identify the natural and human-caused hazards that potentially impact the jurisdiction using a broad range of sources.  The Emergency Management Program shall assess the risk and vulnerability of people, property, the environment, and its own operations from these hazards.</p><hr /><br />
@@ -331,6 +332,7 @@
 <def tag="form" for="Disdec">
   <form merge without-heading param="default">
     <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
     <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><hr /><br />
     <field-list fields="disaster_declarations" param/>
     <div param="actions">
