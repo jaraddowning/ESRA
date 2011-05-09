@@ -210,7 +210,7 @@
   <form merge param="default">
     <error-messages param/>
     <h1>General Program Information</h1>
-    <field-list fields="name, program_jurisdiction, program_street, program_city, program_zip" param/><br />
+    <field-list fields="name, program_jurisdiction, program_street, program_city, program_state, program_zip" param/><br />
     <h1>Event Strategic Review Contact Information</h1>
     <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
     <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
