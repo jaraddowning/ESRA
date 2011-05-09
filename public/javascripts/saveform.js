@@ -1,4 +1,4 @@
-jQuery(function($) {
+jQuery(function(jQuery) {
   jQuery("form").autosave({
     callbacks: {
       trigger: ["change", function() {
