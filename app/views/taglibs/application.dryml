@@ -252,17 +252,25 @@
 <def tag="form" for="Eeca">
   <form merge param="default">
     <error-messages param/>
-    <after-submit uri="#{url_for(this_parent)}" />
       <h1>4.14: Exercises, Evaluations and Corrective Actions</h1><hr /><br />
       <h2>Overview</h2><p>An accredited Emergency Management Program will encompass an exercise, evaluation and corrective action process.</p><hr /><br />
       <h3>4.14.1</h3><p> A documented exercise program is established that regularly tests the skills, abilities, and experience of emergency personnel as well as the plans, policies, procedures, equipment, and facilities of the Emergency Management Program. The exercise program is tailored to the range of hazards that confronts the jurisdiction.</p><hr /><br />
     <field-list fields="ex_prog, ex_prog_desc, ex_prog_doc, test_sae_frequency, test_epef_frequency, match_hira" param/><br />
+     <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/>
+      <hr /><br />
       <h3>4.14.2</h3><p>The Emergency Management Program shall evaluate plans, procedures, and capabilities through periodic reviews, testing, post-incident reports, lessons learned, performance evaluations, exercises and real-world events.  The products of these evaluations are documented and disseminated within the Emergency Management Program including and to key stakeholders and selected partners.</p><hr /><br />
     <field-list fields="ex_eval_proc, eep_desc, eep_doc, plans_procs_review, pp_rev_frequency, caps_reviewed, partners" param/><br />
+     <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/>
+      <hr /><br />
       <h3>4.14.3</h3><p>A process for corrective actions shall be established and implemented to prioritize and track the resolution of deficiencies in real world and exercise events.  Corrective actions identified in the corrective action process shall be used to revise relevant plans.</p><hr /><br />
     <field-list fields="ca_proc, resolution_desc, resolution_doc" param/>
     <div param="actions">
-      <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/>
+      <submit label="#{ht 'eeca.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
+      <a action="show" if="&can_view?" param="show-link"><button>
+              <ht key="eeca.actions.show" name="&this.respond_to?(:name) ? this.name : ''">
+                Submit EMAP 4.14 Information
+              </ht></button>
+      </a>
     </div>
   </form>
 </def>
