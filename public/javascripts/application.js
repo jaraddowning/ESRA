@@ -12,3 +12,13 @@
 //     }
 //});
 
+var last_added;
+var last_removed;
+Program.addBehavior({
+  '.funding07_sources:rapid:add' : function(ev) {
+    last_added = ev.memo.element;
+  },
+  '.funding07_sources:rapid:remove' : function(ev) {
+    if(!confirm("really?")) ev.stop();
+  }
+});

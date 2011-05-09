@@ -6,10 +6,10 @@ body {
 }
 
 div.page-header h1.app-name {
-    text-indent: -10000px;
-    background: url(../images/EMAPlogo.png) 70px 5px no-repeat;
-    padding: 10px 10px 10px 10px; margin: 0;
-    height: 62px;
+  text-indent: -10000px;
+  background: url(../images/EMAPlogo.png) 70px 5px no-repeat;
+  padding: 10px 10px 10px 10px; margin: 0;
+  height: 62px;
 }
 
 a:link {
@@ -31,6 +31,7 @@ a:visited {
 li {
 	margin-left: 0;
 }
+
 td#main-nav-container {
 	border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -96,4 +97,12 @@ div#sn-class {
 
 font#wb-disclaimer {
 	font-size: 11px;
+}
+
+a.show-link.program-link {
+  border-bottom: none;
+}
+
+a.show-link.eeca-link {
+  border-bottom: none;
 }
