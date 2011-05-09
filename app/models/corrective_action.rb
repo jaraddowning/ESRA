@@ -11,6 +11,8 @@ class CorrectiveAction < ActiveRecord::Base
     timestamps
   end
 
+  never_show :reviewer_ob
+
   belongs_to :tcl
 
   has_many :ca_docs, :dependent => :destroy, :accessible => true
