@@ -59,6 +59,10 @@ class Program < ActiveRecord::Base
     Disdec.create(:name => "Disaster Declarations", :program_id => id)
   end
 
+  def view_permitted?(summary)
+    acting_user.administrator? || acting_user.reviewer?
+  end
+
   children :events, :training_plans, :eecas
 
   # --- Permissions --- #
