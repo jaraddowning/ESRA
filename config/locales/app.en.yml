@@ -37,6 +37,9 @@ en:
       corrective_action:
         one: Corrective Action
         other: Corrective Actions
+      disdec:
+        one: Disaster Declaration
+        other: Disaster Declarations
       event:
         one: Event
         other: Events
@@ -78,7 +81,7 @@ en:
         other: Lessons Learned
       program:
         one: Program
-        other: Program
+        other: Programs
       tcap:
         one: Target Capability
         other: Target Capabilities
@@ -94,9 +97,9 @@ en:
       training_plan:
         one: Exercise Plan
         other: Exercise Plans
-      disdec:
-        one: Disaster Declaration
-        other: Disaster Declarations
+      upload:
+        one: Upload
+        other: Upload
     attributes:
       alevel:
         name: Activity Level
@@ -117,7 +120,7 @@ en:
       eeca:
         ex_prog: Documented Exercise Program
         ex_prog_desc: Program Description
-        ex_prog_doc: Corrective Action Process Documentation
+        ex_prog_doc:  Documentation
         test_sae_frequency: Personnel Test Frequency
         test_epef_frequency: Program Test Frequency
         match_hira: HIRA Based
@@ -240,7 +243,7 @@ en:
         tpriorities: Exercise Priorities
     attribute_help:
       program:
-        ca_resolved: Use this area to list the resolved corrective actions within the last calendar year.
+        ca_resolved: Use this area to list the top ten (10) resolved corrective actions within the last calendar year.
         ca_summary: Please provide a summary of the agency's corrective action process. Remember, you can always return to this page to update revise, and complete this section.
         ca_tracked: Are the corrective actions prioritized, tracked through completion and analyzed by program managers? (check for yes)
         proc_for_devel: Does the process include taking observations and recommendations and developing corrective actions? (check for yes)

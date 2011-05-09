@@ -3,14 +3,17 @@ class Review < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    description :string
+    standalone :boolean
     timestamps
   end
 
   belongs_to :program
 
   has_many :review_assignments, :dependent => :destroy
-  has_many :users, :through => :review_assignments, :accessible => true
+  has_many :reviewers, :through => :review_assignments, :source => :user, :accessible => true
+  
+  children :review_assignments
+  children :reviewers
 
   # --- Permissions --- #
 

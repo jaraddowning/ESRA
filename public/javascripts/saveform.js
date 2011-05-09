@@ -1,10 +1,10 @@
 jQuery(function($) {
-  $("form").autosave({
+  jQuery("form").autosave({
     callbacks: {
       trigger: ["change", function() {
         var self = this;
 
-        $("[name=save]").click(function() {
+        jQuery("[name=save]").click(function() {
           self.save();
         });
       }]

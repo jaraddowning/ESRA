@@ -39,13 +39,19 @@ class Program < ActiveRecord::Base
   has_many :funding09_sources, :dependent => :destroy, :accessible => true
   has_many :funding10_sources, :dependent => :destroy, :accessible => true
 
-  has_many :events, :dependent => :destroy, :autosave => true
+  has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy
   has_many :disdecs, :dependent => :destroy
   has_many :hiras, :dependent => :destroy
   has_many :eecas, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
-  has_many :reviews, :dependent => :destroy
+  has_many :interviews, :dependent => :destroy
+
+
+  has_many :reviews
+  has_many :review_assignments, :through => :reviews
+  has_many :reviewers, :through => :review_assignments
+
 
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
@@ -53,12 +59,16 @@ class Program < ActiveRecord::Base
     Disdec.create(:name => "Disaster Declarations", :program_id => id)
   end
 
+  def view_permitted?(summary)
+    acting_user.administrator? || acting_user.reviewer?
+  end
+
   children :events, :training_plans, :eecas
 
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator? || acting_user.signed_up?
   end
 
   def update_permitted?
@@ -66,7 +76,7 @@ class Program < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.administrator? || owner_is?(acting_user)
   end
 
   def view_permitted?(field)

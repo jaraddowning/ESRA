@@ -2,11 +2,13 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 //Event.addBehavior({
-//    "select.tcl_tcap:change": function(ev) {
-//         Hobo.ajaxRequest(window.location.href, ['alevel-part'], {
-//             params: Form.serialize(this.up('form')),
+//    "form.tcl select.tcl_tcap:change": function(ev) {
+//         Hobo.ajaxRequest(window.location.href, ['level-menu'], {
+//             params: Form.serializeElements([this]),
 //             method: 'get',
+//             spinnerNextTo: this,
 //             message: 'Please wait...'
 //         });
 //     }
 //});
+

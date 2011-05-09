@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   fields do
     name          :string, :required, :unique
     email_address :email_address, :login => true
-    agency        :string#, :required, :unique
-    job_title     :string#, :required, :unique
+    agency        :string
+    job_title     :string
     administrator :boolean, :default => false
     reviewer      :boolean, :default => false
     program       :boolean, :default => false
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     create :invite,
            :available_to => "acting_user if acting_user.administrator?",
            :subsite => "admin",
-           :params => [:name, :email_address],
+           :params => [:name, :email_address, :agency, :job_title],
            :new_key => true,
            :become => :invited do
        UserMailer.invite(self, lifecycle.key).deliver
@@ -61,6 +61,8 @@ class User < ActiveRecord::Base
   def signed_up?
     state=="active"
   end
+  
+  children :reviews
 
   # --- Permissions --- #
 

@@ -5,11 +5,9 @@ class EmapStandard < ActiveRecord::Base
   fields do
     name     :string
     std_lang :text
-    #std_num  :integer
     timestamps
   end
 
-  #belongs_to :tcap
 
   # --- Permissions --- #
 
