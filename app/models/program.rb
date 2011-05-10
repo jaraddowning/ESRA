@@ -63,11 +63,11 @@ class Program < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator? || acting_user.signed_up?
+    acting_user.administrator? || acting_user.program?
   end
 
   def update_permitted?
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(users) || owner_is?(acting_user)
   end
 
   def destroy_permitted?
@@ -75,7 +75,7 @@ class Program < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.in?(reviews) || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(users) || owner_is?(acting_user)
   end
 
 end
