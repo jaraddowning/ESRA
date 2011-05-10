@@ -210,6 +210,10 @@ en:
         disdecs: Disaster Declaration(s)
         hiras: EMAP 4.3
         eecas: EMAP 4.14
+      review_assignment:
+        users: Reviewers
+      review:
+        users: Reviewers
       strength:
         name: Strength
       tcap_tcl:

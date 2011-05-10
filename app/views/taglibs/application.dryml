@@ -192,15 +192,14 @@
 
 <extend tag="card" for="Review"> 
   <old-card merge>
-    <append-body:>
-    <div class="program">
-      Program: <view:program><a/></view><else>None</else>
-    </div>
+    <body:>
+    <h3><a><view:program/></a><else>None</else></h3>
     <div class="users">
-      Assigned Reviewers: <repeat:reviewers join=", "><a/></repeat><else>None</else>
+      Assigned Reviewers: <repeat:users join=", "><name/></repeat><else>None</else>
     </div>
-    <a action="edit" if="&can_edit?" param="edit-link" >Edit Review</a>
-  </append-body:>
+    <a action="edit" if="&can_edit?" param="edit-link" >Edit Reviewers</a>
+    <delete-button class="actions" />
+  </body:>
   </old-card> 
 </extend>
 

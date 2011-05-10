@@ -6,7 +6,7 @@ class ReviewAssignment < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :user
+  belongs_to :user# NEED TO LIMIT THESE TO REVIEWERS
   belongs_to :review
 
   # --- Permissions --- #
