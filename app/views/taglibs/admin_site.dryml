@@ -39,7 +39,7 @@
   <old-show-page merge without-parent-link />
 </extend>
 
-<extend tag="form" for="Review">
+<!--<extend tag="form" for="Review">
   <old-form merge>
     <field-list: >
       <users-view:> 
@@ -47,4 +47,4 @@
       </users-view:> 
     </field-list:>
   </old-form>
-</extend>
+</extend>-->
