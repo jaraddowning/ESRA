@@ -49,18 +49,13 @@ class Program < ActiveRecord::Base
 
 
   has_many :reviews
-  has_many :review_assignments, :through => :reviews
-  has_many :reviewers, :through => :review_assignments
+  has_many :users, :through => :reviews
 
 
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
     Disdec.create(:name => "Disaster Declarations", :program_id => id)
-  end
-
-  def view_permitted?(summary)
-    acting_user.administrator? || acting_user.reviewer?
   end
 
   children :events, :training_plans, :eecas
@@ -80,7 +75,7 @@ class Program < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(reviews) || owner_is?(acting_user)
   end
 
 end

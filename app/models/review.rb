@@ -10,10 +10,10 @@ class Review < ActiveRecord::Base
   belongs_to :program
 
   has_many :review_assignments, :dependent => :destroy
-  has_many :reviewers, :through => :review_assignments, :source => :user, :accessible => true
+  has_many :users, :through => :review_assignments, :accessible => true
   
   children :review_assignments
-  children :reviewers
+  children :users
 
   # --- Permissions --- #
 
