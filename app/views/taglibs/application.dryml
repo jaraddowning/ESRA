@@ -10,15 +10,24 @@
 
 <set-theme name="clean-sidemenu"/>
 
+
+<!-- ======   CUSTOM EXTENSIONS/DEFINITIONS  ======  -->
+
+<def tag="annotate-tag">
+  <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
+</def>
+
+
+<!--   PAGE EXTENSIONS    -->
+
 <extend tag="page">
   <old-page merge without-live-search without-count>
     <custom-scripts:>
       <hjq-assets/>
-    </custom-scripts:>
-    <after-scripts:>
+      <javascript name="jquery.form.js"/>
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
-    </after-scripts:>
+    </custom-scripts:>
     <footer:>
       <div>
         <a href="http://esra.emaponline.org/privacy.html">EMAP Privacy Policy</a>&nbsp;
@@ -31,63 +40,39 @@
   </old-page>
 </extend>
 
-<def tag="annotate-tag">
-  <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
-</def>
-
-<!-- ====== Breadcrumb Navigation ====== 
-
-<extend tag="new-page">
-  <old-new-page merge> 
-    <content-header:>
-      <%= get_bread_crumb(request.path, 'program').html_safe%> New<br/>
-    </content-header:>
-  </old-new-page>
-</extend>
- 
-<extend tag="show-page">
-  <old-show-page merge> 
-    <content-header:>
-      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br/>
-    </content-header:> 
-  </old-show-page>
-</extend> 
-
-<extend tag="index-page">
-  <old-index-page merge> 
-    <content-header:>
-      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br/>
-    </content-header:>
-  </old-index-page>
-</extend> 
-
-<extend tag="edit-page">
-  <old-edit-page merge> 
-    <content-header:>
-      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br/>
-      <delete-button update="self"/>
-    </content-header:>
-  </old-edit-page>
-</extend>-->
-
 
 <!--   CARD DEFINITIONS       -->
 
-<extend tag="card" for="Upload"> 
-  <card> 
-    <br /><h5><name /></h5> 
-    <!--<p>
-      <a><img src="#{this.proof.url :thumbnail}" /></a>
-      <view:name />
-    </p>-->
-    <p>
-      <a href="#{this.proof.url(:original, false)}" target="_blank">Download File</a>
-    </p>
-    <!--<p>
-      Uploaded:<br /> 
-      <view:created_at format="%B %d, %Y" />
-    </p>--> 
-    <delete-button class="actions" /> 
+<def tag="card" for="Program">
+  <card class="program" param="default" merge>
+    <header param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header>
+    <body param>
+      <ht key="event.collection.count" count="&this.events.size">
+         <count:events param/>
+      </ht>
+    </body>
+    <delete-button class="actions" />
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Program</a></h5>
+  </card>
+</def>
+
+
+<!--    CARD EXTENSIONS    -->
+
+<extend tag="card" for="Disdec"> 
+  <card>
+    <br /><h3><name /></h3>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Disaster Declarations</a></h5>
+  </card> 
+</extend>
+
+<extend tag="card" for="Eeca"> 
+  <card>
+    <br /><h3><name /></h3>
+    <!--<delete-button class="actions" />-->
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View EMAP 4.14</a></h5>
   </card> 
 </extend>
 
@@ -107,20 +92,68 @@
   </card> 
 </extend>-->
 
-<def tag="card" for="Program">
-  <card class="program" param="default" merge>
-    <header param>
-      <h4 param="heading"><a><name/></a></h4>
-    </header>
-    <body param>
-      <ht key="event.collection.count" count="&this.events.size">
-         <count:events param/>
-      </ht>
-    </body>
+<extend tag="card" for="Hira"> 
+  <card>
+    <br /><h3><name /></h3>
+    <!--<delete-button class="actions" />-->
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View EMAP 4.3</a></h5>
+  </card> 
+</extend>
+
+<extend tag="card" for="Interview"> 
+  <card>
+    <br /><h5><name /></h5>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Program</a></h5>
-  </card>
-</def>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Interview</a></h5>
+  </card> 
+</extend>
+
+<extend tag="card" for="LearnedLesson"> 
+  <card>
+    <br /><h5><name /></h5>
+    <delete-button class="actions" />
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Lesson Learned</a></h5>
+  </card> 
+</extend>
+
+<extend tag="card" for="Review"> 
+  <old-card merge>
+    <body:>
+    <h3><a><view:program/></a><else>None</else></h3>
+    <div class="users">
+      Assigned Reviewers: <repeat:users join=", "><name/></repeat><else>None</else>
+    </div>
+    <a action="edit" if="&can_edit?" param="edit-link" /><!--Edit Reviewers</a>-->
+    <delete-button class="actions" />
+  </body:>
+  </old-card> 
+</extend>
+
+<extend tag="card" for="Tcl"> 
+  <card class="event" param="default" merge>
+      <h4><view:tcap/></h4>
+    <delete-button class="actions" />
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Target Capability</a></h5>
+  </card> 
+</extend>
+
+<extend tag="card" for="TrainingPlan"> 
+  <card>
+    <br /><h5><name /></h5>
+    <delete-button class="actions" />
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Exercise Plan</a></h5>
+  </card> 
+</extend>
+
+<extend tag="card" for="Upload"> 
+  <card> 
+    <br /><a href="#{this.proof.url(:original, false)}" target="_blank"><view:proof_file_name /></a>
+    <p>
+      Uploaded: <view:created_at format="%B %d, %Y" />
+    </p> 
+    <delete-button class="actions" /> 
+  </card> 
+</extend>
 
 <extend tag="card" for="User"> 
   <card>
@@ -135,115 +168,17 @@
   </card> 
 </extend>
 
-<extend tag="card" for="TrainingPlan"> 
-  <card>
-    <br /><h5><name /></h5>
-    <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Exercise Plan</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="Disdec"> 
-  <card>
-    <br /><h3><name /></h3>
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Disaster Declarations</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="Eeca"> 
-  <card>
-    <br /><h3><name /></h3>
-    <!--<delete-button class="actions" />-->
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View EMAP 4.14</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="Hira"> 
-  <card>
-    <br /><h3><name /></h3>
-    <!--<delete-button class="actions" />-->
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View EMAP 4.3</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="Tcl"> 
-  <card class="event" param="default" merge>
-      <h4><view:tcap/></h4>
-    <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Target Capability</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="LearnedLesson"> 
-  <card>
-    <br /><h5><name /></h5>
-    <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Lesson Learned</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="Interview"> 
-  <card>
-    <br /><h5><name /></h5>
-    <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Interview</a></h5>
-  </card> 
-</extend>
-
-<extend tag="card" for="Review"> 
-  <old-card merge>
-    <body:>
-    <h3><a><view:program/></a><else>None</else></h3>
-    <div class="users">
-      Assigned Reviewers: <repeat:users join=", "><name/></repeat><else>None</else>
-    </div>
-    <a action="edit" if="&can_edit?" param="edit-link" >Edit Reviewers</a>
-    <delete-button class="actions" />
-  </body:>
-  </old-card> 
-</extend>
 
 <!--   FORM DEFINITIONS       -->
 
-<def tag="form" for="Program">
-  <form merge param="default">
-    <error-messages param/>
-    <h1>General Program Information</h1>
-    <field-list fields="name, program_jurisdiction, program_street, program_city, program_state, program_zip" param/><br />
-    <h1>Event Strategic Review Contact Information</h1>
-    <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
-    <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
-    <hr /><h1>Exercise Funding</h1><br />
-    <h2>&nbsp;&nbsp;&nbsp;Local Funding</h2><br />
-    <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
-    <field-list fields="funding7, funding8, funding9, funding10" param/><br />
-    <h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
-    <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
-    <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
-    <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
-    <hr /><h1>Corrective Action Process</h1><br />
-      <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
-    <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
-    <!--<h2>Reviewer Section</h2>
-    <field-list fields="summary"/><br />-->
-    <div param="actions">
-      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
-      <a action="show" if="&can_view?" param="show-link"><button>
-              <ht key="program.actions.show" name="&this.respond_to?(:name) ? this.name : ''">
-                Submit Program Information
-              </ht></button>
-      </a>
-    </div>
-  </form>
-</def>>
-
-<def tag="form" for="Upload">
-  <form enctype="multipart/form-data" merge>
+<def tag="form" for="Disdec">
+  <form merge without-heading param="default">
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
-    <field-list fields="name, proof" />
+    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><hr /><br />
+    <field-list fields="disaster_declarations" param/>
     <div param="actions">
-      <submit label="#{ht 'upload.actions.save', :default=>['Save']}" />
+      <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
 </def>
@@ -289,24 +224,6 @@
   </form>
 </def>
 
-<def tag="form" for="Disdec">
-  <form merge without-heading param="default">
-    <error-messages param/>
-    <after-submit uri="#{url_for(this_parent)}" />
-    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><hr /><br />
-    <field-list fields="disaster_declarations" param/>
-    <div param="actions">
-      <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
-    </div>
-  </form>
-</def>
-
-<extend tag="form" for="Event">
-  <old-form merge without-cancel>
-    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
-  </old-form>
-</extend>
-
 <def tag="form" for="LearnedLesson">
   <form merge param="default">
     <error-messages param/>
@@ -314,6 +231,46 @@
     <field-list fields="title, description" param/>
     <div param="actions">
       <submit label="#{ht 'learned_lesson.actions.save', :default=>['Save']}" param/>
+    </div>
+  </form>
+</def>
+
+<def tag="form" for="Program">
+  <form merge param="default">
+    <error-messages param/>
+    <h1>General Program Information</h1>
+    <field-list fields="name, program_jurisdiction, program_street, program_city, program_state, program_zip" param/><br />
+    <h1>Event Strategic Review Contact Information</h1>
+    <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
+    <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
+    <hr /><h1>Exercise Funding</h1><br />
+    <h2>&nbsp;&nbsp;&nbsp;Local Funding</h2><br />
+    <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
+    <field-list fields="funding7, funding8, funding9, funding10" param/><br />
+    <h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
+    <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
+    <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
+    <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
+    <hr /><h1>Corrective Action Process</h1><br />
+      <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
+    <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
+    <div param="actions">
+      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
+      <a action="show" if="&can_view?" param="show-link"><button>
+              <ht key="program.actions.show" name="&this.respond_to?(:name) ? this.name : ''">
+                Submit Program Information
+              </ht></button>
+      </a>
+    </div>
+  </form>
+</def>
+
+<def tag="form" for="Tcl">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas" />
+    <div param="actions">
+      <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
 </def>
@@ -328,6 +285,26 @@
     </div>
   </form>
 </def>
+
+<def tag="form" for="Upload">
+  <form enctype="multipart/form-data" merge>
+    <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
+    <field-list fields="name, proof" />
+    <div param="actions">
+      <submit label="#{ht 'upload.actions.save', :default=>['Save']}" />
+    </div>
+  </form>
+</def>
+
+
+<!--   FORM EXTENSIONS    -->
+
+<extend tag="form" for="Event">
+  <old-form merge without-cancel>
+    <field-list: fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
+  </old-form>
+</extend>
 
 <extend tag="form" for="Interview">
   <old-form merge without-cancel>
@@ -352,18 +329,86 @@
     </old-form>
 </extend>-->
 
-<def tag="form" for="Tcl">
-  <form merge param="default">
-    <error-messages param/>
-    <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas" />
-    <div param="actions">
-      <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
-    </div>
-  </form>
+
+<!--    SHOW-PAGE DEFINITIONS    -->
+
+<def tag="show-page" for="Event">
+  <page merge event-name="#{ht 'event.show.event-name', :default=>['Event'] }">
+
+    <body: class="show-page event" param/>
+
+    <content: param>
+      <section-group>
+        <section param="main-content">
+          <header param="content-header">
+            <a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program>
+            <h2 param="heading">
+              <ht key="event.show.heading" name="&this.respond_to?(:name) ? this.name : ''">
+                <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="statewide_event, multistate_event" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="event.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
+                Edit Event
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <field-list fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario_summary, ema_role, event_scenario, event_state, event_type" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">
+                <ht key="tcl.collection.heading" count="&this.tcls.count" >
+                  <human-collection-name collection="tcls" your/>
+                </ht>
+              </h3>
+
+              <collection:tcls param/>
+
+              <a:tcls action="new" if="&can_create?(@event.tcls)" param="new-link">
+                <ht key="tcl.actions.new" count="1">
+                  New Tcl
+                </ht>
+              </a:tcls>
+            </section>
+          </section>
+        </section>
+
+        <aside param>
+          <section param="learned_lessons-collection-section">
+            <h3 param="learned_lessons-collection-heading">
+              <ht key="learned_lesson.collection.heading" count="&this.learned_lessons.count" >
+                <human-collection-name collection="learned_lessons" your/>
+              </ht>
+            </h3>
+            <a:learned_lessons action="new" if="&can_create?(@event.learned_lessons)" param="new-link">
+              <ht key="learned_lesson.actions.new" count="1">
+                New Lesson Learned
+              </ht>
+            </a:learned_lessons>
+            <collection:learned_lessons  param="learned_lessons-collection"/>
+          </section><br /><hr /><br />
+          <section param="uploads-collection-section">
+            <h3 param="uploads-collection-heading">
+              <ht key="upload.collection.heading" count="&this.uploads.count" >
+                <human-collection-name collection="uploads" your/>
+              </ht>
+            </h3>
+            <a:uploads action="new" if="&can_create?(@event.uploads)" param="new-link">
+              <ht key="upload.actions.new" count="1">
+                New Reference/Proof Document
+              </ht>
+            </a:uploads>
+            <collection:uploads  param="uploads-collection"/>
+          </section>
+        </aside>
+      </section-group>
+    </content:>
+  </page>
 </def>
-
-
-<!--   SHOW-PAGE DEFINITIONS       -->
 
 <def tag="show-page" for="Program">
   <page merge title="#{ht 'program.show.title', :default=>['Program'] }">
@@ -467,102 +512,9 @@
               <ht key="upload.actions.new" count="1"></ht>
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
-          </section><hr /><br />
-          <!--<section param="interviews-collection-section">
-            <h3 param="interviews-collection-heading">
-              <ht key="interview.collection.heading" count="&this.interviews.count" >
-                <human-collection-name collection="interviews" your/>
-              </ht>
-            </h3>
-            <a:interviews action="new" if="&can_create?(@program.interviews)" param="new-link">
-              <ht key="interview.actions.new" count="1">
-                New Interview
-              </ht>
-            </a:interviews>
-            <collection:interviews  param="interviews-collection"/>
-          </section>-->
+           </section>
         </aside>
       </section-group>
     </content:>
   </page>
 </def>
-
-<def tag="show-page" for="Event">
-  <page merge event-name="#{ht 'event.show.event-name', :default=>['Event'] }">
-
-    <body: class="show-page event" param/>
-
-    <content: param>
-      <section-group>
-        <section param="main-content">
-          <header param="content-header">
-            <a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program>
-            <h2 param="heading">
-              <ht key="event.show.heading" name="&this.respond_to?(:name) ? this.name : ''">
-                <name/>
-              </ht>
-            </h2>
-
-            <record-flags fields="statewide_event, multistate_event" param/>
-
-            <a action="edit" if="&can_edit?" param="edit-link">
-              <ht key="event.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
-                Edit Event
-              </ht>
-            </a>
-          </header>
-
-          <section param="content-body">
-            <field-list fields="event_name, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario_summary, ema_role, event_scenario, event_state, event_type" param/>
-            <section param="collection-section">
-              <h3 param="collection-heading">
-                <ht key="tcl.collection.heading" count="&this.tcls.count" >
-                  <human-collection-name collection="tcls" your/>
-                </ht>
-              </h3>
-
-              <collection:tcls param/>
-
-              <a:tcls action="new" if="&can_create?(@event.tcls)" param="new-link">
-                <ht key="tcl.actions.new" count="1">
-                  New Tcl
-                </ht>
-              </a:tcls>
-            </section>
-          </section>
-        </section>
-
-        <aside param>
-          <section param="learned_lessons-collection-section">
-            <h3 param="learned_lessons-collection-heading">
-              <ht key="learned_lesson.collection.heading" count="&this.learned_lessons.count" >
-                <human-collection-name collection="learned_lessons" your/>
-              </ht>
-            </h3>
-            <a:learned_lessons action="new" if="&can_create?(@event.learned_lessons)" param="new-link">
-              <ht key="learned_lesson.actions.new" count="1">
-                New Lesson Learned
-              </ht>
-            </a:learned_lessons>
-            <collection:learned_lessons  param="learned_lessons-collection"/>
-          </section><br /><hr /><br />
-          <section param="uploads-collection-section">
-            <h3 param="uploads-collection-heading">
-              <ht key="upload.collection.heading" count="&this.uploads.count" >
-                <human-collection-name collection="uploads" your/>
-              </ht>
-            </h3>
-            <a:uploads action="new" if="&can_create?(@event.uploads)" param="new-link">
-              <ht key="upload.actions.new" count="1">
-                New Reference/Proof Document
-              </ht>
-            </a:uploads>
-            <collection:uploads  param="uploads-collection"/>
-          </section>
-        </aside>
-      </section-group>
-    </content:>
-  </page>
-</def>
-
-
