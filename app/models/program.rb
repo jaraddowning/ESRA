@@ -13,7 +13,7 @@ class Program < ActiveRecord::Base
     contact_phone        :string, :required
     contact_mobile       :string
     contact_email        :string, :required
-    summary              :html
+    #summary              :html
     funding7             :string
     funding8             :string
     funding9             :string

@@ -3,13 +3,13 @@ class Finding < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    observation   :html
-    recomendation :html
+    name           :string
+    summary        :html
+    recommendation :html
     timestamps
   end
 
   belongs_to :review
-  belongs_to :program
 
   # --- Permissions --- #
 
@@ -22,7 +22,7 @@ class Finding < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    acting_user.administrator? || acting_user.reviewer?
+    acting_user.administrator?
   end
 
   def view_permitted?(field)

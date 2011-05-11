@@ -11,7 +11,7 @@ class CorrectiveAction < ActiveRecord::Base
     timestamps
   end
 
-  never_show :reviewer_ob
+  #never_show :reviewer_ob
 
   belongs_to :tcl
 
@@ -31,8 +31,12 @@ class CorrectiveAction < ActiveRecord::Base
     acting_user.signed_up?
   end
 
+  def reviewer_ob_view_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
   def view_permitted?(field)
-    true
+    acting_user.signed_up?
   end
 
 end

@@ -38,13 +38,3 @@
 <extend tag="show-page" for="Review">
   <old-show-page merge without-parent-link />
 </extend>
-
-<!--<extend tag="form" for="Review">
-  <old-form merge>
-    <field-list: >
-      <users-view:> 
-        <select-one include-none="true" options="&@reviewusers" /> 
-      </users-view:> 
-    </field-list:>
-  </old-form>
-</extend>-->
