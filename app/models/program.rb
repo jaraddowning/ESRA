@@ -13,7 +13,7 @@ class Program < ActiveRecord::Base
     contact_phone        :string, :required
     contact_mobile       :string
     contact_email        :string, :required
-    summary              :html
+    #summary              :html
     funding7             :string
     funding8             :string
     funding9             :string
@@ -47,10 +47,9 @@ class Program < ActiveRecord::Base
   has_many :uploads, :dependent => :destroy
   has_many :interviews, :dependent => :destroy
 
-
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
   has_many :users, :through => :reviews
-
+  has_many :findings, :through => :reviews
 
   def after_create
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)

@@ -1,3 +1,18 @@
 <edit-page:>
   <form: update="save" />
+
+  <!--<after-form:>
+    <hr/>
+    <h3>Uploads</h3>
+    <div part="uploads-div">
+      <error-messages/>
+      <table-plus:uploads fields="name, proof_file_name, proof_file_size"/>
+    </div>
+    
+    <h3>Add an Attachment</h3>
+    <form with="&new_for_current_user(this.uploads)" owner="program" message="Uploading..." update="uploads-div" without-cancel>
+      <field-list: skip="program"/>
+    </form>
+   </after-form:>-->
+
 </edit-page:>

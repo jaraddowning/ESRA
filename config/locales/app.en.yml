@@ -246,6 +246,8 @@ en:
         train_tcaps: Target Capabilities
         texercises: Exercise(s)
         tpriorities: Exercise Priorities
+      user:
+        state: Account State
     attribute_help:
       program:
         ca_resolved: Use this area to list the top ten (10) resolved corrective actions within the last calendar year.

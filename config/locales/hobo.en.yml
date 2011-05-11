@@ -63,7 +63,7 @@ en:
     forgot_password_sent:
       title: "Forgotten password - E-mail sent"
       heading: "Forgotten password - E-mail sent"
-      text: "An e-mail with instructions on how you generate a new password has been sent to %{email_address}. If you don't receive this e-mail please check your spamfilter."
+      text: "An e-mail with instructions on how to generate a new password has been sent to %{email_address}. If you don't receive this e-mail please check your spamfilter."
 
     account_disabled_page:
       title: "Account disabled"
@@ -80,7 +80,7 @@ en:
     # The action with added model variable are new, create, delete, save,
     # edit and back_to_parent
     actions:
-      new: "New %{model}"
+      new: "Add %{model}"
       create: "Save %{model}"
       previous: "Previous"
       next: "Next"

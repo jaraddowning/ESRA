@@ -10,7 +10,7 @@ class State < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def update_permitted?
