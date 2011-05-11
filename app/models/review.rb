@@ -8,12 +8,14 @@ class Review < ActiveRecord::Base
   end
 
   belongs_to :program
+  has_many :findings, :dependent => :destroy
 
   has_many :review_assignments, :dependent => :destroy
   has_many :users, :through => :review_assignments, :accessible => true
   
   children :review_assignments
   children :users
+  children :findings
 
   # --- Permissions --- #
 
