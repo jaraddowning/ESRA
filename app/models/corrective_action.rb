@@ -17,6 +17,14 @@ class CorrectiveAction < ActiveRecord::Base
 
   has_many :ca_docs, :dependent => :destroy, :accessible => true
 
+  def reviewer_ob_edit_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def reviewer_ob_view_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
   # --- Permissions --- #
 
   def create_permitted?
@@ -29,10 +37,6 @@ class CorrectiveAction < ActiveRecord::Base
 
   def destroy_permitted?
     acting_user.signed_up?
-  end
-
-  def reviewer_ob_view_permitted?
-    acting_user.reviewer? || acting_user.administrator?
   end
 
   def view_permitted?(field)
