@@ -95,11 +95,38 @@
   </old-edit-page>
 </extend>
 
+<extend tag="edit-page" for="Event">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>Edit Event</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
 <extend tag="edit-page" for="Hira">
   <old-edit-page merge>
     <heading:>
       <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
       <br /><h2>EMAP Standard 4.3</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="LearnedLesson">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:event param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event></h5>
+      <br /><h2>Edit Lesson Learned</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="Tcl">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:event param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event></h5>
+      <br /><h2>Edit Target Capability Data</h2>
     </heading:>
   </old-edit-page>
 </extend>
@@ -112,6 +139,8 @@
     </heading:>
   </old-edit-page>
 </extend>
+
+
 
 <extend tag="show-page" for="User">
   <old-show-page merge />
