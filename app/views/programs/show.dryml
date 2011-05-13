@@ -14,7 +14,7 @@
       <collection:uploads />
     </div>
     <br />
-    <h3>Add a Proof Document</h3>
+    <h3>Upload a Proof Document</h3>
     <form with="&new_for_current_user(this.uploads)" owner="program" message="Uploading..." update="uploads-div" without-cancel>
       <field-list: skip="program"/>
     </form>
