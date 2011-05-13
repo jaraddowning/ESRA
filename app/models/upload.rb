@@ -3,7 +3,7 @@ class Upload < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name :string, :unique, :required
+    name  :string, :unique, :required
     timestamps
   end
 

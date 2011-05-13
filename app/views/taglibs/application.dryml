@@ -17,6 +17,43 @@
   <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
 </def>
 
+<!-- ====== Breadcrumb Navigation ====== -->
+
+<!--<extend tag="new-page">
+  <old-new-page merge> 
+    <prepend-main-content: id="breadcrumb">
+      <br />
+      &nbsp;&nbsp;<%= get_bread_crumb(request.path, 'program').html_safe%><br />
+    </prepend-main-content:>
+  </old-new-page>
+</extend>
+ 
+<extend tag="show-page">
+  <old-show-page merge> 
+    <prepend-content-header: id="breadcrumb">
+      <br />
+      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br />
+    </prepend-content-header:> 
+  </old-show-page>
+</extend> 
+
+<extend tag="index-page">
+  <old-index-page merge> 
+    <prepend-main-content: id="breadcrumb">
+      <br />
+      &nbsp;&nbsp;<%= get_bread_crumb(request.path, 'program').html_safe %><name/><br />
+    </prepend-main-content:>
+  </old-index-page>
+</extend> 
+
+<extend tag="edit-page">
+  <old-edit-page merge> 
+    <prepend-content-header: id="breadcrumb">
+      <br />
+      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br />
+    </prepend-content-header:>
+  </old-edit-page>
+</extend>-->
 
 <!--   PAGE EXTENSIONS    -->
 
@@ -40,9 +77,73 @@
   </old-page>
 </extend>
 
+<extend tag="edit-page" for="Disdec">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>Disaster Declarations</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="Eeca">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>EMAP Standard 4.14</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="Event">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>Edit Event</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="Hira">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>EMAP Standard 4.3</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="LearnedLesson">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:event param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event></h5>
+      <br /><h2>Edit Lesson Learned</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="Tcl">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:event param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event></h5>
+      <br /><h2>Edit Target Capability Data</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+<extend tag="edit-page" for="TrainingPlan">
+  <old-edit-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>Exercise Plan</h2>
+    </heading:>
+  </old-edit-page>
+</extend>
+
+
 
 <extend tag="show-page" for="User">
-  <old-show-page merge without-parent-link />
+  <old-show-page merge />
 </extend>
 
 <!--   CARD DEFINITIONS       -->
@@ -145,7 +246,7 @@
 
 <extend tag="card" for="TrainingPlan"> 
   <card>
-    <br /><h5><name /></h5>
+    <br /><h3><name /></h3>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" >View Exercise Plan</a></h5>
   </card> 
@@ -153,7 +254,9 @@
 
 <extend tag="card" for="Upload"> 
   <card> 
-    <br /><a href="#{this.proof.url(:original, false)}" target="_blank"><view:proof_file_name /></a>
+    <br />
+    <h3><view:name /></h3>
+    <a href="#{this.proof.url(:original, false)}" target="_blank"><view:proof_file_name /></a>
     <p>
       Uploaded: <view:created_at format="%B %d, %Y" />
     </p> 
