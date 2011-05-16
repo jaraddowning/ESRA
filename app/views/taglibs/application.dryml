@@ -397,30 +397,15 @@
 </def>
 
 <def tag="form" for="Tcl">
-  <form with="&@tcl" method="put">
-    <do part="alevel-part">
-      <error-messages param/>
-      <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas">
-        <alevels-view:>
-          <select-many include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
-        </alevels-view:>
-      </field-list>
-      <div param="actions">
-       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
-     </div>
-    </do>
-  </form>
-</def>
-
-<!--<def tag="form" for="Tcl">
   <form merge param="default">
     <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
     <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas" />
     <div param="actions">
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
-</def>-->
+</def>
 
 <def tag="form" for="TrainingPlan">
   <form merge param="default">
