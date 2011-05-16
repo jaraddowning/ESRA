@@ -95,6 +95,15 @@
   </old-edit-page>
 </extend>
 
+<extend tag="show-page" for="Eeca">
+  <old-show-page merge>
+    <heading:>
+      <h5><a:program param="parent-link">&laquo; <ht key="event.actions.back_to_parent" parent="Program" name="&this">Back to <name/></ht></a:program></h5>
+      <br /><h2>EMAP Standard 4.14</h2>
+    </heading:>
+  </old-show-page>
+</extend>
+
 <extend tag="edit-page" for="Event">
   <old-edit-page merge>
     <heading:>
@@ -143,7 +152,7 @@
 
 
 <extend tag="show-page" for="User">
-  <old-show-page merge />
+  <old-show-page merge without-parent-link/>
 </extend>
 
 <!--   CARD DEFINITIONS       -->
@@ -388,6 +397,22 @@
 </def>
 
 <def tag="form" for="Tcl">
+  <form with="&@tcl" method="put">
+    <do part="alevel-part">
+      <error-messages param/>
+      <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas">
+        <alevels-view:>
+          <select-many include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
+        </alevels-view:>
+      </field-list>
+      <div param="actions">
+       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
+     </div>
+    </do>
+  </form>
+</def>
+
+<!--<def tag="form" for="Tcl">
   <form merge param="default">
     <error-messages param/>
     <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas" />
@@ -395,7 +420,7 @@
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
     </div>
   </form>
-</def>
+</def>-->
 
 <def tag="form" for="TrainingPlan">
   <form merge param="default">
