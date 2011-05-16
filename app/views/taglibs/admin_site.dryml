@@ -27,12 +27,14 @@
   </old-card>
 </extend>
 
-<extend tag="index-page" for="Review">
-  <old-index-page merge>
-    <count:>
-    Click the name of the Jurisdiction/Program to view the review.
-    </count:>
-  </old-index-page>
+<extend tag="form" for="Review">
+  <old-form merge>
+    <field-list fields="standalone, program, users">
+      <!--<users-view:>
+        <select-many: options="&reviewer(true)"/>
+      </users-view:>-->
+    </field-list>
+  </old-form>
 </extend>
 
 <extend tag="show-page" for="Review">
