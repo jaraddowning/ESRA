@@ -33,9 +33,9 @@ class Event < ActiveRecord::Base
   has_many :learned_lessons, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
   has_many :tcls, :dependent => :destroy
-  has_many :interviews, :dependent => :destroy
+  #has_many :interviews, :dependent => :destroy
 
-  children :tcls, :interviews, :learned_lessons, :uploads
+  children :tcls, :learned_lessons, :uploads
 
   # --- Permissions --- #
 
