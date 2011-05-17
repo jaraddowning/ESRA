@@ -28,12 +28,12 @@
 </extend>
 
 <extend tag="form" for="Review">
-  <old-form merge>
-    <field-list fields="standalone, program, users">
+  <old-form merge without-cancel>
+    <field-list: fields="standalone, program, users" />
       <!--<users-view:>
         <select-many: options="&reviewer(true)"/>
-      </users-view:>-->
-    </field-list>
+      </users-view:>
+    </field-list>-->
   </old-form>
 </extend>
 
