@@ -30,6 +30,7 @@
     <div id="sn-class">
 		<a class="sn-link" href="http://twitter.com/#!/EMAP_US" target="_blank"><img src="../images/twitter.png" alt="Follow us on Twitter"/></a>
 		<a class="sn-link" href="http://www.facebook.com/group.php?gid=76820551288" target="_blank" ><img src="../images/facebook.png" alt="Visit our Facebook Page" /></a>
+		<br />v.1.1.2
 	 </div>    
     </section>
   </content:>

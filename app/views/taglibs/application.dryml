@@ -293,7 +293,7 @@
   <form merge without-heading param="default">
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
-    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><hr /><br />
+    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><br /><hr /><br />
     <field-list fields="disaster_declarations" param/>
     <div param="actions">
       <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
@@ -621,7 +621,7 @@
               </ht>
             </h3>
             <a:training_plans action="new" if="&can_create?(@program.training_plans)" param="new-link">
-              <ht key="training_plan.actions.new" count="1"></ht>
+              <ht key="training_plan.actions.new" count="1" ></ht>
             </a:training_plans>
             <collection:training_plans  param="training_plans-collection"/>
           </section><br />
