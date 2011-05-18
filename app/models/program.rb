@@ -14,14 +14,14 @@ class Program < ActiveRecord::Base
     contact_mobile       :string
     contact_email        :string, :required
     #summary              :html
-    funding7             :string
-    funding8             :string
-    funding9             :string
-    funding10            :string
-    gfunding7            :string
-    gfunding8            :string
-    gfunding9            :string
-    gfunding10           :string
+    #funding7             :string
+    #funding8             :string
+    #funding9             :string
+    #funding10            :string
+    #gfunding7            :string
+    #gfunding8            :string
+    #gfunding9            :string
+    #gfunding10           :string
     continuous_ca_plan   :boolean
     proc_for_devel       :boolean
     ca_tracked           :boolean
@@ -34,10 +34,10 @@ class Program < ActiveRecord::Base
 
   belongs_to :program_state, :class_name => "State"
 
-  has_many :funding07_sources, :dependent => :destroy, :accessible => true
-  has_many :funding08_sources, :dependent => :destroy, :accessible => true
-  has_many :funding09_sources, :dependent => :destroy, :accessible => true
-  has_many :funding10_sources, :dependent => :destroy, :accessible => true
+  #has_many :funding07_sources, :dependent => :destroy, :accessible => true
+  #has_many :funding08_sources, :dependent => :destroy, :accessible => true
+  #has_many :funding09_sources, :dependent => :destroy, :accessible => true
+  #has_many :funding10_sources, :dependent => :destroy, :accessible => true
 
   has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy

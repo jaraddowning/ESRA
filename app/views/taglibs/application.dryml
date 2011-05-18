@@ -293,8 +293,13 @@
   <form merge without-heading param="default">
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
-    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><br /><hr /><br />
+    <h3> For more information about FEMA Disaster Declarations,</h3><h2><a href="http://www.fema.gov/news/disasters.fema" target="_blank">Visit FEMA's website.</a></h2><br />
+    <br /><h3>FEMA Disaster Declarations</h3><hr /><br />
     <field-list fields="disaster_declarations" param/>
+    <br /><h3>State Disaster Declarations</h3><hr /><br />
+    <field-list fields="state_disdecs" param/>
+    <br /><h3>Local Disaster Declarations</h3><hr /><br />
+    <field-list fields="local_disdecs" param/>
     <div param="actions">
       <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
     </div>
@@ -378,12 +383,13 @@
       <h2>&nbsp;&nbsp;&nbsp;Local Funding</h2><br />
       <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
       <field-list fields="funding7, funding8, funding9, funding10" param/><br />
-      <h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
+      <!--<h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
       <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
       <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
       <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
       <hr /><h1>Corrective Action Process</h1><br />
-        <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br /><hr /><br />
+        <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br />-->
+      <hr /><br />
       <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
       <div param="actions">
         <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
@@ -568,7 +574,7 @@
 
           <section param="content-body">
             <field-list fields="program_jurisdiction, program_contact, ca_summary, ca_resolved" param/>
-            <h2>Funding Data since 2007</h2>
+            <!--<h2>Funding Data since 2007</h2>
             <table border="0">
               <tr>
                 <td><h3>Local Funding for Exercises:</h3></td>
@@ -594,7 +600,7 @@
                 <td>&nbsp;</td>
                 <td><field-list fields="gfunding7, gfunding8, gfunding9, gfunding10" param/></td>
               </tr>
-            </table>
+            </table>-->
             <section param="collection-section">
               <h3 param="collection-heading">
                 <ht key="event.collection.heading" count="&this.events.count" >
