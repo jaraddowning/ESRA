@@ -9,7 +9,8 @@ class Disdec < ActiveRecord::Base
 
   belongs_to :program
   has_many :disaster_declarations, :dependent => :destroy, :accessible => true
-
+  has_many :state_disdecs, :dependent => :destroy, :accessible => true
+  has_many :local_disdecs, :dependent => :destroy, :accessible => true
 
   # --- Permissions --- #
 

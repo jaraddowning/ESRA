@@ -117,7 +117,9 @@ en:
         name: Disaster
         ddate: Date
       disdec:
-        disaster_declarations: Declaration(s)
+        disaster_declarations: FEMA Declaration(s)
+        local_disdecs: Local Declaration(s)
+        state_disdecs: State Declaration(s)
       e_open_ca:
         name: Open CA
       eeca:
@@ -180,6 +182,9 @@ en:
         consequences: Consequence Analysis
       improvement_area:
         name: Area of Improvement
+      local_disdec:
+        name: Disaster
+        ddate: Date
       program:
         name: Program Name
         program_jurisdiction: Program Jurisdiction/Agency
@@ -217,6 +222,9 @@ en:
         users: Reviewers
       review:
         users: Reviewers
+      state_disdec:
+        name: Disaster
+        ddate: Date
       strength:
         name: Strength
       tcap_tcl:
