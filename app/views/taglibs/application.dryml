@@ -379,11 +379,11 @@
       <h1>Event Strategic Review Contact Information</h1>
       <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
       <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
-      <hr /><h1>Exercise Funding</h1><br />
+      <!--<hr /><h1>Exercise Funding</h1><br />
       <h2>&nbsp;&nbsp;&nbsp;Local Funding</h2><br />
       <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
       <field-list fields="funding7, funding8, funding9, funding10" param/><br />
-      <!--<h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
+      <h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
       <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
       <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
       <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
