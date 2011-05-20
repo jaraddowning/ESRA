@@ -2,9 +2,11 @@ HoboCKEditor = {
   newEditor : function(elm, buttons) {
     if (elm.name != '') {
       oInstance = CKEDITOR.replace( elm.name ,
-      { toolbar : HoboCKEditor.standardToolbarConfig || buttons }
+      { toolbar : HoboCKEditor.standardToolbarConfig || buttons,
+        extraPlugins : 'autogrow' }
       );
       oInstance.setData( elm.value );
+      extraPlugins : 'autogrow'
       oInstance.resetDirty();
     }
     return oInstance;
