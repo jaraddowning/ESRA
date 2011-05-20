@@ -3,10 +3,10 @@ HoboCKEditor = {
     if (elm.name != '') {
       oInstance = CKEDITOR.replace( elm.name ,
       { toolbar : HoboCKEditor.standardToolbarConfig || buttons,
-        extraPlugins : 'autogrow' }
+        extraPlugins : 'autogrow',
+        uiColor: '#B6C9DA' }
       );
       oInstance.setData( elm.value );
-      extraPlugins : 'autogrow'
       oInstance.resetDirty();
     }
     return oInstance;
@@ -17,7 +17,7 @@ makeEditor : function(elm) {
     }
   },
 standardToolbarConfig: [ ['DocProps','-','Preview','-'],
-                    ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker'],
+                    ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print'],
                     ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
                     [],
                     '/',
@@ -25,7 +25,7 @@ standardToolbarConfig: [ ['DocProps','-','Preview','-'],
                     ['NumberedList', 'BulletedList','-','Outdent','Indent','Blockquote'],
                     ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
                     ['Link','Unlink'],
-                    ['Image','Rule','SpecialChar','PageBreak'],
+                    ['Image','Rule','SpecialChar'],
                     '/',
                     ['Style','FontFormat','FontName','FontSize'],
                     ['TextColor','BGColor'],
