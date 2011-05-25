@@ -51,7 +51,9 @@ class Program < ActiveRecord::Base
   has_many :users, :through => :reviews
   has_many :findings, :through => :reviews
 
-  def after_create
+  after_create :populate
+
+  def populate
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
     Disdec.create(:name => "Disaster Declarations", :program_id => id)

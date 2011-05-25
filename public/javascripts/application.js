@@ -12,13 +12,13 @@
 //     }
 //});
 
-var last_added;
-var last_removed;
-Event.addBehavior({
-  '.disaster_declarations:rapid:add' : function(ev) {
-    last_added = ev.memo.element;
-  },
-  '.disaster_declarations:rapid:remove' : function(ev) {
-    if(!confirm("really?")) ev.stop();
-  }
-});
+//var last_added;
+//var last_removed;
+//Event.addBehavior({
+//  '.disaster_declarations:rapid:add' : function(ev) {
+//    last_added = ev.memo.element;
+//  },
+//  '.disaster_declarations:rapid:remove' : function(ev) {
+//    if(!confirm("really?")) ev.stop();
+//  }
+//});

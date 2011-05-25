@@ -13,7 +13,9 @@ class Review < ActiveRecord::Base
   has_many :review_assignments, :dependent => :destroy
   has_many :users, :through => :review_assignments, :accessible => true
 
-  def after_create
+  after_create :new_summary
+
+  def new_summary
     Finding.create(:name => "Review Summary", :review_id => id)
   end
   

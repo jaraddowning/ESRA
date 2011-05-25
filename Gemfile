@@ -30,7 +30,7 @@ gem 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "hobo", ">= 1.3.0.pre29"
+gem "hobo", :git => "git://github.com/tablatom/hobo.git", :branch => "rails3"
 gem 'paperclip', :git => "git://github.com/jeanmartin/paperclip.git", :branch => "master"
 gem "bluecloth"
 gem "hobo-jquery", :git => "git://github.com/bryanlarsen/hobo-jquery.git", :branch => "rails3"
