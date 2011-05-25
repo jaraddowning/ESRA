@@ -318,7 +318,7 @@ en:
         resolution_doc: If so, what foundational documentation was provided for review? (seperate documents by commas)
       hira:
         matching: Are the hazards identified consistent with the Program's event scenarios?(check for yes)
-        description: Please provide a brief support summary
+        description: Please provide a brief support summary regarding the methodology used to develop their HIRA.
         hazards: Hazard(s) from the HIRA (add hazards by pushing the "+" button).
       disdec:
         disaster_declarations: Enter each FEMA Disaster Declaration since 2007 (add declarations by pushing the "+" button).
