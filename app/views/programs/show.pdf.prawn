@@ -131,42 +131,42 @@
 
 
   #   Program Funding Data
-  pdf.start_new_page
-  pdf.move_down(12)
-  pdf.text "Exercise Funding Data", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
-  pdf.move_down(18)
-  pdf.text "Local Funding Provided for Exercises Annually:", :size => 12, :spacing => 16, :indent_paragraphs => 37
-  pdf.move_down(12)
-  pdf.text "2007: #{@program.funding7}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "2008: #{@program.funding8}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "2009: #{@program.funding9}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "2010: #{@program.funding10}", :spacing => 16, :indent_paragraphs => 44
-  pdf.move_down(12)
-  pdf.text "Federal Funding Provided for Exercises Annually:", :spacing => 16, :size => 12, :indent_paragraphs => 37
-  pdf.move_down(12)
-  pdf.text "2007: #{@program.gfunding7}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
-  @program.funding07_sources.each do |federal7|
-    pdf.text "• #{federal7.source}", :spacing => 16, :indent_paragraphs => 51
-  end
-  pdf.move_down(8)
-  pdf.text "2008: #{@program.gfunding8}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
-  @program.funding08_sources.each do |federal8|
-    pdf.text "• #{federal8.source}", :spacing => 16, :indent_paragraphs => 51
-  end
-  pdf.move_down(8)
-  pdf.text "2009: #{@program.gfunding9}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
-  @program.funding09_sources.each do |federal9|
-    pdf.text "• #{federal9.source}", :spacing => 16, :indent_paragraphs => 51
-  end
-  pdf.move_down(8)
-  pdf.text "2010: #{@program.gfunding10}", :spacing => 16, :indent_paragraphs => 44
-  pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
-  @program.funding10_sources.each do |federal10|
-    pdf.text "• #{federal10.source}", :spacing => 16, :indent_paragraphs => 51
-  end
+  #pdf.start_new_page
+  #pdf.move_down(12)
+  #pdf.text "Exercise Funding Data", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
+  #pdf.move_down(18)
+  #pdf.text "Local Funding Provided for Exercises Annually:", :size => 12, :spacing => 16, :indent_paragraphs => 37
+  #pdf.move_down(12)
+  #pdf.text "2007: #{@program.funding7}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "2008: #{@program.funding8}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "2009: #{@program.funding9}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "2010: #{@program.funding10}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.move_down(12)
+  #pdf.text "Federal Funding Provided for Exercises Annually:", :spacing => 16, :size => 12, :indent_paragraphs => 37
+  #pdf.move_down(12)
+  #pdf.text "2007: #{@program.gfunding7}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
+  #@program.funding07_sources.each do |federal7|
+  #  pdf.text "• #{federal7.source}", :spacing => 16, :indent_paragraphs => 51
+  #end
+  #pdf.move_down(8)
+  #pdf.text "2008: #{@program.gfunding8}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
+  #@program.funding08_sources.each do |federal8|
+  #  pdf.text "• #{federal8.source}", :spacing => 16, :indent_paragraphs => 51
+  #end
+  #pdf.move_down(8)
+  #pdf.text "2009: #{@program.gfunding9}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
+  #@program.funding09_sources.each do |federal9|
+  #  pdf.text "• #{federal9.source}", :spacing => 16, :indent_paragraphs => 51
+  #end
+  #pdf.move_down(8)
+  #pdf.text "2010: #{@program.gfunding10}", :spacing => 16, :indent_paragraphs => 44
+  #pdf.text "Source of funds:", :spacing => 16, :indent_paragraphs => 44
+  #@program.funding10_sources.each do |federal10|
+  #  pdf.text "• #{federal10.source}", :spacing => 16, :indent_paragraphs => 51
+  #end
 
   #   Corrective Action Process
   pdf.move_down(12)
