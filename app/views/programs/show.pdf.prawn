@@ -394,15 +394,15 @@
   end
 
   #     Interviews
-  pdf.move_down(12)
-  pdf.text "Interviews:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 20
-  @program.interviews.each do |interview|
-    pdf.move_down(8)
-    pdf.text "#{interview.name}, #{interview.title} - #{interview.date}", :spacing => 16, :indent_paragraphs => 47
-    pdf.move_down(3)
-      sums = Sanitize.clean(interview.summary)
-    pdf.text sums, :spacing => 16, :indent_paragraphs => 50
-  end
+  #pdf.move_down(12)
+  #pdf.text "Interviews:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 20
+  #@program.interviews.each do |interview|
+  #  pdf.move_down(8)
+  #  pdf.text "#{interview.name}, #{interview.title} - #{interview.date}", :spacing => 16, :indent_paragraphs => 47
+  #  pdf.move_down(3)
+  #    sums = Sanitize.clean(interview.summary)
+  #  pdf.text sums, :spacing => 16, :indent_paragraphs => 50
+  #end
 
   #   Page Numbering
   #pdf.number_pages "<page> of <total>", [pdf.bounds.right - 50, 0]
