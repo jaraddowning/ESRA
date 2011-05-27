@@ -3,7 +3,6 @@
     <h3><Your/> Assigned Reviews</h3>
     <br />
     <repeat with="&@user.reviews.group_by(&:program)">
-      <h4>Program: <a with="&this_key"/></h4>
       <collection/>
     </repeat>
   </content-body:>
