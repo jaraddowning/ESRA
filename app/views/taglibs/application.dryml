@@ -424,6 +424,9 @@
   <form enctype="multipart/form-data" merge>
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
+    <div param="org-chart">
+      <p>Please include an Organizational Chart in the uploaded documents!</p>
+    </div>
     <field-list fields="name, proof" />
     <div param="actions">
       <submit label="#{ht 'upload.actions.save', :default=>['Save']}" />

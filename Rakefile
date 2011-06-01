@@ -4,4 +4,14 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
+module ::Esra
+  class Application
+    include Rake::DSL
+  end
+end
+
+module ::RakeFileUtils
+  extend Rake::FileUtilsExt
+end
+
 Esra::Application.load_tasks

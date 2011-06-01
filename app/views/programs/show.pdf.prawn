@@ -169,7 +169,7 @@
   #end
 
   #   Corrective Action Process
-  pdf.move_down(12)
+  pdf.start_new_page
   pdf.text "Corrective Action Process", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 30
   pdf.move_down(12)
   pdf.text "The Program has a Continuous Corrective Action process: #{@program.continuous_ca_plan}", :spacing => 16, :size => 12, :indent_paragraphs => 37
@@ -180,8 +180,9 @@
   caps = Sanitize.clean(@program.ca_summary)
   pdf.span(350, :position => :center) do
     pdf.text caps, :spacing => 16, :size => 12, :indent_paragraphs => 20
+    #pdf.text "#{@program.ca_summary}", :spacing => 16, :size => 12, :indent_paragraphs => 20
   end
-  pdf.move_down(12)
+  #pdf.move_down(12)
   pdf.text "Resolved Corrective Actions in the previous year:", :spacing => 16, :size => 12, :indent_paragraphs => 37
   capr = Sanitize.clean(@program.ca_resolved)
   pdf. span(350, :position => :center) do
@@ -230,7 +231,7 @@
 
 
   #   EMAP 4.3
-  pdf.move_down(12)
+  pdf.start_new_page
   pdf.span(437, :position => :right) do
     pdf.text "Hazard Identification, Risk Assessment and Consequence Analysis", :spacing => 16, :size => 14, :style => :bold
   end
@@ -296,7 +297,7 @@
       pdf.text sums, :indent_paragraphs => 42
     end
     pdf.move_down(8)
-    pdf.text "Statewide Event and/or MutiState Event: ", :indent_paragraphs => 30
+    pdf.text "Statewide Event and/or MutiState Event: #{item.statewide_event}", :indent_paragraphs => 30
     pdf.move_down(8)
     pdf.text "Event Participants:", :indent_paragraphs => 30
     pdf.move_down(3)
@@ -394,15 +395,15 @@
   end
 
   #     Interviews
-  #pdf.move_down(12)
-  #pdf.text "Interviews:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 20
-  #@program.interviews.each do |interview|
-  #  pdf.move_down(8)
-  #  pdf.text "#{interview.name}, #{interview.title} - #{interview.date}", :spacing => 16, :indent_paragraphs => 47
-  #  pdf.move_down(3)
-  #    sums = Sanitize.clean(interview.summary)
-  #  pdf.text sums, :spacing => 16, :indent_paragraphs => 50
-  #end
+  pdf.move_down(12)
+  pdf.text "Interviews:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 20
+  @program.interviews.each do |interview|
+    pdf.move_down(8)
+    pdf.text "#{interview.name}, #{interview.title} - #{interview.date}", :spacing => 16, :indent_paragraphs => 47
+    pdf.move_down(3)
+      sums = Sanitize.clean(interview.summary)
+    pdf.text sums, :spacing => 16, :indent_paragraphs => 50
+  end
 
   #   Page Numbering
   #pdf.number_pages "<page> of <total>", [pdf.bounds.right - 50, 0]

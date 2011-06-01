@@ -27,18 +27,21 @@
   </old-card>
 </extend>
 
-<def tag="card" for="Review"> 
-  <card>
-    <body>
-    <h3><a action="edit" if="&can_edit?" param="edit-link"><view:program /></a></h3>
-    <h5><repeat:findings join="  "><a action="edit" if="&can_edit?" param="edit-link" /></repeat></h5>
+<extend tag="card" for="Review"> 
+  <old-card merge>
+    <body:>
+    <h3><a action="edit"><view:program /></a></h3>
+    <h5><repeat:findings join="  "><a /></repeat></h5>
     <div class="users">
       Assigned Reviewers: <repeat:users join=", "><name/></repeat>
     </div>
+    <div class="report">
+      <a class="pdfreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report">PDF Report</a>
+    </div>
     <delete-button class="actions" />
-  </body>
-  </card> 
-</def>
+  </body:>
+  </old-card> 
+</extend>
 
 <extend tag="form" for="Review">
   <old-form merge without-cancel>

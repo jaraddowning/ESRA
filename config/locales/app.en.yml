@@ -221,6 +221,7 @@ en:
       review_assignment:
         users: Reviewers
       review:
+        standalone: Free Standing
         users: Reviewers
       state_disdec:
         name: Disaster
