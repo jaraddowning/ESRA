@@ -11,7 +11,7 @@ class Finding < ActiveRecord::Base
 
   belongs_to :review
   
-  has_many :interviews, :accessible => true
+  has_many :interviews, :dependent => :destroy, :accessible => true
 
   # --- Permissions --- #
 
@@ -24,7 +24,7 @@ class Finding < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    false
+    acting_user.administrator?
   end
 
   def view_permitted?(field)

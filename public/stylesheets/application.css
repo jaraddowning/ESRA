@@ -49,6 +49,28 @@ td#content-container {
 .button {
 	border-radius: 3px;
 	-moz-border-radius: 3px;
+	background-color: #CF0606;
+}
+#editprogram{
+  background-color: #5B8BA0;
+}
+
+a#edit-program{
+  border-bottom: none;
+}
+
+a.docreport{
+  border-bottom: none;
+  position: absolute;
+  right: 97px;
+  top: 35px;
+}
+
+a.pdfreport{
+  border-bottom: none;
+  position: absolute;
+  right: 10px;
+  top: 35px;
 }
 
 div.aside {

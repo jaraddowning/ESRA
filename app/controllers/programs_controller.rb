@@ -4,6 +4,16 @@ class ProgramsController < ApplicationController
 
   auto_actions :all
 
+  ##ODT Template. Recreate it on changes
+  #after_filter :generate_odt, :only => [:create, :update, :destroy]
+  #require 'serenity'
+  #include Serenity::Generator
+  #def generate_odt
+  #  @title = "ESR Report"
+  #  @esrs = Event.find(:all)
+  #  render_odt 'app/reports/showcase.odt', 'public/documents/output.odt' 
+  #end 
+
   def show
     @prog = find_instance
       @events = @prog.events.apply_scopes(
@@ -23,7 +33,7 @@ class ProgramsController < ApplicationController
       format.xml { render :xml => @program }
       #format.pdf
       format.pdf do
-        prawnto :prawn => { :top_margin => 72, :left_margin => 72, :right_margin => 72 }#, :filename => "Report#{id}.pdf"
+        prawnto :prawn => { :top_margin => 72, :left_margin => 72, :right_margin => 72 }
       end
     end
   end

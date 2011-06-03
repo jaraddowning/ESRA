@@ -31,12 +31,13 @@
   <old-card merge>
     <body:>
     <h3><a action="edit"><view:program /></a></h3>
-    <h5><repeat:findings join="  "><a /></repeat></h5>
+    <h5><repeat:findings join="  " /></h5>
     <div class="users">
       Assigned Reviewers: <repeat:users join=", "><name/></repeat>
     </div>
     <div class="report">
-      <a class="pdfreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report">PDF Report</a>
+      <a class="pdfreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report"><button>PDF Report</button></a>
+      <!--<a class="docreport" href="#{base_url}/public/documents/#{this.program_id}.doc" target="_blank" param="docreport"><button>DOC Report</button></a>-->
     </div>
     <delete-button class="actions" />
   </body:>

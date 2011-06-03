@@ -163,10 +163,12 @@
     <body param>
       <ht key="event.collection.count" count="&this.events.size">
          <count:events param/>
-      </ht>
+      </ht><br />
+      <a action="edit" if="&can_edit?" param="edit-link" id="edit-program">
+        <delete-button id="editprogram" label="Edit Program Information" />
+      </a>
     </body>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Program</a></h5>
   </card>
 </def>
 
