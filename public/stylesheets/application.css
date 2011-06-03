@@ -57,6 +57,9 @@ td#content-container {
 
 a#edit-program{
   border-bottom: none;
+  position: absolute;
+  left: 2px;
+  top: 50px;
 }
 
 a.docreport{

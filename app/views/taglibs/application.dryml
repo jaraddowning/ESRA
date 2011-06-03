@@ -163,7 +163,7 @@
     <body param>
       <ht key="event.collection.count" count="&this.events.size">
          <count:events param/>
-      </ht><br />
+      </ht><br /><br />
       <a action="edit" if="&can_edit?" param="edit-link" id="edit-program">
         <delete-button id="editprogram" label="Edit Program Information" />
       </a>
