@@ -126,9 +126,9 @@
       <ht key="event.collection.count" count="&this.events.size">
          <count:events param/>
       </ht><br /><br />
-      <h4><a action="edit" if="&can_edit?" param="edit-link" >
-        <button label="Edit Program Information">Edit Program Information</button>
-      </a></h4>
+      <a action="edit" if="&can_edit?" param="edit-link" id="edit-program">
+        <button id="editprogram" label="Edit Program Information">Edit Program Information</button>
+      </a>
     </body>
     <delete-button class="actions" />
   </card>
@@ -136,13 +136,6 @@
 
 
 <!--    CARD EXTENSIONS    -->
-
-<extend tag="card" for="CorrectiveAction"> 
-  <card>
-    <br /><h3><name /></h3>
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Corrective Action</a></h5>
-  </card> 
-</extend>
 
 <extend tag="card" for="Disdec"> 
   <card>
@@ -214,9 +207,9 @@
 
 <extend tag="card" for="Tcl"> 
   <card class="event" param="default" merge>
-      <h4><a action="edit" if="&can_edit?" param="edit-link" ><view:tcap/></a></h4>
+      <h4><view:tcap/></h4>
     <delete-button class="actions" />
-    <h5><a action="show" if="&can_view?" param="show-link">Corrective Actions</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Target Capability</a></h5>
   </card> 
 </extend>
 
@@ -267,6 +260,8 @@
     <field-list fields="state_disdecs" param/>
     <br /><h3>Local Disaster Declarations</h3><hr /><br />
     <field-list fields="local_disdecs" param/>
+    <add-item>Add</add-item>
+    <remove-item>Remove</remove-item>
     <div param="actions">
       <submit label="#{ht 'disdec.actions.save', :default=>['Save']}" param/>
     </div>
@@ -407,12 +402,6 @@
 
 
 <!--   FORM EXTENSIONS    -->
-
-<extend tag="form" for="CorrectiveAction">
-  <old-form merge without-cancel>
-    <field-list: skip="tcl"/>
-  </old-form>
-</extend>
 
 <extend tag="form" for="Event">
   <old-form merge without-cancel>

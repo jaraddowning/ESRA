@@ -3,7 +3,7 @@ class ImprovementArea < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name :html
+    name :html, :name => true
     timestamps
   end
 

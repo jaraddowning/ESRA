@@ -11,7 +11,7 @@ class Review < ActiveRecord::Base
   has_many :findings, :dependent => :destroy
 
   has_many :review_assignments, :dependent => :destroy
-  has_many :users, :through => :review_assignments, :accessible => true
+  has_many :users, :through => :review_assignments, :accessible => true, :conditions => "users.reviewer = t"
 
   after_create :new_summary
 

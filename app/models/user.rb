@@ -61,7 +61,8 @@ class User < ActiveRecord::Base
   def signed_up?
     state=="active"
   end
-  
+
+  # --- Auto-generation of assigned reviews --- #  
   children :reviews
 
   # --- Permissions --- #

@@ -16,10 +16,12 @@ class Tcl < ActiveRecord::Base
   has_many :alevels, :accessible => true
 
   has_many :strengths, :dependent => :destroy, :accessible => true
-  has_many :corrective_actions, :dependent => :destroy, :accessible => true
+  has_many :corrective_actions, :dependent => :destroy
   has_many :improvement_areas, :dependent => :destroy, :accessible => true
   has_many :tcl_goals, :dependent => :destroy, :accessible => true
   has_many :tcl_objectives, :dependent => :destroy, :accessible => true
+
+  children :corrective_actions
 
   # --- Permissions --- #
 
