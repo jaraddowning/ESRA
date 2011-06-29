@@ -70,7 +70,7 @@
   pdf.move_down(12)
   @program.reviews.each do |revs|
     revs.review_assignments.each do |assign|
-      pdf.text "#{assign.user.name}, #{assign.user.agency} - #{assign.user.job_title}", :indent_paragraphs => 40
+      pdf.text "#{assign.reviewer.name}, #{assign.reviewer.agency} - #{assign.reviewer.job_title}", :indent_paragraphs => 40
     end
   end
   pdf.move_down(12)
@@ -414,6 +414,6 @@
     end
   end
 
-  pdf.render_file('public/documents/ESR_Report_#{id}.pdf')
+  #pdf.render_file('public/documents/ESR_Report_#{@program.id}.pdf')
 
 #end

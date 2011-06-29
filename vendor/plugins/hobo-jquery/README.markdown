@@ -10,18 +10,29 @@ UI](http://jqueryui.com) widgets.
 
 Install with
 
-    ruby script/plugin install git://github.com/bryanlarsen/hobo-jquery.git
+    rails plugin install git://github.com/bryanlarsen/hobo-jquery.git -r rails3
 
-Link jQuery, jQuery-UI, and hobo-jQuery assets into your public directory:
+or add
 
-    rake hobo_jquery:link_jquery
-    rake hobo_jquery:link_assets
+    gem "hobo-jquery", :git => "git://github.com/bryanlarsen/hobo-jquery.git", :branch => "rails3"
 
-If you're on Windows, you can use the install\_jquery and update\_assets tasks instead.
+to your Gemfile.
+
+Install the javascript and css files with
+
+    rails generate hobo_jquery:install
 
 To use, you need to include hobo-jquery and add the assets to your page.  In your application.dryml:
 
-    <include src="hobo-jquery" plugin="hobo-jquery" />
+if you installed it as a plugin:
+
+    <include plugin="hobo-jquery" />
+
+if you installed it as a gem:
+
+    <include gem="hobo-jquery" />
+
+in both cases you must add also:
 
     <extend tag="page">
       <old-page merge>
@@ -31,19 +42,13 @@ To use, you need to include hobo-jquery and add the assets to your page.  In you
       </old-page>
     </extend>
 
-To install local documentation:
-
-    git submodule update --init
-
 ## Notes
 
 Hobo Jquery calls
-[jQuery.noConflict()](http://docs.jquery.com/Core/jQuery.noConflict) 
+[jQuery.noConflict()](http://docs.jquery.com/Core/jQuery.noConflict)
 to avoid conflicts with prototype.  `$` is still bound to
 prototype.js.  To use jQuery, use `jQuery` instead of `$`.
 
 ## Documentation
-
-[Auto generated documentation on GitHub](http://bryanlarsen.github.com/hobo-jquery/documentation.html).
 
 [Auto generated documentation on HoboCentral](http://cookbook.hobocentral.net/api_taglibs/hobo-jquery).

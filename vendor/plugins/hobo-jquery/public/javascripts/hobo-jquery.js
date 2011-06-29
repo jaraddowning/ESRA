@@ -294,6 +294,53 @@ var hjq = (function() {
 
         },
 
+        form: {
+            /* this function uses the jquery form plugin to submit the
+            form via jquery form plugin ajax, rather than using the
+            standard HTTP or Hobo form submission mechanisms.  The
+            main advantage this has is that the jquery form plugin
+            supports ajax submission of attachments.
+
+            You must have the jquery form plugin installed.   It is
+            not installed automatically by hobo-jquery.
+
+            FIXME:  this function HARD CODES it's ajax options, in
+            particular update="attachments-div".  It does not (yet)
+            get the parameters from the form, nor does it get them
+            through the standard hobo-jquery mechanism.
+            */
+          submit: function() {
+            var attrs = {
+              update: ['attachments-div']
+            };
+            var options = {
+              complete: Hobo.hideSpinner,
+              data: {},
+              dataType: 'script',
+              beforeSend: function(xhr) { xhr.setRequestHeader("Accept", "text/javascript"); }
+            };
+            var form = jQuery(this).closest("form");
+
+            for(i=0; i<attrs.update.length; i++) {
+              var id = attrs.update[i];
+              if(id=="self") {
+                for(var el=jQuery(this); el.length && !hoboParts[el.attr("id")]; el=el.parent());
+                id = ( el.length ? el.attr("id") : undefined) ;
+              }
+              if(id) {
+                options.data["render["+i+"][part_context]"] = hoboParts[id];
+                options.data["render["+i+"][id]"] = id;
+              }
+            }
+
+            Hobo.showSpinner(attrs.message || "Saving...", attrs.spinner_next_to);
+            form.ajaxSubmit(options);
+
+            //prevent bubbling
+            return false;
+          }
+        },
+
         formlet: {
             // call with this==the formlet or a child of the formlet to submit the formlet
             submit: function(extra_callbacks, extra_options) {
@@ -367,8 +414,22 @@ var hjq = (function() {
             }
         },
 
+        combobox: {
+            init: function(annotations) {
+                var select = jQuery(this).find('select');
+                if(!select.attr('disabled')) {
+                    var options = hjq.getOptions(annotations);
+                    options.selected = options.selected || function(event, ui) {
+                        // fire the prototype.js event on the <select/> for backwards compatibility
+                        $(this).simulate('change');
+                    }
+                    select.combobox(options);
+                }
+            }
+        },
+
         dialog: {
-            init: function(annotations) {                
+            init: function(annotations) {
                 var options=hjq.getOptions(annotations);
                 if(!options.position) {
                     var pos = jQuery(this).prev().position();
@@ -431,3 +492,173 @@ var hjq = (function() {
     };
 })();
 
+
+/* stolen from http://jqueryui.com/demos/autocomplete/#combobox
+ *
+ * and these options added.
+ *
+ * - autoFill (default: true):  select first value rather than clearing if there's a match
+ *
+ * - clearButton (default: true): add a "clear" button
+ *
+ * - adjustWidth (default: true): if true, will set the autocomplete width the same as
+ *    the old select.  (requires jQuery 1.4.4 to work on IE8)
+ *
+ * - uiStyle (default: false): if true, will add classes so that the autocomplete input
+ *    takes a jQuery-UI style
+ */
+(function( $ ) {
+    $.widget( "ui.combobox", {
+        options: {
+            autoFill: true,
+            clearButton: true,
+            adjustWidth: true,
+            uiStyle: false,
+            selected: null,
+        },
+	_create: function() {
+	    var self = this,
+	      select = this.element.hide(),
+	      selected = select.children( ":selected" ),
+	      value = selected.val() ? selected.text() : "",
+              found = false;
+	    var input = this.input = $( "<input>" )
+                .attr('title', '' + select.attr("title") + '')
+		.insertAfter( select )
+		.val( value )
+		.autocomplete({
+		    delay: 0,
+		    minLength: 0,
+		    source: function( request, response ) {
+		        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                        var resp = select.children( "option" ).map(function() {
+		            var text = $( this ).text();
+		            if ( this.value && ( !request.term || matcher.test(text) ) )
+		        	return {
+		        	    label: text.replace(
+		        		new RegExp(
+		        		    "(?![^&;]+;)(?!<[^<>]*)(" +
+		        			$.ui.autocomplete.escapeRegex(request.term) +
+		        			")(?![^<>]*>)(?![^&;]+;)", "gi"
+		        		), "<strong>$1</strong>" ),
+		        	    value: text,
+		        	    option: this
+		        	};
+		        });
+                        found = resp.length > 0;
+		        response( resp );
+		    },
+		    select: function( event, ui ) {
+		        ui.item.option.selected = true;
+		        self._trigger( "selected", event, {
+		            item: ui.item.option
+		        });
+		    },
+		    change: function( event, ui ) {
+		        if ( !ui.item ) {
+		            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( $(this).val() ) + "$", "i" ),
+		            valid = false;
+		            select.children( "option" ).each(function() {
+		        	if ( $( this ).text().match( matcher ) ) {
+		        	    this.selected = valid = true;
+		        	    return false;
+		        	}
+		            });
+		            if ( !valid || input.data("autocomplete").term=="" ) {
+		        	// set to first suggestion, unless blank or autoFill is turned off
+                                var suggestion;
+                                if(!self.options.autoFill || input.data("autocomplete").term=="") found=false;
+                                if(found) {
+                                    suggestion = jQuery(input.data("autocomplete").widget()).find("li:first")[0];
+                                    var option = select.find("option[text="+suggestion.innerText+"]").attr('selected', true);
+                                    $(this).val(suggestion.innerText);
+		        	    input.data("autocomplete").term = suggestion.innerText;
+		                    self._trigger( "selected", event, { item: option[0] });
+                                } else {
+                                    suggestion={innerText: ''};
+                                    select.find("option:selected").removeAttr("selected");
+                                    $(this).val('');
+		        	    input.data( "autocomplete" ).term = '';
+                                    self._trigger( "selected", event, { item: null });
+                                }
+		        	return found;
+		            }
+		        }
+		    }
+		});
+
+            if( self.options.adjustWidth ) { input.width(select.width()); }
+
+            if( self.options.uiStyle ) {
+                input.addClass( "ui-widget ui-widget-content ui-corner-left" );
+            }
+
+
+	    input.data( "autocomplete" )._renderItem = function( ul, item ) {
+	        return $( "<li></li>" )
+	            .data( "item.autocomplete", item )
+	            .append( "<a>" + item.label + "</a>" )
+	            .appendTo( ul );
+	    };
+
+	    this.button = $( "<button type='button'>&nbsp;</button>" )
+	        .attr( "tabIndex", -1 )
+	        .attr( "title", "Show All Items" )
+	        .insertAfter( input )
+	        .button({
+	            icons: {
+	        	primary: "ui-icon-triangle-1-s"
+	            },
+	            text: false
+	        })
+	        .removeClass( "ui-corner-all" )
+	        .addClass( "ui-corner-right ui-button-icon" )
+	        .click(function() {
+	            // close if already visible
+	            if ( input.autocomplete( "widget" ).is( ":visible" ) ) {
+	        	input.autocomplete( "close" );
+	        	return;
+	            }
+
+	            // work around a bug (likely same cause as #5265)
+	            $( this ).blur();
+
+	            // pass empty string as value to search for, displaying all results
+	            input.autocomplete( "search", "" );
+	            input.focus();
+	        });
+
+            if( self.options.clearButton ) {
+	        this.clear_button = $( "<button type='button'>&nbsp;</button>" )
+	            .attr( "tabIndex", -1 )
+	            .attr( "title", "Clear Entry" )
+	            .insertAfter( input )
+	            .button({
+	                icons: {
+	        	    primary: "ui-icon-close"
+	                },
+	                text: false
+	            })
+	            .removeClass( "ui-corner-all" )
+	            .click(function(event, ui) {
+
+                        select.find("option:selected").removeAttr("selected");
+                        input.val( "" );
+	                input.data( "autocomplete" ).term = "";
+                        self._trigger( "selected", event, { item: null });
+
+	                // work around a bug (likely same cause as #5265)
+	                $( this ).blur();
+	            });
+            }
+
+	},
+
+	destroy: function() {
+	    this.input.remove();
+	    this.button.remove();
+	    this.element.show();
+	    $.Widget.prototype.destroy.call( this );
+	}
+    });
+})( jQuery );

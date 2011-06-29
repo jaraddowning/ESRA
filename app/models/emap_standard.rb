@@ -5,6 +5,7 @@ class EmapStandard < ActiveRecord::Base
   fields do
     name     :string
     std_lang :text
+    tcap_id  :integer
     timestamps
   end
 

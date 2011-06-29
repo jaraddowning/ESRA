@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
   fields do
     name          :string, :required, :unique
-    email_address :email_address, :login => true
+    username      :string, :required, :unique, :login => true
+    email_address :email_address
     agency        :string
     job_title     :string
     administrator :boolean, :default => false
@@ -15,6 +16,14 @@ class User < ActiveRecord::Base
 
   has_many :review_assignments, :dependent => :destroy
   has_many :reviews, :through => :review_assignments
+
+  def self.find_by_name(name)
+    names = name.split(' ')
+    (0..(names.length-2)).inject(nil) do |result, n|
+      result ||= self.find_by_name_and_username(names[0..n].join(' '), names[1..(n+1)].join(' '))
+    end
+  end
+
 
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
@@ -40,7 +49,7 @@ class User < ActiveRecord::Base
     create :invite,
            :available_to => "acting_user if acting_user.administrator?",
            :subsite => "admin",
-           :params => [:name, :email_address, :agency, :job_title],
+           :params => [:name, :username, :email_address, :agency, :job_title],
            :new_key => true,
            :become => :invited do
        UserMailer.invite(self, lifecycle.key).deliver

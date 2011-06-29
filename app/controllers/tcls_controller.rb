@@ -7,7 +7,7 @@ class TclsController < ApplicationController
   auto_actions_for :event, [:new, :create]
 
 #  def new
-#    hobo_create(Tcl.new(params[:order])) do
+#    hobo_create(Tcl.new(params[:tcl])) do
 #      hobo_ajax_response if request.xhr?
 #    end
 #  end
@@ -19,5 +19,19 @@ class TclsController < ApplicationController
 #      hobo_ajax_response if request.xhr? 
 #    end 
 #  end 
+
+  def new
+    hobo_new do
+      this.attributes = params[:tcl] || {}
+      hobo_ajax_response if request.xhr?
+    end
+  end
+
+  def edit
+    hobo_show do
+      this.attributes = params[:tcl] || {}
+      hobo_ajax_response if request.xhr?
+    end
+  end
 
 end

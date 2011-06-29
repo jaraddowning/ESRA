@@ -4,17 +4,9 @@ class ProgramsController < ApplicationController
 
   auto_actions :all
 
-  ##ODT Template. Recreate it on changes
-  #after_filter :generate_odt, :only => [:create, :update, :destroy]
-  #require 'serenity'
-  #include Serenity::Generator
-  #def generate_odt
-  #  @title = "ESR Report"
-  #  @esrs = Event.find(:all)
-  #  render_odt 'app/reports/showcase.odt', 'public/documents/output.odt' 
-  #end 
-
   def show
+  
+    #Searching and sorting
     @prog = find_instance
       @events = @prog.events.apply_scopes(
                 :search => [params[:search], :event_name],
@@ -22,16 +14,10 @@ class ProgramsController < ApplicationController
 
     @program = Program.find(params[:id])
 
-# => Trying to convert boolean to Yes:No
-#    scopes
-#    scopes[:continuous_ca_plan] = true if params[:continuous_ca_plan]._?.== 'Yes'
-#    scopes[:continuous_ca_plan] = false if params[:continuous_ca_plan]._?.== 'No'
-#    hobo_show Program.apply_scopes(scopes)
-    
+    #PDF Generation - most likely replaced by Jasper Reports
     hobo_show do |format|
       format.html
       format.xml { render :xml => @program }
-      #format.pdf
       format.pdf do
         prawnto :prawn => { :top_margin => 72, :left_margin => 72, :right_margin => 72 }
       end

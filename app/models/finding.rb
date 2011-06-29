@@ -10,8 +10,11 @@ class Finding < ActiveRecord::Base
   end
 
   belongs_to :review
+  belongs_to :program
   
   has_many :interviews, :dependent => :destroy, :accessible => true
+
+  children :interviews
 
   # --- Permissions --- #
 

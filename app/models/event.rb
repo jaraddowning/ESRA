@@ -8,13 +8,14 @@ class Event < ActiveRecord::Base
     event_end_date             :date
     event_duration             :string, :required
     event_duration_description :html
-    #event_host                 :string, :required
     event_scenario_summary     :html
     statewide_event            :boolean
     multistate_event           :boolean
     ema_role                   :html
     timestamps
   end
+
+  belongs_to :owner, :class_name => "User", :creator => true
 
   belongs_to :program
   belongs_to :event_state, :class_name => "State"
@@ -33,7 +34,6 @@ class Event < ActiveRecord::Base
   has_many :learned_lessons, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
   has_many :tcls, :dependent => :destroy
-  #has_many :interviews, :dependent => :destroy
 
   children :tcls, :learned_lessons, :uploads
 
@@ -52,7 +52,7 @@ class Event < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    true
+    acting_user.administrator? || acting_user.reviewer? || owner_is?(acting_user)
   end
 
 end

@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   auto_actions :all, :except => [ :index, :new, :create ]
 
+  autocomplete :name, :query_scope => [:name_contains, :username_contains]
+
   def create
     hobo_create do
       if valid?
