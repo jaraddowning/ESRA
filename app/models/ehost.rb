@@ -3,7 +3,7 @@ class Ehost < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    host :string
+    host :string, :name => true
     timestamps
   end
 
