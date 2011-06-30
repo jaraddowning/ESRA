@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
 
   def update_permitted?
     acting_user.administrator? ||
-      (acting_user == self && only_changed?(:email_address, :agency, :job_title, :crypted_password,
+      (acting_user == self && only_changed?(:email_address, :username, :agency, :job_title, :crypted_password,
                                             :current_password, :password, :password_confirmation))
     # Note: crypted_password has attr_protected so although it is permitted to change, it cannot be changed
     # directly from a form submission.
