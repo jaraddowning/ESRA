@@ -286,6 +286,7 @@ en:
         tcl_objectives: Click the plus sign (+) to add an Objective.
       event:
         event_name: Name of the event.
+        event_contact: EM Staff member who is the point of contact for the event.
         event_date: Day the response initiated.
         event_end_date: Day the response ended. Please do not include recovery time.
         event_duration: Length of the event.
