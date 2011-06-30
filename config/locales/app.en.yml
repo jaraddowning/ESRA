@@ -149,6 +149,7 @@ en:
         name: Participant
       event:
         event_name: Event Name
+        event_contact: Staff Contact Person
         event_date: Response Start Date
         event_end_date: Response End Date
         event_duration: Event Duration

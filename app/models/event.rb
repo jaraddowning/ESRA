@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
 
   fields do
     event_name                 :string, :required, :unique, :name => true
+    event_contact              :string
     event_date                 :date
     event_end_date             :date
     event_duration             :string, :required
