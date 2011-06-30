@@ -34,7 +34,7 @@ class Program < ActiveRecord::Base
   has_many :interviews, :dependent => :destroy
 
   has_many :reviews, :dependent => :destroy
-  has_many :users, :through => :reviews
+  has_many :reviewers, :through => :reviews, :source => :users
   has_many :findings, :through => :reviews
 
   after_create :populate
