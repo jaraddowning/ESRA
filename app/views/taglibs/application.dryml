@@ -394,21 +394,19 @@
   <form with="&@tcl" method="put" merge param="default">
     <error-messages param/>
     <!--<after-submit uri="#{url_for(this_parent)}" />-->
-    <do part="level-menu">
-      <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, improvement_areas" >
-        <alevels-view:>
-          <select-many options="&@tcl.tcap.alevels"/>
-            <!--<do part="level-menu">
-              <if test="&@tcl.tcap">
-                <select-one options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
-              </if>
-              <else>
-                <select disabled><option>First choose a Target Capability</option></select>
-              </else>
-            </do>-->
-        </alevels-view:>
-      </field-list>
-    </do>
+    <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, improvement_areas" >
+      <!--<alevels-view:>
+        <select-many:alevels />
+          <do part="level-menu">
+            <if test="&@tcl.tcap">
+              <select-one options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
+            </if>
+            <else>
+              <select disabled><option>First choose a Target Capability</option></select>
+            </else>
+          </do>
+      </alevels-view:>-->
+    </field-list>
     <div param="actions">
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
     </div>

@@ -3,7 +3,7 @@ class Strength < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name :string
+    name :text
     timestamps
   end
 
