@@ -13,15 +13,6 @@ class Program < ActiveRecord::Base
     contact_phone        :string, :required
     contact_mobile       :string
     contact_email        :string, :required
-    #summary              :html
-    #funding7             :string
-    #funding8             :string
-    #funding9             :string
-    #funding10            :string
-    #gfunding7            :string
-    #gfunding8            :string
-    #gfunding9            :string
-    #gfunding10           :string
     continuous_ca_plan   :boolean
     proc_for_devel       :boolean
     ca_tracked           :boolean
@@ -33,11 +24,6 @@ class Program < ActiveRecord::Base
   belongs_to :owner, :class_name => "User", :creator => true
 
   belongs_to :program_state, :class_name => "State"
-
-  #has_many :funding07_sources, :dependent => :destroy, :accessible => true
-  #has_many :funding08_sources, :dependent => :destroy, :accessible => true
-  #has_many :funding09_sources, :dependent => :destroy, :accessible => true
-  #has_many :funding10_sources, :dependent => :destroy, :accessible => true
 
   has_many :events, :dependent => :destroy
   has_many :training_plans, :dependent => :destroy
@@ -68,7 +54,7 @@ class Program < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.administrator? || acting_user.in?(users) || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(reviewers) || owner_is?(acting_user)
   end
 
   def destroy_permitted?
@@ -76,7 +62,7 @@ class Program < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.in?(users) || owner_is?(acting_user)
+    acting_user.administrator? || acting_user.in?(reviewers) || owner_is?(acting_user)
   end
 
 end

@@ -221,6 +221,7 @@ en:
       review_assignment:
         users: Reviewers
       review:
+        standalone: Free Standing
         users: Reviewers
       state_disdec:
         name: Disaster
@@ -322,4 +323,6 @@ en:
         hazards: Hazard(s) from the HIRA (add hazards by pushing the "+" button).
       disdec:
         disaster_declarations: Enter each FEMA Disaster Declaration since 2007 (add declarations by pushing the "+" button).
+      upload:
+        name: Please enter a name indicating the subject of the document.
         

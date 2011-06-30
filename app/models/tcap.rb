@@ -4,12 +4,8 @@ class Tcap < ActiveRecord::Base
 
   fields do
     name    :string
-    std_id  :integer
     timestamps
   end
-
-  #has_many :alevels, :accessible => true
-  has_many :emap_standards
 
   # --- Permissions --- #
 

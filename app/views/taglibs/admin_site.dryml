@@ -8,8 +8,6 @@
 
 <set-theme name="clean"/>
 
-
-
 <extend tag="page">
   <old-page merge>
     <append-stylesheets:>
@@ -27,26 +25,32 @@
   </old-card>
 </extend>
 
-<def tag="card" for="Review"> 
-  <card>
-    <body>
-    <h3><a action="edit" if="&can_edit?" param="edit-link"><view:program /></a></h3>
-    <h5><repeat:findings join="  "><a action="edit" if="&can_edit?" param="edit-link" /></repeat></h5>
-    <div class="users">
+<extend tag="card" for="Review"> 
+  <old-card merge>
+    <body:>
+    <h3><a action="edit"><view:program /></a></h3>
+    <h5><repeat:findings join="  " /></h5>
+    <div class="reviewers">
       Assigned Reviewers: <repeat:users join=", "><name/></repeat>
     </div>
+    <div class="report">
+      <a class="pdfreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report"><button>PDF Report</button></a>
+      <a class="docreport" href="#{base_url}/public/documents/#{this.program_id}.doc" target="_blank" param="docreport"><button>Report in Word</button></a>
+    </div>
     <delete-button class="actions" />
-  </body>
-  </card> 
-</def>
+  </body:>
+  </old-card> 
+</extend>
 
 <extend tag="form" for="Review">
   <old-form merge without-cancel>
-    <field-list: fields="standalone, program, users" />
-      <!--<users-view:>
-        <select-many: options="&reviewer(true)"/>
+    <field-list: fields="standalone, program, users">
+      <users-view:>
+        <hjq-combobox>
+          <select-many /><!--options="&(this.nil? ? [] :  User.find_all_by_reviewer)"/>-->
+        </hjq-combobox>
       </users-view:>
-    </field-list>-->
+    </field-list:>
   </old-form>
 </extend>
 

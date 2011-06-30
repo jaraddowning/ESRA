@@ -9,7 +9,8 @@ class Interview < ActiveRecord::Base
     summary   :html
     timestamps
   end
-  
+
+  belongs_to :program
   belongs_to :finding
 
   # --- Permissions --- #

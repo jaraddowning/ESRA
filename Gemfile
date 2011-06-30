@@ -39,3 +39,5 @@ gem 'pdf-reader'
 gem 'nokogiri'
 gem 'sanitize', :submodules => true
 gem "nested_has_many_through"
+#gem "serenity-odt"
+#gem "clamsy"

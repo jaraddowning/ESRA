@@ -5,57 +5,24 @@
 <include src="taglibs/auto/rapid/cards"/>
 <include src="taglibs/auto/rapid/pages"/>
 <include src="taglibs/auto/rapid/forms"/>
-<include src="hobo-jquery" plugin="hobo-jquery" />
+
 <include src="paperclip" plugin="paperclip_with_hobo"/>
+<include plugin="hobo-jquery" />
 
 <set-theme name="clean-sidemenu"/>
 
 
-<!-- ======   CUSTOM EXTENSIONS/DEFINITIONS  ======  -->
+<!-- ======   jQuery breaks without this  ======  -->
 
 <def tag="annotate-tag">
   <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
 </def>
 
-<!-- ====== Breadcrumb Navigation ====== -->
+<def tag="input" for="Date"> 
+  <hjq-datepicker dateFormat="yy-mm-dd" merge /> 
+</def>
 
-<!--<extend tag="new-page">
-  <old-new-page merge> 
-    <prepend-main-content: id="breadcrumb">
-      <br />
-      &nbsp;&nbsp;<%= get_bread_crumb(request.path, 'program').html_safe%><br />
-    </prepend-main-content:>
-  </old-new-page>
-</extend>
- 
-<extend tag="show-page">
-  <old-show-page merge> 
-    <prepend-content-header: id="breadcrumb">
-      <br />
-      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br />
-    </prepend-content-header:> 
-  </old-show-page>
-</extend> 
-
-<extend tag="index-page">
-  <old-index-page merge> 
-    <prepend-main-content: id="breadcrumb">
-      <br />
-      &nbsp;&nbsp;<%= get_bread_crumb(request.path, 'program').html_safe %><name/><br />
-    </prepend-main-content:>
-  </old-index-page>
-</extend> 
-
-<extend tag="edit-page">
-  <old-edit-page merge> 
-    <prepend-content-header: id="breadcrumb">
-      <br />
-      <%= get_bread_crumb(request.path, 'program').html_safe %><name/><br />
-    </prepend-content-header:>
-  </old-edit-page>
-</extend>-->
-
-<!--   PAGE EXTENSIONS    -->
+<!-- ======   CUSTOM EXTENSIONS/DEFINITIONS  ======  -->
 
 <extend tag="page">
   <old-page merge without-live-search without-count>
@@ -153,6 +120,22 @@
   <old-show-page merge without-parent-link/>
 </extend>
 
+<extend tag="new-for-program-page" for="Upload">
+  <old-new-for-program-page merge>
+    <append-content-body:>
+      <div param="org-chart">
+        <h4><p>Please include an Organizational Chart in the uploaded documents!</p></h4><br />
+      </div>
+      <section class="upload_section">
+        <div>
+          <h3>Uploaded Documents</h3>
+        </div>
+        <collection:uploads with="&@program" />
+      </section>
+    </append-content-body:>
+  </old-new-for-program-page>
+</extend>
+
 <!--   CARD DEFINITIONS       -->
 
 <def tag="card" for="Program">
@@ -163,20 +146,32 @@
     <body param>
       <ht key="event.collection.count" count="&this.events.size">
          <count:events param/>
-      </ht>
+      </ht><br /><br />
+      <h4><a action="edit" if="&can_edit?" param="edit-link" >
+        <button label="Edit Program Information">Edit Program Information</button>
+      </a></h4>
     </body>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >Edit Program</a></h5>
   </card>
 </def>
 
 
 <!--    CARD EXTENSIONS    -->
 
+<extend tag="card" for="CorrectiveAction"> 
+  <card>
+    <br /><h3><view:name /></h3>
+    <h5>Assigned To: </h5><view:assigned_to /><br />
+    <h5>Completed By: </h5><view:completed_by /> <h5>Date Completed: </h5><view:completed_date />
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Corrective Action</a></h5>
+    <delete-button class="actions" />
+  </card> 
+</extend>
+
 <extend tag="card" for="Disdec"> 
   <card>
     <br /><h3><name /></h3>
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Disaster Declarations</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open Declarations</button></a></h5>
   </card> 
 </extend>
 
@@ -184,7 +179,7 @@
   <card>
     <br /><h3><name /></h3>
     <!--<delete-button class="actions" />-->
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View EMAP 4.14</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open EMAP 4.14</button></a></h5>
   </card> 
 </extend>
 
@@ -208,7 +203,7 @@
   <card>
     <br /><h3><name /></h3>
     <!--<delete-button class="actions" />-->
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View EMAP 4.3</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open EMAP 4.3</button></a></h5>
   </card> 
 </extend>
 
@@ -216,7 +211,7 @@
   <card>
     <br /><h5><name /></h5>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Interview</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open Interview</button></a></h5>
   </card> 
 </extend>
 
@@ -224,28 +219,28 @@
   <card>
     <br /><h5><name /></h5>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Lesson Learned</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open Lesson Learned</button></a></h5>
   </card> 
 </extend>
 
 <extend tag="card" for="Review"> 
   <old-card merge>
     <body:>
-    <h3><a action="edit" if="&can_edit?" param="edit-link"><view:program /></a></h3>
-    <h5><repeat:findings join="  "><a action="edit" if="&can_edit?" param="edit-link" /></repeat></h5>
-    <div class="users">
-      Assigned Reviewers: <repeat:users join=", "><name/></repeat>
-    </div>
-    <delete-button class="actions" />
-  </body:>
+      <h3><a action="edit" if="&can_edit?" param="edit-link"><view:program /></a></h3>
+      <h5><repeat:findings join="  "><a action="edit" if="&can_edit?" param="edit-link"><button>Open Review Summary</button></a></repeat></h5>
+      <div class="users">
+        Assigned Reviewers: <repeat:users join=", "><name/></repeat>
+      </div>
+      <delete-button class="actions" />
+    </body:>
   </old-card> 
 </extend>
 
 <extend tag="card" for="Tcl"> 
   <card class="event" param="default" merge>
-      <h4><view:tcap/></h4>
+      <h4><a action="edit" if="&can_edit?" param="edit-link" ><view:tcap/></a></h4>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Target Capability</a></h5>
+    <h5><a action="show" if="&can_view?" param="show-link">Corrective Actions</a></h5>
   </card> 
 </extend>
 
@@ -253,7 +248,7 @@
   <card>
     <br /><h3><name /></h3>
     <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Exercise Plan</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open Exercise Plan</button></a></h5>
   </card> 
 </extend>
 
@@ -331,9 +326,13 @@
 <def tag="form" for="Finding">
   <form merge param="default">
     <error-messages param/>
-    <div param="tabs">
-    Instructions to the reviewers
+    <div class="report">
+      <a class="revreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report"><button>Reviewer Report</button></a>
     </div>
+    <div param="tabs">
+    Instructions to the reviewers...<br />
+    </div>
+
     <field-list fields="summary, recommendation" param/>
     <div param="actions">
       <submit label="#{ht 'finding.actions.save', :default=>['Save']}" param/>
@@ -375,17 +374,10 @@
       <h1>Event Strategic Review Contact Information</h1>
       <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
       <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
-      <!--<hr /><h1>Exercise Funding</h1><br />
-      <h2>&nbsp;&nbsp;&nbsp;Local Funding</h2><br />
-      <p>How much local/State (Non-Federal) funding has been allocated for Exercises annually?</p>
-      <field-list fields="funding7, funding8, funding9, funding10" param/><br />
-      <h2>&nbsp;&nbsp;&nbsp;Federal Funding</h2><br />
-      <p>How much federal grant funding has been allocated to the State for Exercises annually?</p>
-      <field-list fields="gfunding7, funding07_sources, gfunding8, funding08_sources, gfunding9, funding09_sources, gfunding10, funding10_sources" param/><br />
-      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
-      <hr /><h1>Corrective Action Process</h1><br />
-        <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br />-->
       <hr /><br />
+      <h2>Corrective Action Process</h2>
+      <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br />
+
       <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
       <div param="actions">
         <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
@@ -399,10 +391,22 @@
 </def>
 
 <def tag="form" for="Tcl">
-  <form merge param="default">
+  <form with="&@tcl" method="put" merge param="default">
     <error-messages param/>
-    <after-submit uri="#{url_for(this_parent)}" />
-    <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, corrective_actions, improvement_areas" />
+    <!--<after-submit uri="#{url_for(this_parent)}" />-->
+    <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, improvement_areas" >
+      <!--<alevels-view:>
+        <select-many:alevels />
+          <do part="level-menu">
+            <if test="&@tcl.tcap">
+              <select-one options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
+            </if>
+            <else>
+              <select disabled><option>First choose a Target Capability</option></select>
+            </else>
+          </do>
+      </alevels-view:>-->
+    </field-list>
     <div param="actions">
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
     </div>
@@ -424,6 +428,7 @@
   <form enctype="multipart/form-data" merge>
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
+
     <field-list fields="name, proof" />
     <div param="actions">
       <submit label="#{ht 'upload.actions.save', :default=>['Save']}" />
@@ -433,6 +438,12 @@
 
 
 <!--   FORM EXTENSIONS    -->
+
+<extend tag="form" for="CorrectiveAction">
+  <old-form merge>
+    <field-list: skip="tcl"/>
+  </old-form>
+</extend>
 
 <extend tag="form" for="Event">
   <old-form merge without-cancel>
@@ -445,24 +456,6 @@
     <field-list: skip="event"/>
   </old-form>
 </extend>
-
-<!--<extend tag="form" for="Tcl">
-    <old-form merge>
-      <field-list: fields="tcap, alevel">
-        <level-view:>
-          <do part="level-menu">
-            <if test="&@tcl.tcap">
-              <select-one options="&@tcl.tcap.alevels" disabled/>
-            </if>
-            <else>
-              <select disabled><option>First choose a Target Capability</option></select>
-            </else>
-          </do>
-        </level-view:>
-      </field-list:>
-    </old-form>
-</extend>-->
-
 
 <!--    SHOW-PAGE DEFINITIONS    -->
 
@@ -503,9 +496,7 @@
               <collection:tcls param/>
 
               <a:tcls action="new" if="&can_create?(@event.tcls)" param="new-link">
-                <ht key="tcl.actions.new" count="1">
-                  New Tcl
-                </ht>
+                <button><h4>Add Target Capability</h4></button>
               </a:tcls>
             </section>
           </section>
@@ -519,9 +510,7 @@
               </ht>
             </h3>
             <a:learned_lessons action="new" if="&can_create?(@event.learned_lessons)" param="new-link">
-              <ht key="learned_lesson.actions.new" count="1">
-                New Lesson Learned
-              </ht>
+              <button>Add Lessons Learned</button>
             </a:learned_lessons>
             <collection:learned_lessons  param="learned_lessons-collection"/>
           </section><br /><hr /><br />
@@ -532,9 +521,7 @@
               </ht>
             </h3>
             <a:uploads action="new" if="&can_create?(@event.uploads)" param="new-link">
-              <ht key="upload.actions.new" count="1">
-                New Reference/Proof Document
-              </ht>
+              <button>Upload File</button>
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
           </section>
@@ -570,33 +557,7 @@
 
           <section param="content-body">
             <field-list fields="program_jurisdiction, program_contact, ca_summary, ca_resolved" param/>
-            <!--<h2>Funding Data since 2007</h2>
-            <table border="0">
-              <tr>
-                <td><h3>Local Funding for Exercises:</h3></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td><h3>Federal Funding for Exercises:</h3></td>
-              </tr>
-              <tr>
-                <td><field-list fields="funding7, funding8, funding9, funding10" param/></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td><field-list fields="gfunding7, gfunding8, gfunding9, gfunding10" param/></td>
-              </tr>
-            </table>-->
+            
             <section param="collection-section">
               <h3 param="collection-heading">
                 <ht key="event.collection.heading" count="&this.events.count" >
@@ -607,9 +568,9 @@
               <collection:events param="events-collection"/>
 
               <a:events action="new" if="&can_create?(@program.events)" param="new-link">
-                <ht key="event.actions.new" count="1">
-                  New Event
-                </ht>
+                <button label="New Event">
+                  <h4>Add Event</h4>
+                </button>
               </a:events>
             </section>
           </section>
@@ -623,7 +584,7 @@
               </ht>
             </h3>
             <a:training_plans action="new" if="&can_create?(@program.training_plans)" param="new-link">
-              <ht key="training_plan.actions.new" count="1" ></ht>
+              <button>New Exercise Plan</button>
             </a:training_plans>
             <collection:training_plans  param="training_plans-collection"/>
           </section><br />
@@ -643,12 +604,57 @@
               </ht>
             </h3>
             <a:uploads action="new" if="&can_create?(@program.uploads)" param="new-link">
-              <ht key="upload.actions.new" count="1"></ht>
+              <button>Upload File</button>
             </a:uploads>
             <collection:uploads  param="uploads-collection"/>
            </section>
         </aside>
       </section-group>
     </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Tcl">
+  <page merge title="#{ht 'tcl.show.title', :default=>['Target Capability'] }">
+
+    <body: class="show-page tcl" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:event param="parent-link">&laquo; <ht key="tcl.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event>
+            <h2 param="heading">
+              TCL: <view:tcap />
+            </h2>
+
+            <record-flags fields="improvement_plan, improvement_plan_completed" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="tcl.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
+                Edit Target Capability
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <field-list fields="alevels, strengths, tcl_goals, tcl_objectives, improvement_areas" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">
+                <ht key="corrective_action.collection.heading" count="&this.corrective_actions.count" >
+                  <human-collection-name collection="corrective_actions" your/>
+                </ht>
+              </h3>
+
+              <collection:corrective_actions param/>
+
+              <a:corrective_actions action="new" if="&can_create?(@tcl.corrective_actions)" param="new-link">
+                <button>
+                  Add Corrective Action
+                </button>
+              </a:corrective_actions>
+            </section>
+          </section>
+    </content:>
+
   </page>
 </def>
