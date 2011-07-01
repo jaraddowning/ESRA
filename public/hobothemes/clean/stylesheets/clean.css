@@ -111,7 +111,7 @@ form .actions input { margin: 0; }
 	color: white;
 }
 
-.field-list th {width: 120px; white-space: nowrap;}
+.field-list th {width: 120px;} /*//white-space: nowrap;}*/
 .field-list td {width: 400px;}
 .field-list .input-help { color: #888;}
 
