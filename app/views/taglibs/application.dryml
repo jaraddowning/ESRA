@@ -416,7 +416,7 @@
 <def tag="form" for="TrainingPlan">
   <form merge param="default">
     <error-messages param/>
-    <after-submit uri="#{url_for(this_parent)}" />
+    <!--<after-submit uri="#{url_for(this_parent)}" />-->
     <field-list fields="name, texercises, tpriorities, train_tcaps" param/>
     <div param="actions">
       <submit label="#{ht 'training_plan.actions.save', :default=>['Save']}" param/>
