@@ -124,7 +124,7 @@
   <old-new-for-program-page merge>
     <append-content-body:>
       <div param="org-chart">
-        <h4><p>Please include an Organizational Chart in the uploaded documents!</p></h4><br />
+        <h4><p>Please include an Organizational Chart in the uploaded documents.</p></h4><br />
       </div>
       <section class="upload_section">
         <div>
