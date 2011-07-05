@@ -1,0 +1,14 @@
+development:
+  :address: mail.csg.org
+  :port: 25
+  :authentication: login
+  :user_name: emap@csg.org
+  :password: Emap8222
+  :enable_starttls_auto: true
+production:
+  :address: mail.csg.org
+  :port: 25
+  :authentication: login
+  :user_name: emap@csg.org
+  :password: Emap8222
+  :enable_starttls_auto: true
