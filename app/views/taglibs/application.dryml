@@ -120,6 +120,19 @@
   <old-show-page merge without-parent-link/>
 </extend>
 
+<extend tag="new-for-event-page" for="Upload">
+  <old-new-for-event-page merge>
+    <append-content-body:>
+      <section class="upload_section">
+        <div>
+          <h3>Uploaded Documents</h3>
+        </div>
+        <collection:uploads with="&@event" />
+      </section>
+    </append-content-body:>
+  </old-new-for-event-page>
+</extend>
+
 <extend tag="new-for-program-page" for="Upload">
   <old-new-for-program-page merge>
     <append-content-body:>
