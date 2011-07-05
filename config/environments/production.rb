@@ -10,7 +10,7 @@ Esra::Application.configure do
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  #config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
@@ -35,7 +35,8 @@ Esra::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Disable delivery errors, bad email addresses will be ignored
-  config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
 
   # Enable threaded mode
   # config.threadsafe!
@@ -46,20 +47,5 @@ Esra::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  # Email account setup
-  config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-  #  :address => 'mail.csg.org',
-  #  :port => 25,
-  #  :domain => 'csg.org',
-  #  :authentication => :login,
-  #  :user_name => 'emap@csg.org',
-  #  :password => 'Emap8222'
-  #}
-
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default :content_type => "text/html"
 
 end
