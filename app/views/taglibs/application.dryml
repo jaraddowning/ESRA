@@ -346,7 +346,7 @@
     Instructions to the reviewers...<br />
     </div>
 
-    <field-list fields="summary, recommendation" param/>
+    <field-list fields="interviews,summary, recommendation" param/>
     <div param="actions">
       <submit label="#{ht 'finding.actions.save', :default=>['Save']}" param/>
     </div>
