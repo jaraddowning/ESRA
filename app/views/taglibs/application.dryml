@@ -466,7 +466,7 @@
 
 <extend tag="form" for="Interview">
   <old-form merge without-cancel>
-    <field-list: skip="event"/>
+    <field-list: skip="program"/>
   </old-form>
 </extend>
 
