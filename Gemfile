@@ -1,9 +1,11 @@
+source 'http://rubygems.org'
+
 gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -19,7 +21,7 @@ gem 'sqlite3'
 # gem 'bj'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'sqlite3'
+# gem 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
@@ -30,7 +32,7 @@ gem 'sqlite3'
 # end
 gem "hobo", :git => "git://github.com/tablatom/hobo.git", :branch => "rails3"
 gem 'paperclip', :git => "git://github.com/jeanmartin/paperclip.git", :branch => "master"
-gem "bluecloth"
+#gem "bluecloth"
 gem "hobo-jquery", :git => "git://github.com/bryanlarsen/hobo-jquery.git", :branch => "rails3"
 gem 'prawn'
 gem 'pdf-reader'
