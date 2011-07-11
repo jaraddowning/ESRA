@@ -6,7 +6,7 @@ class UploadsController < ApplicationController
 
   auto_actions_for :program, [:create, :new]
   auto_actions_for :event, [:create, :new]
-
+  auto_actions_for :disdec, [:create, :new]
 
 #  def create_for_program
 #    hobo_create_for :program do
