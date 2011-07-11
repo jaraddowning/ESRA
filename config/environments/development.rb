@@ -25,5 +25,20 @@ Esra::Application.configure do
 
   Paperclip.options[:command_path] = "/usr/bin/convert"
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'mail.csg.org',
+    :port => 25,
+    :domain => 'csg.org',
+    :authentication => :login,
+    :user_name => 'emap@csg.org',
+    :password => 'Emap8222'
+  }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default :content_type => "text/html"
+
 end
 
