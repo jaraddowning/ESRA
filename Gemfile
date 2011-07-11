@@ -1,5 +1,3 @@
-source 'http://rubygems.org'
-
 gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
@@ -41,3 +39,4 @@ gem 'sanitize', :submodules => true
 gem "nested_has_many_through"
 #gem "serenity-odt"
 #gem "clamsy"
+gem 'yaml_db'
