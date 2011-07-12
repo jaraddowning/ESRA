@@ -45,6 +45,10 @@ class Program < ActiveRecord::Base
     Disdec.create(:name => "Disaster Declarations", :program_id => id)
   end
 
+  def route
+    return '/programs/' + id.to_s
+  end
+
   children :events, :training_plans, :eecas
 
   # --- Permissions --- #

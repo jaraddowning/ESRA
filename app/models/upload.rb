@@ -12,7 +12,17 @@ class Upload < ActiveRecord::Base
   belongs_to :disdec
   belongs_to :owner, :class_name => "User", :creator => true
 
-  has_attached_file :proof
+  has_attached_file :proof,
+    :path => ":rails_root/public/system/:attachment/:id/:style/:normalized_proof_file_name",
+    :url => "/system/:attachment/:id/:style/:normalized_proof_file_name"
+
+  Paperclip.interpolates :normalized_proof_file_name do |attachment, style|
+    attachment.instance.normalized_proof_file_name
+  end
+
+  def normalized_proof_file_name
+    "#{self.id}-#{self.proof_file_name.gsub( /[^a-zA-Z0-9_\.]/, '_')}" 
+  end
 
   # --- Permissions --- #
 

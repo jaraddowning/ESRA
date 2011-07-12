@@ -32,6 +32,11 @@
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
     </custom-scripts:>
+    <append-scripts:>
+    <%= raw "<!--[if lt IE 9]>" %> 
+      <javascript name="excanvas.compiled.js"/> 
+    <%= raw "<![endif]-->" %>
+    </append-scripts:>
     <footer:>
       <div>
         <a href="http://esra.emaponline.org/privacy.html">EMAP Privacy Policy</a>&nbsp;
@@ -313,6 +318,7 @@
 <def tag="form" for="Eeca">
   <form merge param="default">
     <error-messages param/>
+    <after-submit uri="#{url_for(this_parent)}" />
       <h1>4.14: Exercises, Evaluations and Corrective Actions</h1><hr /><br />
       <h2>Overview</h2><p>An accredited Emergency Management Program will encompass an exercise, evaluation and corrective action process.</p><hr /><br />
       <h3>4.14.1</h3><p> A documented exercise program is established that regularly tests the skills, abilities, and experience of emergency personnel as well as the plans, policies, procedures, equipment, and facilities of the Emergency Management Program. The exercise program is tailored to the range of hazards that confronts the jurisdiction.</p><hr /><br />
@@ -386,19 +392,12 @@
       <field-list fields="name, program_jurisdiction, program_street, program_city, program_state, program_zip" param/><br />
       <h1>Event Strategic Review Contact Information</h1>
       <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email" param/><br />
-      <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>
       <hr /><br />
       <h2>Corrective Action Process</h2>
       <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br />
-
       <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
       <div param="actions">
-        <submit label="#{ht 'program.actions.save', :default=>['Save']}" param/>&nbsp;&nbsp;&nbsp;
-        <a action="show" if="&can_view?" param="show-link"><button>
-          <ht key="program.actions.show" name="&this.respond_to?(:name) ? this.name : ''">
-            Submit Program Information
-          </ht></button>
-        </a>
+        <submit label="Submit Program Information" param/>&nbsp;&nbsp;&nbsp;
       </div>
   </form>
 </def>
@@ -429,7 +428,7 @@
 <def tag="form" for="TrainingPlan">
   <form merge param="default">
     <error-messages param/>
-    <!--<after-submit uri="#{url_for(this_parent)}" />-->
+    <after-submit uri="#{url_for(this_parent)}" />
     <field-list fields="name, texercises, tpriorities, train_tcaps" param/>
     <div param="actions">
       <submit label="#{ht 'training_plan.actions.save', :default=>['Save']}" param/>
@@ -634,40 +633,36 @@
     <body: class="show-page tcl" param/>
 
     <content: param>
-          <header param="content-header">
-            <a:event param="parent-link">&laquo; <ht key="tcl.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event>
-            <h2 param="heading">
-              TCL: <view:tcap />
-            </h2>
+      <header param="content-header">
+        <a:event param="parent-link">&laquo; <ht key="tcl.actions.back_to_parent" parent="Event" name="&this">Back to <name/></ht></a:event>
+        <h2 param="heading">
+          TCL: <view:tcap />
+        </h2>
+        <record-flags fields="improvement_plan, improvement_plan_completed" param/>
+        <a action="edit" if="&can_edit?" param="edit-link">
+          <ht key="tcl.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
+            Edit Target Capability
+          </ht>
+        </a>
+      </header>
+      <section param="content-body">
+        <field-list fields="alevels, strengths, tcl_goals, tcl_objectives, improvement_areas" param/>
+        <section param="collection-section">
+          <h3 param="collection-heading">
+            <ht key="corrective_action.collection.heading" count="&this.corrective_actions.count" >
+              <human-collection-name collection="corrective_actions" your/>
+            </ht>
+          </h3>
 
-            <record-flags fields="improvement_plan, improvement_plan_completed" param/>
+          <collection:corrective_actions param/>
 
-            <a action="edit" if="&can_edit?" param="edit-link">
-              <ht key="tcl.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
-                Edit Target Capability
-              </ht>
-            </a>
-          </header>
-
-          <section param="content-body">
-            <field-list fields="alevels, strengths, tcl_goals, tcl_objectives, improvement_areas" param/>
-            <section param="collection-section">
-              <h3 param="collection-heading">
-                <ht key="corrective_action.collection.heading" count="&this.corrective_actions.count" >
-                  <human-collection-name collection="corrective_actions" your/>
-                </ht>
-              </h3>
-
-              <collection:corrective_actions param/>
-
-              <a:corrective_actions action="new" if="&can_create?(@tcl.corrective_actions)" param="new-link">
-                <button>
-                  Add Corrective Action
-                </button>
-              </a:corrective_actions>
-            </section>
-          </section>
+          <a:corrective_actions action="new" if="&can_create?(@tcl.corrective_actions)" param="new-link">
+            <button>
+              Add Corrective Action
+            </button>
+          </a:corrective_actions>
+        </section>
+      </section>
     </content:>
-
   </page>
 </def>
