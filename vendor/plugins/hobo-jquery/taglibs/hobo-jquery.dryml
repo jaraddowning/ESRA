@@ -154,11 +154,11 @@ Standard usage:
 
 If you don't supply the select, it will use Hobo's `<input>` tag.  This is usually the right default.
 
-You can tell Hobo to always use a combobox for select-one, select-many, select-input and/or select-menu.
+You can tell Hobo to always use a combobox for select-one, select-many, select-input and/or select-menu.   Notice that we also changed the limit - 100 is the default, which makes sense for a select, but not for a combobox.
 
     <extend tag="select-one">
       <hjq-combobox tag="select-one">
-        <old-select-one merge/>
+        <old-select-one limit="5000" merge/>
       </hjq-combobox>
     </extend>
 
@@ -258,8 +258,8 @@ end
       <input type="hidden" class="empty-input" id="#{param_name_for_this}" name="#{param_name_for_this}" value="" disabled="&(!this.empty? || minimum>0)" />
       <fake-field-context fake-field="-1" context="&template">
         <div param="empty-message">
-          <ht key="#{this.class.class_name.tableize}.collection.empty_message">          
-            No <%= this.class.class_name.titleize.downcase.pluralize %>.
+          <ht key="#{this.class.to_s.underscore}.collection.empty_message">          
+            No <%= this.class.name.titleize.downcase.pluralize %>.
           </ht>
         </div>
         <div class="buttons">
@@ -550,7 +550,7 @@ Because the select-one is a part, it cannot be parameterized.  However, you can 
 <def tag="select-one-or-new-dialog">
   <% dialog_id="hjq-dialog-#{typed_id.gsub(':', '-')}" %>
   <% part_id = "select-one-#{typed_id.gsub(':', '-')}" %>
-  <input part="select-one-or-new-dialog-select" id="&part_id"/>
+  <input part="select-one-or-new-dialog-select" id="#{part_id}"/>
   <hjq-dialog-open-button dialog="##{dialog_id}" param>
     New <% this_field.humanize %>
   </hjq-dialog-open-button>

@@ -28,7 +28,7 @@
   <old-page merge without-live-search without-count>
     <custom-scripts:>
       <hjq-assets/>
-      <!--<javascript name="jquery.form.js"/>-->
+      <javascript name="jquery.form.js"/>
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
     </custom-scripts:>
@@ -48,6 +48,38 @@
     </footer:>
   </old-page>
 </extend>
+
+<def tag="input-many" for="Texercise" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, tdate" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="DisasterDeclaration" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, ddate" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="StateDisdec" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, ddate" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="LocalDisdec" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, ddate" />
+     </item:>
+  </hjq-input-many>
+</def>
 
 <extend tag="edit-page" for="Disdec">
   <old-edit-page merge>

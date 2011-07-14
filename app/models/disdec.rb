@@ -13,8 +13,6 @@ class Disdec < ActiveRecord::Base
   has_many :state_disdecs, :dependent => :destroy, :accessible => true
   has_many :local_disdecs, :dependent => :destroy, :accessible => true
 
-  children :uploads
-
   # --- Permissions --- #
 
   def create_permitted?
