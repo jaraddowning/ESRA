@@ -133,6 +133,7 @@ en:
       you_signed_up: "You have signed up"
       no: "No %{model} available."
       confirm: "Are you sure?"
+      account_dis: "Your account has been temporarally disabled for the purpose of the Review"
 
     # default hobo collection translation
     collection:

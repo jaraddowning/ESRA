@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
 
     state :invited, :default => true
     state :active
+    state :disabled
 
     create :invite,
            :available_to => "acting_user if acting_user.administrator?",
@@ -64,6 +65,8 @@ class User < ActiveRecord::Base
 
     transition :reset_password, { :active => :active }, :available_to => :key_holder,
                :params => [ :password, :password_confirmation ]
+
+    transition :account_disabled, { :active => :disabled }, :available_to => "acting_user if acting_user.administrator?"
 
   end
 

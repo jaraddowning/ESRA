@@ -22,5 +22,12 @@ class UsersController < ApplicationController
       flash[:notice] = t("hobo.messages.you_signed_up", :default=>"You have signed up")
     end
   end
+  
+  def do_account_disabled
+    do_transition_action :account_disabled do
+      self.current_user = this
+      flash[:notice] = t("hobo.messages.account_dis", :default=>"Your account is currently disabled")
+    end
+  end
 
 end

@@ -11,7 +11,7 @@ class UploadsController < ApplicationController
   def create_for_disdec
     hobo_create_for :disdec do
       if valid?
-        ajax_update_response(params[:render].values, {}, 
+        ajax_update_response(params[:render], {}, 
           {:preamble => "<textarea>\nvar _update = Hobo.updateElement;", :postamble => "</textarea>"})
       else
         render(:status => 500,

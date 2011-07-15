@@ -43,6 +43,7 @@ class Program < ActiveRecord::Base
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
     Disdec.create(:name => "Disaster Declarations", :program_id => id)
+    Upload.create(:name => "Orginizational Chart", :program_id => id)
   end
 
   def route
