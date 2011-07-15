@@ -11,7 +11,7 @@
     <div part="uploads-div">
       <error-messages/>
       <table-plus:uploads fields="name, proof_file_name, updated_at">
-        <empty-message:>No events match your criteria</empty-message:>
+        <empty-message:>No documents have been uploaded</empty-message:>
         <controls:/>
       </table-plus>
     </div>

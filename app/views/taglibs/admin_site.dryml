@@ -19,11 +19,27 @@
   </old-page>
 </extend>
 
-<extend tag="card" for="User">
-  <old-card merge>
-    <append-header:><%= h this.state.titleize %></append-header:>
-  </old-card>
+<extend tag="edit-page" for="User">
+  <old-edit-page merge>
+    <append-heading:>
+      <br /><transition-buttons />
+    </append-heading:>
+  </old-edit-page>
 </extend>
+
+<!--<def tag="card" for="User">
+  <card class="user" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4><%= h this.state.titleize %><transition-buttons id="trans-button" />
+    </header:>
+    <body: param>
+      <ht key="review.collection.count" count="&this.reviews.size">
+         <count:reviews param/>
+      </ht>
+      <transition-buttons />
+    </body:>
+  </card>
+</def>-->
 
 <extend tag="card" for="Review"> 
   <old-card merge>
@@ -57,3 +73,4 @@
 <extend tag="show-page" for="Review">
   <old-show-page merge without-parent-link />
 </extend>
+

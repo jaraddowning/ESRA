@@ -3,16 +3,18 @@ class User < ActiveRecord::Base
   hobo_user_model # Don't put anything above this
 
   fields do
-    name          :string, :required, :unique
-    username      :string, :required, :unique
-    email_address :email_address, :login => true
-    agency        :string
-    job_title     :string
-    administrator :boolean, :default => false
-    reviewer      :boolean, :default => false
-    program       :boolean, :default => false
+    name            :string, :required, :unique
+    username        :string, :required, :unique
+    email_address   :email_address, :login => true
+    agency          :string
+    job_title       :string
+    administrator   :boolean, :default => false
+    reviewer        :boolean, :default => false
+    program         :boolean, :default => false
     timestamps
   end
+
+  named_scope :administrators, :conditions => { :administrator => true }
 
   has_many :review_assignments, :dependent => :destroy
   has_many :reviews, :through => :review_assignments
@@ -24,6 +26,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def route
+    return '/users/' + id.to_s
+  end
 
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
@@ -66,12 +71,18 @@ class User < ActiveRecord::Base
     transition :reset_password, { :active => :active }, :available_to => :key_holder,
                :params => [ :password, :password_confirmation ]
 
-    transition :account_disabled, { :active => :disabled }, :available_to => "acting_user if acting_user.administrator?"
+    transition :disable_account, { :active => :disabled }, :available_to => :all
+
+    transition :enable_account, { :disabled => :active }, :available_to => :all
 
   end
 
   def signed_up?
     state=="active"
+  end
+
+  def blocked?
+    state=="disabled"
   end
 
   # --- Auto-generation of assigned reviews --- #  

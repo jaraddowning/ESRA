@@ -153,6 +153,14 @@
   </old-edit-page>
 </extend>
 
+<!--<extend tag="edit-page" for="User">
+  <old-edit-page merge>
+    <append-heading:>
+      <br /><transition-buttons />
+    </append-heading:>
+  </old-edit-page>
+</extend>-->
+
 <extend tag="show-page" for="User">
   <old-show-page merge without-parent-link/>
 </extend>
@@ -317,7 +325,7 @@
 <extend tag="card" for="User"> 
   <card>
     <header>
-      <h4 param="heading"><a><name/></a></h4>
+      <h4 param="heading"><a><name/></a></h4><%= h this.state.titleize %>
     </header>
     <delete-button class="actions" />
     <div class="roles">
