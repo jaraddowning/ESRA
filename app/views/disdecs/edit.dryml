@@ -13,6 +13,9 @@
       <table-plus:uploads fields="name, proof_file_name, updated_at">
         <empty-message:>No documents have been uploaded</empty-message:>
         <controls:/>
+        <proof_file_name-view:>
+          <a><view:proof_file_name /></a>
+        </proof_file_name-view:>
       </table-plus>
     </div>
   </after-form:>

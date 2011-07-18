@@ -313,7 +313,7 @@
 <extend tag="card" for="Upload"> 
   <card> 
     <br />
-    <h3><a action="edit" if="&can_edit?" param="edit-link" ><name /></a></h3>
+    <h4><a action="edit" if="&can_edit?" param="edit-link" ><name /></a></h4>
     <a href="#{this.proof.url(:original, false)}" target="_blank"><view:proof_file_name /></a>
     <p>
       Uploaded: <view:created_at format="%B %d, %Y" />
