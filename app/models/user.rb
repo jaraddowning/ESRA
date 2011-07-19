@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   hobo_user_model # Don't put anything above this
 
   fields do
-    name            :string, :required, :unique
+    name            :string, :required
     username        :string, :required, :unique
     email_address   :email_address, :login => true
     agency          :string
@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
     (0..(names.length-2)).inject(nil) do |result, n|
       result ||= self.find_by_name_and_username(names[0..n].join(' '), names[1..(n+1)].join(' '))
     end
-  end
-
-  def route
-    return '/users/' + id.to_s
   end
 
   # This gives admin rights and an :active state to the first sign-up.

@@ -57,9 +57,4 @@ Esra::Application.configure do
   #  :password => 'EMAP8Train'
   #}
 
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default :content_type => "text/html"
-
 end
