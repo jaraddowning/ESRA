@@ -181,6 +181,8 @@ en:
       hazard:
         name: Hazard
         consequences: Consequence Analysis
+      interview:
+        idate: Date
       improvement_area:
         name: Area of Improvement
       local_disdec:

@@ -16,5 +16,5 @@ ActionMailer::Base.smtp_settings = {
   :domain               => 'esra.emaponline.org',
   :user_name            => 'emap@csg.org',
   :password             => 'Emap8222',
-  :authentication       => 'plain',
+  :authentication       => :login,
   :enable_starttls_auto => true  }

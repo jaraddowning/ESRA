@@ -3,14 +3,13 @@ class Interview < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name      :string, :required
+    name      :string, :required, :name => true
     title     :string
-    date      :date
+    idate     :date
     summary   :html
     timestamps
   end
 
-  belongs_to :program
   belongs_to :finding
 
   # --- Permissions --- #

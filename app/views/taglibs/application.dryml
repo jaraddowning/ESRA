@@ -49,15 +49,113 @@
   </old-page>
 </extend>
 
-<def tag="input-many" for="Texercise" merge>
+<!-- Input Many JQuery Stylie -->
+
+<def tag="input-many" for="Alevel" merge>
   <hjq-input-many>
      <item:>
-       <field-list fields="name, tdate" />
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Efunding" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Egoal" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Ehost" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="host" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Elocation" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="EOpenCa" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Eparticipant" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Consequence" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="consequence" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="CaDoc" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="document" />
      </item:>
   </hjq-input-many>
 </def>
 
 <def tag="input-many" for="DisasterDeclaration" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, ddate" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Hazard" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="ImprovementArea" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Interview" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, title, idate, summary" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="LocalDisdec" merge>
   <hjq-input-many>
      <item:>
        <field-list fields="name, ddate" />
@@ -73,13 +171,39 @@
   </hjq-input-many>
 </def>
 
-<def tag="input-many" for="LocalDisdec" merge>
+<def tag="input-many" for="Strength" merge>
   <hjq-input-many>
      <item:>
-       <field-list fields="name, ddate" />
+       <field-list fields="name" />
      </item:>
   </hjq-input-many>
 </def>
+
+<def tag="input-many" for="TclGoal" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="TclObjective" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="Texercise" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name, tdate" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<!--  Some Page Extensions -->
 
 <extend tag="edit-page" for="Disdec">
   <old-edit-page merge>
@@ -265,13 +389,13 @@
   </card> 
 </extend>
 
-<extend tag="card" for="Interview"> 
+<!--<extend tag="card" for="Interview"> 
   <card>
     <br /><h5><name /></h5>
     <delete-button class="actions" />
     <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open Interview</button></a></h5>
   </card> 
-</extend>
+</extend>-->
 
 <extend tag="card" for="LearnedLesson"> 
   <card>
@@ -385,14 +509,12 @@
 <def tag="form" for="Finding">
   <form merge param="default">
     <error-messages param/>
-    <div class="report">
+    <!--<div class="report">
       <a class="revreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report"><button>Reviewer Report</button></a>
+    </div>-->
+    <div param="tabs"><br />
     </div>
-    <div param="tabs">
-    Instructions to the reviewers...<br />
-    </div>
-
-    <field-list fields="interviews,summary, recommendation" param/>
+    <field-list fields="interviews, summary, recommendation" param />
     <div param="actions">
       <submit label="#{ht 'finding.actions.save', :default=>['Save']}" param/>
     </div>

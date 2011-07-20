@@ -31,7 +31,6 @@ class Program < ActiveRecord::Base
   has_many :hiras, :dependent => :destroy
   has_many :eecas, :dependent => :destroy
   has_many :uploads, :dependent => :destroy
-  has_many :interviews, :dependent => :destroy
 
   has_many :reviews, :dependent => :destroy
   has_many :reviewers, :through => :reviews, :source => :users

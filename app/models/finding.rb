@@ -14,8 +14,6 @@ class Finding < ActiveRecord::Base
   
   has_many :interviews, :dependent => :destroy, :accessible => true
 
-  children :interviews
-
   # --- Permissions --- #
 
   def create_permitted?
