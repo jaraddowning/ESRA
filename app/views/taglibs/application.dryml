@@ -18,6 +18,8 @@
   <%= "<!-- json_annotation (#{attributes.to_json}); -->".html_safe %>
 </def>
 
+<!-- ======   Sweet Date Picker  ====== -->
+
 <def tag="input" for="Date"> 
   <hjq-datepicker dateFormat="yy-mm-dd" merge /> 
 </def>
@@ -49,7 +51,7 @@
   </old-page>
 </extend>
 
-<!-- Input Many JQuery Stylie -->
+<!-- =====  Input Many JQuery Stylie =====  -->
 
 <def tag="input-many" for="Alevel" merge>
   <hjq-input-many>
@@ -203,7 +205,25 @@
   </hjq-input-many>
 </def>
 
-<!--  Some Page Extensions -->
+<def tag="input-many" for="Tpriority" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="name" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<def tag="input-many" for="TrainTcap" merge>
+  <hjq-input-many>
+     <item:>
+       <field-list fields="tcap" />
+     </item:>
+  </hjq-input-many>
+</def>
+
+<!--  =====  Some Page Extensions =====  -->
+
+<!--  =====  Breadcrumbs =====  -->
 
 <extend tag="edit-page" for="Disdec">
   <old-edit-page merge>
@@ -318,7 +338,7 @@
   </old-new-for-program-page>
 </extend>
 
-<!--   CARD DEFINITIONS       -->
+<!--  =====  CARD DEFINITIONS  =====  -->
 
 <def tag="card" for="Program">
   <card class="program" param="default" merge>
@@ -338,7 +358,7 @@
 </def>
 
 
-<!--    CARD EXTENSIONS    -->
+<!--  =====  CARD EXTENSIONS  =====  -->
 
 <extend tag="card" for="CorrectiveAction"> 
   <card>
@@ -388,14 +408,6 @@
     <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open EMAP 4.3</button></a></h5>
   </card> 
 </extend>
-
-<!--<extend tag="card" for="Interview"> 
-  <card>
-    <br /><h5><name /></h5>
-    <delete-button class="actions" />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" ><button>Open Interview</button></a></h5>
-  </card> 
-</extend>-->
 
 <extend tag="card" for="LearnedLesson"> 
   <card>
@@ -460,7 +472,7 @@
 </extend>
 
 
-<!--   FORM DEFINITIONS       -->
+<!--  =====  FORM DEFINITIONS  =====  -->
 
 <def tag="form" for="Disdec">
   <form merge without-heading param="default">
@@ -591,7 +603,10 @@
   <form merge param="default">
     <error-messages param/>
     <after-submit uri="#{url_for(this_parent)}" />
-    <field-list fields="name, texercises, tpriorities, train_tcaps" param/>
+    <field-list fields="name" /><br /><br />
+    <field-list fields="texercises" /><br /><br />
+    <field-list fields="tpriorities" /><br /><br />
+    <field-list fields="train_tcaps" />
     <div param="actions">
       <submit label="#{ht 'training_plan.actions.save', :default=>['Save']}" param/>
     </div>
