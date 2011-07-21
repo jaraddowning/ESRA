@@ -7,7 +7,7 @@
 <include src="taglibs/auto/rapid/forms"/>
 
 <include src="paperclip" plugin="paperclip_with_hobo"/>
-<include src="hobo-contrib-all" plugin="hobo-contrib"/>
+<!--<include src="hobo-contrib-all" plugin="hobo-contrib"/>-->
 <include plugin="hobo-jquery" />
 
 <set-theme name="clean-sidemenu"/>
