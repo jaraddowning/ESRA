@@ -221,6 +221,16 @@ en:
         disdecs: Disaster Declaration(s)
         hiras: EMAP 4.3
         eecas: EMAP 4.14
+        ca_top_1: 1
+        ca_top_2: 2
+        ca_top_3: 3
+        ca_top_4: 4
+        ca_top_5: 5
+        ca_top_6: 6
+        ca_top_7: 7
+        ca_top_8: 8
+        ca_top_9: 9
+        ca_top_10: 10
       review_assignment:
         users: Reviewers
       review:

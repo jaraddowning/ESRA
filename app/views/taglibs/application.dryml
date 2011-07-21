@@ -35,13 +35,17 @@
   <old-page merge without-live-search without-count>
     <custom-scripts:>
       <hjq-assets/>
-      <javascript name="jquery.form.js"/>
+      <!--<javascript name="jquery.form.js"/>-->
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
     </custom-scripts:>
     <append-scripts:>
     <%= raw "<!--[if lt IE 9]>" %> 
       <javascript name="excanvas.compiled.js"/> 
+    <%= raw "<![endif]-->" %>
+    <%= raw "<!--[if lt IE 7]>" %> 
+      <javascript name="IE7.js"/>
+      <javascript name="ie7-recalc.js"/>
     <%= raw "<![endif]-->" %>
     </append-scripts:>
     <footer:>
@@ -568,13 +572,16 @@
   <form merge param="default">
     <error-messages param/>
       <h1>General Program Information</h1>
-      <feckless-fieldset class="horizontal" fields="name, program_jurisdiction, program_street, program_city, program_state, program_zip" /><br />
+      <field-list fields="name, program_jurisdiction, program_street, program_city, program_state, program_zip" /><br />
       <h1>Event Strategic Review Contact Information</h1>
-      <feckless-fieldset class="horizontal" fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email"/><br />
+      <field-list fields="program_contact, contact_title, contact_phone, contact_mobile, contact_email"/><br />
       <hr /><br />
       <h2>Corrective Action Process</h2>
       <p>The evaluation and improvement of mission and task performance is the final step of the Preparedness Cycle and crucial to informing risk assessments, managing vulnerabilities, allocating resources, and informing the other elements of the Cycle. Organizations develop improvement plans and track corrective actions to address the capabilities identified in plans and tested in exercises or real events.  Using this data to reassess and revise plans and protocols contributes to the beginning of the next Preparedness Cycle by ensuring that updated strategies and plans can be used to inform new preparedness-building activities.</p><br />
-      <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary, ca_resolved" param/><br /><hr />
+      <field-list fields="continuous_ca_plan, proc_for_devel, ca_tracked, ca_summary" /><br />
+      <h4><p>Using the fields below, list the Programs top ten (10) Corrective Actions over the last calendar year</p></h4>
+      <field-list id= "ca_top" fields="ca_top_1, ca_top_2, ca_top_3, ca_top_4, ca_top_5, ca_top_6, ca_top_7, ca_top_8, ca_top_9, ca_top_10" /><br /><hr />
+      <br />
       <div param="actions">
         <submit label="Submit Program Information" param/>&nbsp;&nbsp;&nbsp;
       </div>
@@ -750,7 +757,9 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="program_jurisdiction, program_contact, ca_summary, ca_resolved" param/>
+            <field-list fields="program_jurisdiction, program_contact, ca_summary" />
+            <h4>Resolved Corrective Actions in the previous year</h4>
+            <field-list fields="ca_top_1, ca_top_2, ca_top_3, ca_top_4, ca_top_5, ca_top_6, ca_top_7, ca_top_8, ca_top_9, ca_top_10" param/>
             
             <section param="collection-section">
               <h3 param="collection-heading">

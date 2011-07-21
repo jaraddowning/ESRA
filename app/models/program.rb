@@ -18,6 +18,16 @@ class Program < ActiveRecord::Base
     ca_tracked           :boolean
     ca_summary           :html
     ca_resolved          :html
+    ca_top_1             :string
+    ca_top_2             :string
+    ca_top_3             :string
+    ca_top_4             :string
+    ca_top_5             :string
+    ca_top_6             :string
+    ca_top_7             :string
+    ca_top_8             :string
+    ca_top_9             :string
+    ca_top_10            :string
     timestamps
   end
 

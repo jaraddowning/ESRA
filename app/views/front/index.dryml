@@ -17,7 +17,7 @@
         Please submit any issues or feedback to <a href="mailto:jdowning@csg.org?subject=ESRA assisstance">jdowning@csg.org</a>        
         <br />
         <br />
-		  <p><font id="wb-disclaimer">All graphical web browsers will work with this website, however, we recommend using <a class="sn-link" href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer 9</a>, <a class="sn-link" href="http://www.google.com/chrome/">Google Chrome</a>, or <a class="sn-link" href="http://www.mozilla.com/en-US/firefox/new/">Mozilla Firefox</a> for optimum user experience.</font></p>
+		  <p><font id="wb-disclaimer">All graphical web browsers will work with this website excluding Internet Explorer 6, IE 6 WILL NOT WORK and should not be used. However, we recommend using <a class="sn-link" href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer 9</a>, <a class="sn-link" href="http://www.google.com/chrome/">Google Chrome</a>, or <a class="sn-link" href="http://www.mozilla.com/en-US/firefox/new/">Mozilla Firefox</a> for optimum user experience.</font></p>
         <% if User.count == 0 -%>
           <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
           <form with="&this || User.new" without-cancel>
@@ -32,7 +32,7 @@
     <div id="sn-class">
 		<a class="sn-link" href="http://twitter.com/#!/EMAP_US" target="_blank"><img src="../images/twitter.png" alt="Follow us on Twitter"/></a>
 		<a class="sn-link" href="http://www.facebook.com/group.php?gid=76820551288" target="_blank" ><img src="../images/facebook.png" alt="Visit our Facebook Page" /></a>
-		<br />v.1.2.10
+		<br />v.1.2.12
 	 </div>    
     </section>
   </content:>
