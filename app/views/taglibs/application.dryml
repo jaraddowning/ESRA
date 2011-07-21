@@ -7,6 +7,7 @@
 <include src="taglibs/auto/rapid/forms"/>
 
 <include src="paperclip" plugin="paperclip_with_hobo"/>
+<include src="hobo-contrib-all" plugin="hobo-contrib"/>
 <include plugin="hobo-jquery" />
 
 <set-theme name="clean-sidemenu"/>
@@ -23,6 +24,10 @@
 <def tag="input" for="Date"> 
   <hjq-datepicker dateFormat="yy-mm-dd" merge /> 
 </def>
+
+<!--<extend tag="field-list">
+  <feckless-fieldset class="horizontal" merge/>
+</extend>-->
 
 <!-- ======   CUSTOM EXTENSIONS/DEFINITIONS  ======  -->
 
