@@ -11,11 +11,14 @@
     <div part="uploads-div">
       <error-messages/>
       <table-plus:uploads fields="name, proof_file_name, updated_at">
+        <proof_file_name-view: with="&@ups">
+          <a href="#{rails_root}/public/system/proofs/#{this.id}/original/#{this.normalized_proof_file_name}" target="_blank"><view /></a>
+        </proof_file_name-view:>
+        <updated_at-view:>
+          <view format="%B %d, %Y" />
+        </updated_at-view:>
         <empty-message:>No documents have been uploaded</empty-message:>
         <controls:/>
-        <proof_file_name-view:>
-          <a><view:proof_file_name /></a>
-        </proof_file_name-view:>
       </table-plus>
     </div>
   </after-form:>

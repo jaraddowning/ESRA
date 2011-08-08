@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     timestamps
   end
 
-  named_scope :administrators, :conditions => { :administrator => true }
+  scope :administrators, :conditions => { :administrator => true }
 
   has_many :review_assignments, :dependent => :destroy
   has_many :reviews, :through => :review_assignments

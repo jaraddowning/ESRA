@@ -22,7 +22,7 @@
 <!-- ======   Sweet Date Picker  ====== -->
 
 <def tag="input" for="Date"> 
-  <hjq-datepicker dateFormat="yy-mm-dd" merge /> 
+  <hjq-datepicker changeYear="true" dateFormat="yy-mm-dd" maxDate="new Date(+0y)" minDate="new Date(-5y)" merge /> 
 </def>
 
 <!--<extend tag="field-list">
@@ -35,7 +35,7 @@
   <old-page merge without-live-search without-count>
     <custom-scripts:>
       <hjq-assets/>
-      <!--<javascript name="jquery.form.js"/>-->
+      <javascript name="jquery.form.js"/>
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
     </custom-scripts:>

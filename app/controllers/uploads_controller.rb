@@ -6,13 +6,12 @@ class UploadsController < ApplicationController
 
   auto_actions_for :program, [:create, :new]
   auto_actions_for :event, [:create, :new]
-  auto_actions_for :disdec, :create
+  auto_actions_for :disdec, [:create, :new]
 
   def create_for_disdec
     hobo_create_for :disdec do
       if valid?
-        ajax_update_response(params[:render], {}, 
-          {:preamble => "<textarea>\nvar _update = Hobo.updateElement;", :postamble => "</textarea>"})
+        ajax_update_response(params[:page_path], params[:render].values, {}, {:preamble => "<textarea>\nvar _update = Hobo.updateElement;", :postamble => "</textarea>"})
       else
         render(:status => 500,
                :js => "alert(\"#{this.errors.full_messages.join(". ").gsub('\n', '')}\");")
@@ -23,7 +22,7 @@ class UploadsController < ApplicationController
 #  def create_for_program
 #    hobo_create_for :program do
 #      if valid?
-#        ajax_update_response(params[:page_path], params[:render].values, {}, {:preamble => "<textarea>\nvar _update = Hobo.updateElement;", :postamble => "</textarea>"})
+#        ajax_update_response(params[:render].values, {}, {:preamble => "<textarea>\nvar _update = Hobo.updateElement;", :postamble => "</textarea>"})
 #      else
 #        render(:status => 500,
 #              :js => "alert(\"#{this.errors.full_messages.join(". ").gsub('\n', '')}\");")
