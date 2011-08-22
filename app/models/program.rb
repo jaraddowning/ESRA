@@ -48,13 +48,15 @@ class Program < ActiveRecord::Base
 
   after_create :populate
 
+  # -- Auto creation of items each program must enter -- #
   def populate
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
     Disdec.create(:name => "Disaster Declarations", :program_id => id)
-    Upload.create(:name => "Orginizational Chart", :program_id => id)
+    Upload.create(:name => "Organizational Chart", :program_id => id)
   end
 
+  # -- Need to explain what this is for -- #
   def route
     return '/programs/' + id.to_s
   end
