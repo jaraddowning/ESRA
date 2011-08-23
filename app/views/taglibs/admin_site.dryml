@@ -51,7 +51,7 @@
     </div>
     <div class="report">
       <a class="pdfreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report"><button>PDF Report</button></a>
-      <a class="docreport" href="#{base_url}/public/documents/#{this.program_id}.doc" target="_blank" param="docreport"><button>Report in Word</button></a>
+      <a class="docreport" href="#{base_url}/public/documents/#{this.program_id}_report.docx" target="_blank" param="docreport"><button>Report in Word</button></a>
     </div>
     <delete-button class="actions" />
   </body:>

@@ -70,7 +70,7 @@
   pdf.move_down(12)
   @program.reviews.each do |revs|
     revs.review_assignments.each do |assign|
-      pdf.text "#{assign.reviewer.name}, #{assign.reviewer.agency} - #{assign.reviewer.job_title}", :indent_paragraphs => 40
+      pdf.text "#{assign.user.name}, #{assign.user.agency} - #{assign.user.job_title}", :indent_paragraphs => 40
     end
   end
   pdf.move_down(12)
@@ -341,12 +341,12 @@
         end
       end
       pdf.move_down(8)
-      pdf.text "Summary:", :spacing => 16, :indent_paragraphs => 42
-      pdf.move_down(3)
-        sums = Sanitize.clean(target.summary)
-      pdf.span(330, :position => :center) do
-        pdf.text sums, :spacing => 16, :indent_paragraphs => 47
-      end
+      #pdf.text "Summary:", :spacing => 16, :indent_paragraphs => 42
+      #pdf.move_down(3)
+      #  sum = Sanitize.clean(target.summary)
+      #pdf.span(330, :position => :center) do
+      #  pdf.text #(target.summary), :spacing => 16, :indent_paragraphs => 47
+      #end
 
       #     Corrective Actions
       pdf.move_down(12)
@@ -397,12 +397,14 @@
   #     Interviews
   pdf.move_down(12)
   pdf.text "Interviews:", :spacing => 16, :size => 14, :style => :bold, :indent_paragraphs => 20
-  @program.interviews.each do |interview|
-    pdf.move_down(8)
-    pdf.text "#{interview.name}, #{interview.title} - #{interview.date}", :spacing => 16, :indent_paragraphs => 47
-    pdf.move_down(3)
-      sums = Sanitize.clean(interview.summary)
-    pdf.text sums, :spacing => 16, :indent_paragraphs => 50
+  @program.findings.each do |finding|
+    finding.interviews.each do |interview|
+      pdf.move_down(8)
+      pdf.text "#{interview.name}, #{interview.title} - #{interview.date}", :spacing => 16, :indent_paragraphs => 47
+      pdf.move_down(3)
+        sums = Sanitize.clean(interview.summary)
+      pdf.text sums, :spacing => 16, :indent_paragraphs => 50
+    end
   end
 
   #   Page Numbering
