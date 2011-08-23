@@ -374,7 +374,7 @@
     <br /><h3><view:name /></h3>
     <h5>Assigned To: </h5><view:assigned_to /><br />
     <h5>Completed By: </h5><view:completed_by /> <h5>Date Completed: </h5><view:completed_date />
-    <h5><a action="edit" if="&can_edit?" param="edit-link" >View Corrective Action</a></h5>
+    <h5><a action="edit" if="&can_edit?" param="edit-link" >Reviewer's Finding</a></h5>
     <delete-button class="actions" />
   </card> 
 </extend>

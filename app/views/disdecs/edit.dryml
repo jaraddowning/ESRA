@@ -12,7 +12,7 @@
       <error-messages/>
       <table-plus:uploads fields="name, proof_file_name, updated_at">
         <proof_file_name-view: with="&@ups">
-          <a href="#{rails_root}/public/system/proofs/#{this.id}/original/#{this.normalized_proof_file_name}" target="_blank"><view /></a>
+          <a><view /></a>
         </proof_file_name-view:>
         <updated_at-view:>
           <view format="%B %d, %Y" />
