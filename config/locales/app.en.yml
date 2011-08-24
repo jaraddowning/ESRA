@@ -247,6 +247,7 @@ en:
       tcl:
         summary: Reviewer Observations
         tcap: Target Capability
+        alevel: Activity Level(s)
         alevels: Activity Level(s)
         improvement_plan: Improvement Plan Provided
         improvement_plan_completed: Improvement Plan Completed

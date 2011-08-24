@@ -8,16 +8,12 @@ class Alevel < ActiveRecord::Base
     timestamps
   end
 
-  #belongs_to :tcl
-
-
-
-  def self.find_by_name(name)
-    names = name.split(' ')
-    (0..(names.length-2)).inject(nil) do |result, n|
-      result ||= self.find_by_name(names[0..n].join(' '), names[1..(n+1)].join(' '))
-    end
-  end
+  #def self.find_by_name(name)
+  #  names = name.split(' ')
+  #  (0..(names.length-2)).inject(nil) do |result, n|
+  #    result ||= self.find_by_name(names[0..n].join(' '), names[1..(n+1)].join(' '))
+  #  end
+  #end
 
   # --- Permissions --- #
 
@@ -34,7 +30,7 @@ class Alevel < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    true
+    acting_user.signed_up?
   end
 
 end

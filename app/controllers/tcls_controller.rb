@@ -6,6 +6,16 @@ class TclsController < ApplicationController
 
   auto_actions_for :event, [:new, :create]
 
+  def show
+
+    #Searching and sorting
+    @tc = find_instance
+      @corrective_actions = @tc.corrective_actions.apply_scopes(
+                :order_by => parse_sort_param(:name, :assigned_to, :completed_date, :completed_by))
+
+    @tcl = Tcl.find(params[:id])
+  end
+
   def edit
     self.this = User.new(params[:tcap]) if params[:tcap]
     hobo_show do

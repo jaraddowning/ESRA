@@ -7,7 +7,7 @@ class TclObjective < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :tcl
+  belongs_to :alevel
 
   # --- Permissions --- #
 
