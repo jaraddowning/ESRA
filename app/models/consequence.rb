@@ -3,7 +3,7 @@ class Consequence < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    consequence :string
+    consequence :text
     timestamps
   end
 

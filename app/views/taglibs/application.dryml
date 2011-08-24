@@ -38,6 +38,17 @@
       <javascript name="jquery.form.js"/>
       <javascript name="ckeditor/ckeditor"/>
       <javascript name="load_ckeditor"/>
+        <script type="text/javascript">
+          var last_added;
+          var last_removed;
+          function my_add_hook() {
+            last_added = this;
+          }
+          function my_remove_hook() {
+            last_removed = this;
+            return confirm("Confirm Removal");
+          }
+        </script>
     </custom-scripts:>
     <append-scripts:>
     <%= raw "<!--[if lt IE 9]>" %> 
@@ -63,7 +74,7 @@
 <!-- =====  Input Many JQuery Stylie =====  -->
 
 <def tag="input-many" for="Alevel" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -71,7 +82,7 @@
 </def>
 
 <def tag="input-many" for="Efunding" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -79,7 +90,7 @@
 </def>
 
 <def tag="input-many" for="Egoal" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -87,7 +98,7 @@
 </def>
 
 <def tag="input-many" for="Ehost" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="host" />
      </item:>
@@ -95,7 +106,7 @@
 </def>
 
 <def tag="input-many" for="Elocation" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -103,7 +114,7 @@
 </def>
 
 <def tag="input-many" for="EOpenCa" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -111,7 +122,7 @@
 </def>
 
 <def tag="input-many" for="Eparticipant" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -119,7 +130,7 @@
 </def>
 
 <def tag="input-many" for="Consequence" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="consequence" />
      </item:>
@@ -127,7 +138,7 @@
 </def>
 
 <def tag="input-many" for="CaDoc" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="document" />
      </item:>
@@ -135,7 +146,7 @@
 </def>
 
 <def tag="input-many" for="DisasterDeclaration" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name, ddate" />
      </item:>
@@ -143,15 +154,15 @@
 </def>
 
 <def tag="input-many" for="Hazard" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
-       <field-list fields="name" />
+       <field-list id="haz_con" fields="name, consequences" />
      </item:>
   </hjq-input-many>
 </def>
 
 <def tag="input-many" for="ImprovementArea" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -159,7 +170,7 @@
 </def>
 
 <def tag="input-many" for="Interview" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name, title, idate, summary" />
      </item:>
@@ -167,7 +178,7 @@
 </def>
 
 <def tag="input-many" for="LocalDisdec" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name, ddate" />
      </item:>
@@ -175,7 +186,7 @@
 </def>
 
 <def tag="input-many" for="StateDisdec" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name, ddate" />
      </item:>
@@ -183,7 +194,7 @@
 </def>
 
 <def tag="input-many" for="Strength" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -191,7 +202,7 @@
 </def>
 
 <def tag="input-many" for="TclGoal" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -199,7 +210,7 @@
 </def>
 
 <def tag="input-many" for="TclObjective" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -207,7 +218,7 @@
 </def>
 
 <def tag="input-many" for="Texercise" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name, tdate" />
      </item:>
@@ -215,7 +226,7 @@
 </def>
 
 <def tag="input-many" for="Tpriority" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="name" />
      </item:>
@@ -223,7 +234,7 @@
 </def>
 
 <def tag="input-many" for="TrainTcap" merge>
-  <hjq-input-many>
+  <hjq-input-many remove-hook="my_remove_hook">
      <item:>
        <field-list fields="tcap" />
      </item:>
@@ -550,7 +561,9 @@
     <h2>Overview</h2><p>An accredited Emergency Management Program will encompass a Hazard Identification, Risk Assessment (HIRA) and Consequence Analysis.  The chapter includes responsibilities and activities associated with the identification of hazards and assessment of risks to persons, public and private property and structures.</p><hr /><br />
     <h3>4.3.1</h3><p>The Emergency Management Program shall identify the natural and human-caused hazards that potentially impact the jurisdiction using a broad range of sources.  The Emergency Management Program shall assess the risk and vulnerability of people, property, the environment, and its own operations from these hazards.</p><hr /><br />
     <h3>4.3.2</h3><p>The Emergency Management Program shall conduct a consequence analysis for the hazards identified in 4.3.1 to consider the impact on the public; responders; continuity of operations including continued delivery of services; property, facilities, and, infrastructure; the environment; the economic condition of the jurisdiction and public confidence in the jurisdiction’s governance.</p><hr /><br />
-    <field-list fields="matching, description, hazards" param/>
+    <field-list fields="matching, description" param/><br /><br />
+    <h3>Hazard Identification and Consequence Analysis</h3><hr />
+    <field-list id="haz" fields="hazards" />
     <div param="actions">
       <submit label="#{ht 'hira.actions.save', :default=>['Save']}" param/>
     </div>
@@ -594,14 +607,14 @@
     <!--<after-submit uri="#{url_for(this_parent)}" />-->
     <do part="level-part">
       <field-list fields="tcap, alevel, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, improvement_areas" >
-       <alevel-view:>
-            <if test="&@tcl.tcap">
-              <select-many include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
-            </if>
-            <else>
-              <select disabled><option>First choose a Target Capability</option></select>
-            </else>
-       </alevel-view:>
+        <alevel-view:>
+          <if test="&@tcl.tcap">
+            <select-one include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
+          </if>
+          <else>
+            <select disabled><option>First choose a Target Capability</option></select>
+          </else>
+        </alevel-view:>
       </field-list>
     </do>
     <div param="actions">
@@ -836,7 +849,7 @@
         </a>
       </header>
       <section param="content-body">
-        <field-list fields="alevels, strengths, tcl_goals, tcl_objectives, improvement_areas" param/>
+        <field-list fields="alevel, strengths, tcl_goals, tcl_objectives, improvement_areas" param/>
         <section param="collection-section">
           <h3 param="collection-heading">
             <ht key="corrective_action.collection.heading" count="&this.corrective_actions.count" >

@@ -17,7 +17,7 @@
     <form>
       <error-messages/>
       <field-list fields="tcap"/>
-      <hjq-input-many:alevels remove-hook="my_remove_hook" >
+      <hjq-input-many:alevel remove-hook="my_remove_hook" >
         <add-item:>Add Activity Level</add-item:>
         <remove-item:>Remove Story</remove-item:>
       </hjq-input-many>

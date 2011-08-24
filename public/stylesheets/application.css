@@ -314,3 +314,8 @@ th.ca-top-9-label {
 th.ca-top-10-label {
   text-align:right;
 }
+
+th.hazards-label {
+  width: 10px;
+}
+
