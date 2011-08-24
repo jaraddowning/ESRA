@@ -22,5 +22,5 @@ class UsersController < ApplicationController
       flash[:notice] = t("hobo.messages.you_signed_up", :default=>"You have signed up")
     end
   end
-  
+
 end

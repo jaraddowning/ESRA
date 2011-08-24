@@ -6,3 +6,13 @@ jQuery("a input[type=button]").each(function() {
         location.href=jQuery(this).closest("a").attr("href");
     });
 });
+
+Event.addBehavior({
+    "select.tcl_tcap:change": function(ev) {
+         Hobo.ajaxRequest(window.location.href, ["level-part"], {
+             params: Form.serialize(this.up("form")),
+             method: "get",
+             message: "Processing..."
+         });
+     }
+});

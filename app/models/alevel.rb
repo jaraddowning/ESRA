@@ -8,7 +8,9 @@ class Alevel < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :tcl
+  #belongs_to :tcl
+
+
 
   def self.find_by_name(name)
     names = name.split(' ')

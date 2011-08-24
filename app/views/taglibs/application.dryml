@@ -589,22 +589,21 @@
 </def>
 
 <def tag="form" for="Tcl">
-  <form with="&@tcl" method="put" merge param="default">
+  <form with="&@tcl" method="put">
     <error-messages param/>
     <!--<after-submit uri="#{url_for(this_parent)}" />-->
-    <field-list fields="tcap, alevels, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, improvement_areas" >
-      <!--<alevels-view:>
-        <select-many:alevels />
-          <do part="level-menu">
+    <do part="level-part">
+      <field-list fields="tcap, alevel, strengths, improvement_plan, improvement_plan_completed, tcl_goals, tcl_objectives, improvement_areas" >
+       <alevel-view:>
             <if test="&@tcl.tcap">
-              <select-one options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
+              <select-many include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
             </if>
             <else>
               <select disabled><option>First choose a Target Capability</option></select>
             </else>
-          </do>
-      </alevels-view:>-->
-    </field-list>
+       </alevel-view:>
+      </field-list>
+    </do>
     <div param="actions">
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
     </div>
