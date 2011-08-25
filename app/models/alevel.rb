@@ -8,6 +8,8 @@ class Alevel < ActiveRecord::Base
     timestamps
   end
 
+  belongs_to :tcap
+
   #def self.find_by_name(name)
   #  names = name.split(' ')
   #  (0..(names.length-2)).inject(nil) do |result, n|

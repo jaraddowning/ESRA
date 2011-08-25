@@ -7,7 +7,7 @@ class TclGoal < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :alevel
+  belongs_to :tcl_alevel
 
   # --- Permissions --- #
 

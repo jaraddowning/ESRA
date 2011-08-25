@@ -31,6 +31,7 @@ class Program < ActiveRecord::Base
     timestamps
   end
 
+  # -- Bidnus logic -- #
   belongs_to :owner, :class_name => "User", :creator => true
 
   belongs_to :program_state, :class_name => "State"
@@ -46,9 +47,9 @@ class Program < ActiveRecord::Base
   has_many :reviewers, :through => :reviews, :source => :users
   has_many :findings, :through => :reviews
 
+  # -- Auto creation of items each program must enter -- #
   after_create :populate
 
-  # -- Auto creation of items each program must enter -- #
   def populate
     Eeca.create(:name => "Exercises, Evals & CAs", :program_id => id)
     Hira.create(:name => "HIRA", :program_id => id)
@@ -56,11 +57,12 @@ class Program < ActiveRecord::Base
     Upload.create(:name => "Organizational Chart", :program_id => id)
   end
 
-  # -- Need to explain what this is for -- #
+  # -- Create a URL for generating reports -- #
   def route
     return '/programs/' + id.to_s
   end
 
+  # -- Not really neccessary since these are defined in the view -- #
   children :events, :training_plans, :eecas
 
   # --- Permissions --- #

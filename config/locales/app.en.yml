@@ -245,14 +245,16 @@ en:
         tcap: Target Capability
         alevels: Activity Level(s)
       tcl:
+        corrective_actions: Corrective Action(s)
         summary: Reviewer Observations
         tcap: Target Capability
+        tcl_alevels: Activity Level, Goals, Objectives and Improvement Plans
+      tcl_alevel:
         alevel: Activity Level(s)
         alevels: Activity Level(s)
         improvement_plan: Improvement Plan Provided
         improvement_plan_completed: Improvement Plan Completed
         improvement_areas: Area(s) of Improvement
-        corrective_actions: Corrective Action(s)
         tcl_goals: Goal(s)
         tcl_objectives: Objective(s)
         emap_standards: EMAP Standard CrossWalk

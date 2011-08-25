@@ -201,6 +201,23 @@
   </hjq-input-many>
 </def>
 
+<def tag="input-many" for="TclAlevel">
+  <input-many remove-hook="my_remove_hook">
+    <do part="level-part"> 
+        <field-list fields="alevel, improvement_plan, improvement_plan_completed, strengths, tcl_goals, tcl_objectives, improvement_areas">
+          <alevel-view:>
+            <if test="&@tcl.tcap">
+              <select-one options="&@tcl.tcap.alevels" />
+            </if>
+            <else>
+              <select disabled><option>First choose a Target Capability</option></select>
+            </else>
+          </alevel-view:>
+        </field-list>
+    </do>
+  </input-many>
+</def>
+
 <def tag="input-many" for="TclGoal" merge>
   <hjq-input-many remove-hook="my_remove_hook">
      <item:>
@@ -601,30 +618,6 @@
   </form>
 </def>
 
-<def tag="form" for="Tcl">
-  <form with="&@tcl" method="put">
-    <error-messages param/>
-    <after-submit uri="#{url_for(this_parent)}" />
-    <field-list fields="tcap" /><br /><br />
-    <h3>Activity Levels, Strengths, Goals, Objectives and Areas of Improvement</h3><hr /><br />
-    <do part="level-part">
-      <field-list fields="alevels, improvement_plan, improvement_plan_completed" >
-        <alevel-view:>
-          <if test="&@tcl.tcap">
-            <select-one include-none="&false" options="&(this_parent.tcap.nil? ? [] :  Alevel.find_all_by_tcap_id(this_parent.tcap.id))"/>
-          </if>
-          <else>
-            <select disabled><option>First choose a Target Capability</option></select>
-          </else>
-        </alevel-view:>
-      </field-list>
-    </do>
-    <div param="actions">
-      <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" param/>
-    </div>
-  </form>
-</def>
-
 <def tag="form" for="TrainingPlan">
   <form merge param="default">
     <error-messages param/>
@@ -669,6 +662,15 @@
 <extend tag="form" for="Interview">
   <old-form merge without-cancel>
     <field-list: skip="program"/>
+  </old-form>
+</extend>
+
+<extend tag="form" for="Tcl">
+  <old-form merge>
+    <field-list fields="tcap, tcl_alevels" />
+    <div>
+      <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" /><or-cancel/>
+    </div>
   </old-form>
 </extend>
 
@@ -832,7 +834,7 @@
 </def>
 
 
-<def tag="show-page" for="Tcl">
+<!--<def tag="show-page" for="Tcl">
   <page merge title="#{ht 'tcl.show.title', :default=>['Target Capability'] }">
 
     <body: class="show-page tcl" param/>
@@ -875,4 +877,4 @@
       </section>
     </content:>
   </page>
-</def>
+</def>-->

@@ -7,6 +7,8 @@ class Tcap < ActiveRecord::Base
     timestamps
   end
 
+  has_many :alevels
+
   # --- Permissions --- #
 
   def create_permitted?
