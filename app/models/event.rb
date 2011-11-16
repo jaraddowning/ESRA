@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
     event_scenario_summary     :html
     statewide_event            :boolean
     multistate_event           :boolean
+    dhs_funded                 :boolean
     ema_role                   :html
     timestamps
   end

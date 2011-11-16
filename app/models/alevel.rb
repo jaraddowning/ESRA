@@ -9,6 +9,7 @@ class Alevel < ActiveRecord::Base
   end
 
   belongs_to :tcap
+  has_many :tcl_alevels
 
   #def self.find_by_name(name)
   #  names = name.split(' ')

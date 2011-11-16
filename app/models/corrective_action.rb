@@ -8,6 +8,7 @@ class CorrectiveAction < ActiveRecord::Base
     completed_by :string
     completed_date :date
     reviewer_ob :html
+    doc_status enum_string(:Requested, :Received, :Reviewed, :Requested_Additional_Clarification)
     timestamps
   end
 

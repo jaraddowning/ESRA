@@ -387,7 +387,7 @@
          <count:events param/>
       </ht><br /><br />
       <h4><a action="edit" if="&can_edit?" param="edit-link" >
-        <button label="Edit Program Information">Edit Program Information</button>
+        <button label="Edit Program Contact and Corrective Action Process">Edit Program Contact and Corrective Action Process</button>
       </a></h4>
     </body>
     <delete-button class="actions" />
@@ -655,7 +655,7 @@
 
 <extend tag="form" for="Event">
   <old-form merge without-cancel>
-    <field-list: fields="event_name, event_contact, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, efundings, e_open_cas" param/>
+    <field-list: fields="event_name, event_contact, event_date, event_end_date, event_duration, event_duration_description, ehosts, event_scenario, event_scenario_summary, event_type, event_state, statewide_event, multistate_event, ema_role, elocations, eparticipants, dhs_funded, efundings, e_open_cas" param/>
   </old-form>
 </extend>
 

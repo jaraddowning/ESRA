@@ -248,9 +248,9 @@ en:
         corrective_actions: Corrective Action(s)
         summary: Reviewer Observations
         tcap: Target Capability
-        tcl_alevels: Activity Level, Goals, Objectives and Improvement Plans
+        tcl_alevels: Activity Level(s), Goals, Objectives and Improvement Plans
       tcl_alevel:
-        alevel: Activity Level(s)
+        alevel: Activity Level
         alevels: Activity Level(s)
         improvement_plan: Improvement Plan Provided
         improvement_plan_completed: Improvement Plan Completed
