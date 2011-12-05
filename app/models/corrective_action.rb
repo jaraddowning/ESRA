@@ -3,22 +3,20 @@ class CorrectiveAction < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name :string
-    assigned_to :string
-    completed_by :string
+    name           :string
+    assigned_to    :string
+    completed_by   :string
     completed_date :date
-    reviewer_ob :html
-    doc_status enum_string(:Requested, :Received, :Reviewed, :Requested_Additional_Clarification)
+    reviewer_ob    :html
+    rev_interview  :html
+    rev_docs       :html
+    ca_status enum_string(:Completed, :Not_Competed, :Requested_Additional_Clarification)
     timestamps
   end
 
   #never_show :reviewer_ob
 
   belongs_to :tcl
-
-  has_many :ca_docs, :dependent => :destroy, :accessible => true
-
-
 
   def name_edit_permitted?
     acting_user.program? || acting_user.administrator?
@@ -41,6 +39,30 @@ class CorrectiveAction < ActiveRecord::Base
   end
 
   def reviewer_ob_view_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def rev_interview_edit_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def rev_interview_view_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def rev_docs_edit_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def rev_docs_view_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def ca_status_edit_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def ca_status_view_permitted?
     acting_user.reviewer? || acting_user.administrator?
   end
 

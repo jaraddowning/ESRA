@@ -112,7 +112,9 @@ en:
         completed_by: Completed By
         completed_date: Completed Date
         reviewer_ob: Reviewer Finding
-        ca_docs: Documentation
+        rev_interview: Interviews
+        rev_docs: Documents Reviewed
+        ca_status: Corrective Action Status
       disaster_declaration:
         name: Disaster
         ddate: Date

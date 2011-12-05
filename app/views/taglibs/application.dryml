@@ -667,7 +667,7 @@
 
 <extend tag="form" for="Tcl">
   <old-form merge>
-    <field-list fields="tcap, tcl_alevels" />
+    <field-list fields="tcap, alevel, strengths, improvement_areas, tcl_goals, tcl_objectives" />
     <div>
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" /><or-cancel/>
     </div>

@@ -7,7 +7,7 @@ class ImprovementArea < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :tcl_alevel
+  belongs_to :tcl
 
   # --- Permissions --- #
 
