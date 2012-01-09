@@ -177,7 +177,7 @@ en:
         name: Scenario
         description: Scenario Summarization
       hira:
-        matching: HIRA Consistant with Events
+        matching: HIRA Consistent with Events
         description: Description
         hazards: List Hazard(s)
       hazard:
@@ -259,7 +259,7 @@ en:
         improvement_areas: Area(s) of Improvement
         tcl_goals: Goal(s)
         tcl_objectives: Objective(s)
-        emap_standards: EMAP Standard CrossWalk
+        emap_standards: EMAP Standard Crosswalk
       tcl_goal:
         name: Goal
       tcl_objective:
@@ -309,13 +309,13 @@ en:
         event_duration: Length of the event.
         event_host: Organization that hosted the event.
         event_goal: Goal for having the event (not necessary for real-world events).
-        event_scenario_summary: Brief summary of the event, necessary if scenerio is "Other".
+        event_scenario_summary: Brief summary of the event, necessary if scenario is "Other".
         statewide_event: Was the event Statewide? (check for yes)
         multistate_event: Did the event involve more than one State? (check for yes)
         ema_role: What role did the State Emergency Management Agency play in the event?
         event_type: Please select the type of event.
         event_scenario: Please select the event scenario.
-        eparticipants: Indicate Event Particpants (add participants by pushing the "+" button).
+        eparticipants: Indicate Event Participants (add participants by pushing the "+" button).
         egoals: Indicate what the goals of the event were (add goals by pushing the "+" button).
         efundings: Indicate organizations who funded the event (add sources by pushing the "+" button).
         elocations: Location(s) for the event (add locations by pushing the "+" button).
@@ -328,7 +328,7 @@ en:
         match_hira: Is the Exercise Program tailored to the range of hazards identified in the Hazard Identification and Risk Assessment?(check for yes)
         ex_eval_proc: Does the Emergency Management Program have some form of an exercise evaluation process in place?(check for yes)
         eep_desc: If so, please describe.
-        eep_doc: If so, what foundational documentation was provided for review? (seperate documents by commas)
+        eep_doc: If so, what foundational documentation was provided for review? (Separate documents by commas)
         plans_procs_review: What plans and procedures are being reviewed?
         pp_rev_frequency:  How often?
         caps_reviewed: What capabilities are reviewed?
