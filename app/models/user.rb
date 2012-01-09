@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   fields do
     name            :string, :required
-    username        :string, :required, :unique
+#    username        :string, :required, :unique
     email_address   :email_address, :login => true
     agency          :string
     job_title       :string
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
     create :invite,
            :available_to => "acting_user if acting_user.administrator?",
            :subsite => "admin",
-           :params => [:name, :username, :email_address, :agency, :job_title],
+           :params => [:name, :email_address, :agency, :job_title],
            :new_key => true,
            :become => :invited do
        UserMailer.invite(self, lifecycle.key).deliver
@@ -67,9 +67,17 @@ class User < ActiveRecord::Base
     transition :reset_password, { :active => :active }, :available_to => :key_holder,
                :params => [ :password, :password_confirmation ]
 
-    transition :disable_account, { :active => :disabled }, :available_to => :all
+    transition :disable_account, { :active => :disabled }, :available_to => "acting_user if acting_user.administrator?",
+               :subsite => "admin",
+               :params => [:name],
+               :new_key => true,
+               :become => :disabled
 
-    transition :enable_account, { :disabled => :active }, :available_to => :all
+    transition :enable_account, { :disabled => :active }, :available_to => "acting_user if acting_user.administrator?",
+               :subsite => "admin",
+               :params => [:name],
+               :new_key => true,
+               :become => :active
 
   end
 
@@ -81,8 +89,9 @@ class User < ActiveRecord::Base
     state=="disabled"
   end
 
-  # --- Auto-generation of assigned reviews --- #  
-  children :reviews
+  # --- Auto-generation of assigned reviews for reviewers only--- #  
+
+  #children :reviews <--now conditionally rendered in view
 
   # --- Permissions --- #
 

@@ -11,8 +11,6 @@ class Finding < ActiveRecord::Base
 
   belongs_to :review
   belongs_to :program
-  
-  has_many :interviews, :dependent => :destroy, :accessible => true
 
   # --- Permissions --- #
 

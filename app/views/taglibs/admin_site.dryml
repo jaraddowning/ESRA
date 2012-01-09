@@ -22,7 +22,7 @@
 <extend tag="edit-page" for="User">
   <old-edit-page merge>
     <append-heading:>
-      <br /><transition-buttons />
+      <br /><br /><transition-buttons />
     </append-heading:>
   </old-edit-page>
 </extend>
@@ -51,7 +51,7 @@
     </div>
     <div class="report">
       <a class="pdfreport" href="#{base_url}/programs/#{this.program_id}.pdf" target="_blank" param="report"><button>PDF Report</button></a>
-      <a class="docreport" href="../documents/#{this.program_id}_report.doc" target="_blank" param="docreport"><button>Word 95/98 Report</button></a>
+      <!--<a class="docreport" href="../documents/#{this.program_id}_report.doc" target="_blank" param="docreport"><button>Word 95/98 Report</button></a>-->
     </div>
     <delete-button class="actions" />
   </body:>

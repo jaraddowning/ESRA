@@ -10,7 +10,7 @@ class Interview < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :finding
+
 
   # --- Permissions --- #
 

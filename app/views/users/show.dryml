@@ -1,9 +1,23 @@
 <show-page>
-  <content-body:>
-    <h3><Your/> Assigned Reviews</h3>
-    <br />
-    <repeat with="&@user.reviews.group_by(&:program)">
-      <collection/>
-    </repeat>
-  </content-body:>
+  <old-show-page merge>
+    <content-body:>
+      <if test="&this.administrator">
+        <h3><Your/> Assigned Reviews</h3>
+        <br />
+        <repeat with="&@user.reviews.group_by(&:program)">
+          <collection/>
+        </repeat>
+      </if>
+      <if test="&this.reviewer">
+        <h3><Your/> Assigned Reviews</h3>
+        <br />
+        <repeat with="&@user.reviews.group_by(&:program)">
+          <collection/>
+        </repeat>
+      </if>
+      <else>
+        <p>Something witty! Hoo-Haa</p>
+      </else>
+    </content-body:>
+  </old-show-page>
 </show-page>

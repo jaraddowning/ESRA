@@ -7,10 +7,11 @@ class CorrectiveAction < ActiveRecord::Base
     assigned_to    :string
     completed_by   :string
     completed_date :date
+    reviewed_by    :string
     reviewer_ob    :html
     rev_interview  :html
     rev_docs       :html
-    ca_status enum_string(:Completed, :Not_Competed, :Requested_Additional_Clarification)
+    ca_status enum_string(:Requested, :Recieved, :Reviewed, :Requested_Additional_Clarification)
     timestamps
   end
 
@@ -32,6 +33,14 @@ class CorrectiveAction < ActiveRecord::Base
 
   def completed_date_edit_permitted?
     acting_user.program? || acting_user.administrator?
+  end
+
+  def reviewed_by_edit_permitted?
+    acting_user.reviewer? || acting_user.administrator?
+  end
+
+  def reviewed_by_view_permitted?
+    acting_user.reviewer? || acting_user.administrator?
   end
 
   def reviewer_ob_edit_permitted?
