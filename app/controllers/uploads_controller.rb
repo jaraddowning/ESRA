@@ -14,7 +14,7 @@ class UploadsController < ApplicationController
         ajax_update_response(params[:page_path], params[:render].values, {}, {:preamble => "<textarea>\nvar _update = Hobo.updateElement;", :postamble => "</textarea>"})
       else
         render(:status => 500,
-               :js => "alert(\"#{this.errors.full_messages.join(". ").gsub('\n', '')}\");")
+              :js => "alert(\"#{this.errors.full_messages.join(". ").gsub('\n', '')}\");")
       end
     end
   end

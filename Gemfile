@@ -38,7 +38,8 @@ gem 'prawn'
 gem 'pdf-reader'
 gem 'nokogiri'
 gem 'sanitize', :submodules => true
-gem "nested_has_many_through"
+gem 'nested_has_many_through'
+gem 'ruby-ntlm'
 #gem "serenity-odt"
 #gem "clamsy"
 #gem 'yaml_db'

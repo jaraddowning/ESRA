@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
     end
 
     transition :accept_invitation, { :invited => :active }, :available_to => :key_holder,
-               :params => [ :password, :password_confirmation ]
+               :params => [ :password, :password_confirmation ] # [ :username, :password, :password_confirmation ]
 
     transition :request_password_reset, { :active => :active }, :new_key => true do
       UserMailer.forgot_password(self, lifecycle.key).deliver
@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
 
   # --- Auto-generation of assigned reviews for reviewers only--- #  
 
-  #children :reviews <--now conditionally rendered in view
+  children :reviews # conditionally rendered in view
 
   # --- Permissions --- #
 

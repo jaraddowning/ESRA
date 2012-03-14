@@ -9,6 +9,7 @@
 <include src="paperclip" plugin="paperclip_with_hobo"/>
 <!--<include src="hobo-contrib-all" plugin="hobo-contrib"/>-->
 <include plugin="hobo-jquery" />
+<include gem="hobo-jquery" />
 
 <set-theme name="clean-sidemenu"/>
 
@@ -658,6 +659,30 @@
       <submit label="#{ht 'tcl.actions.save', :default=>['Save']}" /><or-cancel/>
     </div>
   </old-form>
+</extend>
+
+<!--    SHOW-PAGE EXTENTIONS     -->
+
+<extend tag="show-page" for="User">
+  <old-show-page merge>
+    <collection-section:>
+      <if test="&this.administrator">
+        <h3><Your/> Assigned Reviews</h3>
+        <repeat with="&@user.reviews.group_by(&:program)">
+          <collection/>
+        </repeat>
+      </if>
+      <if test="&this.reviewer">
+        <h3><Your/> Assigned Reviews</h3>
+        <repeat with="&@user.reviews.group_by(&:program)">
+          <collection/>
+        </repeat>
+      </if>
+      <else>
+        <br /><br /><p>Something witty! Hoo-Haa</p>
+      </else>
+    </collection-section:>
+  </old-show-page>
 </extend>
 
 <!--    SHOW-PAGE DEFINITIONS    -->
